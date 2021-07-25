@@ -1,0 +1,42 @@
+.card {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    background-color: white;
+    border-radius: 2px;
+    overflow: hidden;
+    transition: box-shadow .3s;
+}
+
+.card:hover {
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.14), 0 3px 10px -2px rgba(0,0,0,.2), 0 1px 50px 0 rgba(0,0,0,.12);
+}
+
+.card img {
+    max-width: 100%;
+}
+
+.card h1 {
+    padding: 20px 20px 0 20px;
+}
+
+.video {
+    width:100%;
+    min-height: 300px;
+}
+
+.card h2 {
+    padding: 20px 20px 0 20px;
+    font-size: 1.5rem;
+}
+
+.card p {
+    padding: 20px 20px 0 20px;
+}
+
+.card .date {
+    font-size: 0.7rem;
+    color: #6d6d6d;
+}
+
+.card p:nth-last-child(1) {
+    padding: 20px;
+}

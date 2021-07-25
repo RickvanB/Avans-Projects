@@ -1,0 +1,65 @@
+<div class="container" *ngIf="company">
+    <h1>{{company.name}}</h1>
+    <mat-card id="detailCard">
+        <img mat-card-image [src]="company.logoPath">
+
+        <h1 class="titleText">{{company.name}}</h1>
+        <h3 class="subText">{{company.city}}</h3>
+
+        <mat-card>
+            <h2 class="subText">Beschrijving</h2>
+            <p>{{company.description}}</p>
+        </mat-card>
+
+        <mat-card class="contactCard">
+          <h2 class="subText">Contacten</h2>
+          <hr />
+          <table class="full-width">
+            <tr *ngFor="let contact of companyContact">
+            <strong>{{contact.name}} {{contact.insertion}} {{contact.lastname}}</strong><br/>
+            {{contact.department}}<br/>
+            {{contact.emailaddress}}<br />
+            {{contact.phone}}<br />
+            </tr>
+          </table>
+        </mat-card>
+    </mat-card>
+
+    <mat-card class="sideBox">
+        <mat-card-header>
+            <mat-card-title>Opleidingen</mat-card-title>
+        </mat-card-header>
+        <mat-card>
+            <mat-card-content>
+                <table class="full-width">
+                    <th>
+                        <strong>Opleiding</strong>
+                        <hr />
+                    </th>
+
+              <tr *ngFor="let major of companyMajors">
+                {{major.name}}
+              <hr />
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+    </mat-card>
+
+
+    <!--BUTTONS-->
+    <mat-card class="sideBox">
+        <mat-card-header>
+            <mat-card-title>Bedrijf aanpassen</mat-card-title>
+        </mat-card-header>
+        <mat-card>
+            <mat-card-content>
+                <button mat-raised-button color="primary" class="full-width" (click)="changeName() ">Bedrijfsnaam aanpassen</button>
+                <button mat-raised-button color="primary" class="full-width" (click)="changeDescription()">Beschrijving aanpassen</button>
+                <button mat-raised-button color="primary" class="full-width" [routerLink]="['/companies/' + companyId + '/rounds']">Tijdsloten beheren</button>
+                <button mat-raised-button color="primary" class="full-width" [routerLink]="['/major', companyId]">Geintereseerde opleidingen aanpassen</button>
+                <button mat-raised-button color="primary" class="full-width" [routerLink]="['/companies/' + companyId + '/students']">Ingeschreven studenten</button>
+            </mat-card-content>
+        </mat-card>
+    </mat-card>
+</div>

@@ -1,0 +1,43 @@
+<div class="container" *ngIf="speedmeet">
+  <h1>{{ speedmeet.title }} - Tijdsloten beheren</h1>
+
+  <form [formGroup]="moveRounds" (ngSubmit)="onSubmit()" *ngIf="!moving">
+    <div class="content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Tijdsloten verschuiven</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Hiermee is het mogelijk om alle tijdsloten een aantal minuten te verschuiven. Om de tijdsloten naar voren op te schuiven vul je een negatief getal in. Om de tijdsloten naar achter op te schuiven vul je een positief getal in.</p>
+
+          <mat-form-field class="full-width">
+            <mat-label>Aantal minuten</mat-label>
+            <input type="number" step="1" matInput formControlName="minutes"/>
+            <mat-error *ngIf="moveRounds.get('minutes').hasError('required')">
+              Aantal minuten is <strong>verplicht</strong>
+            </mat-error>
+
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="submit" mat-raised-button color="primary">Verschuiven</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <div class="sidebar">
+        <app-rounds-widget></app-rounds-widget>
+      </div>
+    </div>
+  </form>
+
+  <mat-card *ngIf="moving">
+    <mat-card-header>
+      <mat-card-title>Tijdsloten verschuiven</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>De tijdsloten worden verschoven. Een moment geduld.</p>
+
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-content>
+  </mat-card>
+</div>

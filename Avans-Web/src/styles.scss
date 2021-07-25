@@ -1,0 +1,111 @@
+@import "./themes/theme.scss";
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #F0F1F5;
+}
+
+h1 {
+  color: mat-color($speedmeet-primary)
+}
+
+.container {
+  box-sizing: border-box;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 1200px) {
+      flex-direction: row;
+    }
+
+    & > :first-child {
+      flex: 1;
+    }
+
+    .sidebar {
+      margin-top: 20px;
+
+      @media screen and (min-width: 1200px) {
+        margin-top: 0;
+        margin-left: 20px;
+        min-width: 300px;
+
+        & > * {
+          margin-bottom: 20px;
+          display: block;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.table-actions {
+  display: flex;
+
+  mat-form-field {
+    flex: 3;
+    margin-right: 20px;
+  }
+
+  .buttons {
+    button:first-child {
+      margin-right: 20px;
+    }
+  }
+}
+
+.actions {
+  button[mat-raised-button] {
+    padding: 0 5px;
+    min-width: auto;
+    margin-right: 10px;
+    line-height: 23px;
+    font-size: 10px;
+
+    .mat-icon {
+      font-size: 18px;
+      width: auto;
+      height: auto;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.titleText{
+  color: mat-color($speedmeet-primary);
+  font-weight: bold;
+  font-size: 30px;
+  padding-top: 10px;
+}
+
+.subText{
+  color: mat-color($speedmeet-primary);
+}
+
+.full-width{
+  width: 100%;
+}

@@ -1,0 +1,27 @@
+{
+    "swagger": {
+        "outputDirectory": "./",
+        "entryFile": "./src/app.ts",
+        "host": "speedmeet-api.mardy.tk",
+        "basePath": "/",
+        "noImplicitAdditionalProperties": "silently-remove-extras",
+        "yaml": false,
+        "specVersion": 3,
+        "description": "Spec for the Avans Speedmeet API",
+        "license": "MIT",
+        "securityDefinitions": {
+            "JWT": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "routes": {
+        "authenticationModule": "./src/config/passport",
+        "basePath": "/",
+        "entryFile": "./src/app.ts",
+        "routesDir": "./src/api/routes",
+        "middleware": "express"
+    }
+}

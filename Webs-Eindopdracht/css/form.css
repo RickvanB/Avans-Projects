@@ -1,0 +1,53 @@
+/* source: https://codepen.io/sevilayha/pen/IdGKH */
+.input-group {
+    position: relative;
+}
+
+.input-group input,
+.input-group textarea {
+    display: block;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 10px 10px 10px 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+    outline: none;
+}
+
+.input-group label {
+    color: #999;
+    font-size: 1rem;
+    position: absolute;
+    pointer-events: none; /* Dit zorgt ervoor dat het label niet klikbaar is, maar dat de input dat wel is */
+    left: 5px;
+    top: 10px;
+    transition: .2s ease all;
+}
+
+.input-group input:focus ~ label,
+.input-group textarea:focus ~ label,
+.input-group input:valid ~ label,
+.input-group textarea:valid ~ label { /* De tilde betekent dat het label een sibling moet zijn van een input:focus */
+    top: -15px;
+    font-size: 0.8rem;
+    color: #4384B4;
+}
+
+.input-group .bar {
+    display: block;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: #4384B4;
+    transition: .2s ease all;
+}
+
+.input-group input:focus ~ .bar,
+.input-group textarea:focus ~ .bar { /* De tilde betekent dat de .bar een sibling moet zijn van een input:focus */
+    width: 100%;
+}

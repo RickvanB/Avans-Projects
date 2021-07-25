@@ -1,0 +1,261 @@
+/* List with cheqies */
+.my-cheqies-list
+{
+    justify-content: center;
+    padding: 10px;
+    flex-direction: column;
+    margin: 0.5%;
+    min-width: 20em;
+    max-width: 500px;
+
+    border-color: #b3b3ff;
+    border-width: 3px;
+    border-style: solid;
+
+    overflow-y: auto;
+    height: 80%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.cheqie-container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.extra-margin{
+    margin-left: 210px;
+}
+
+/* One cheqie container */
+.my-cheqies-cheqie
+{
+    display: flex;
+    justify-content: center;
+    margin: 1%;
+
+    border-color: #b3b3ff;
+    border-width: 3px;
+    border-style: solid;
+
+    min-height: 190px;
+}
+
+/* Details on the left side of a container */
+.my-cheqies-details_left
+{
+    width: 47%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1%;
+
+    border-color: #b3b3ff;
+    border-width: 3px;
+    border-style: solid;
+}
+/* Details on the right side of a container */
+.my-cheqies-details_right
+{
+    width: 47%;
+    margin: 1%;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    border-color: #b3b3ff;
+    border-width: 3px;
+    border-style: solid;
+    min-width: 100px;
+
+}
+
+/* Header propperties */
+.my-cheqies-details_left h4
+{
+    font-size: 1em;
+    margin: 0;
+    padding-left: 4px;
+    min-width: 250px;
+}
+/* Content Propperties */
+.my-cheqies-details_left p
+{
+    font-size: 1.4em;
+    margin: 0;
+    padding-left: 4px;
+}
+
+/* Name of the Cheqie in the container */
+.my-cheqies-name
+{
+    width: 98%;
+    margin: 1%;
+    background-color: #FFFFFF;
+    border-color: #b3b3ff;
+    border-width: 3px;
+    border-style: solid;
+}
+
+/* paid by how many user in the container */
+.my-cheqies-paid_by
+{
+    width: 98%;
+    margin: 1%;
+    background-color: #FFFFFF;
+    border-color: #b3b3ff;
+    border-width: 3px;
+    border-style: solid;
+}
+
+/* button to show more details in the container */
+.my-cheqies-show_details
+{
+
+    width: 98%;
+    margin: 1%;
+    display: flex;
+    justify-content: center;
+
+    border-color: #b3b3ff;
+    background-color: #ffb366;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.my-cheqies-show_details:hover
+{
+    background-color: #ff8c1a;
+}
+
+.my-cheqies-show_details p
+{
+    font-size: 1.2em;
+}
+
+
+/* Amount to pay in the container */
+.my-cheqies-amount
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    width: 98%;
+    margin: 1%;
+    padding-top: 14px;
+    background-color: #FFFFFF;
+    padding-bottom: 14px;
+    border-color: #b3b3ff;
+    border-width: 3px;
+    border-style: solid;
+}
+
+/* Center the amount in the container */
+.my-cheqies-amount h2, .my-cheqies-amount p{
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Experience date in the container */
+.my-cheqies-experience_date
+{
+    width: 98%;
+    margin: 1%;
+    border-color: #b3b3ff;
+    border-width: 3px;
+    border-style: solid;
+    background-color: #FFFFFF;
+    flex-wrap: wrap;
+}
+
+/* Header propperties */
+.my-cheqies-experience_date h4
+{
+    font-size: 1em;
+    margin: 0;
+    padding-left: 4px;
+}
+/* Content Propperties */
+.my-cheqies-experience_date p
+{
+    font-size: 1.4em;
+    margin: 0;
+    padding-left: 4px;
+}
+
+
+/* Set color of + and - items + position */
+.plusIcon, .minIcon{
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+.plusIcon{
+    color: #80ff80;
+    margin-top: 3px;
+    margin-left: 2px;
+}
+
+#shareIcon {
+    font-size: 25px;
+    margin-top: 3px;
+    margin-left: 2px;
+}
+
+#shareEmailIcon {
+    font-size: 22px;
+    margin-top: 3px;
+    margin-left: 2px;
+}
+
+.minIcon{
+    color: #ff4d4d;
+}
+
+.my-cheqies-cheqie:hover{
+    background-color: #e6e6ff;
+}
+
+/* Header of the list view */
+.my-cheqies-title{
+    display: flex;
+    justify-content: center;
+    background: #ffb366;
+    margin: 0.5%;
+    margin-top: 10px;
+}
+
+.my-cheqies-title p{
+    font-size: 1.3em;
+}
+
+.create{
+    background-color: #b3b3ff;
+    border: 0;
+}
+.create-cheqie{
+    margin: 2%;
+}
+
+.detail_img {
+    max-width: 500px;
+    max-height: 400px;
+}
+
+#sub-header-details{
+    font-weight: bold;
+}
+
+.paid_or_requested{
+    display:  flex;
+    flex-direction: column;
+}
+
+.scrollable{
+    max-height: 250px;
+    overflow-y: scroll;
+}

@@ -1,0 +1,73 @@
+﻿@model EfentHandler.Domain.Model.assignment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Html.DisplayText("description")</h4>
+    <hr />
+    <div class="row">
+        <div class="col-lg-2"><b>Startdatum</b></div>
+        <div class="col-lg-3"> @Html.DisplayText("StartDate") </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-2"><b>Einddatum</b></div>
+        <div class="col-lg-3"> @Html.DisplayText("EndDate") </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-2"><b>Adres</b></div>
+        <div class="col-lg-3">
+            @Html.DisplayText("Street") @Html.DisplayText("HouseNumber")@Html.DisplayText("HouseNumberAddition")<br />
+            @Html.DisplayText("ZipCode") @Html.DisplayText("City")
+        </div>
+    </div>
+    @if (Model.Request != null)
+    {
+        <div class="row">
+            <div class="col-lg-2">Verzoek: </div>
+            <div class="col-lg-3"> @Html.DisplayText("Request") </div>
+        </div>
+    }
+
+    <hr />
+    <h4>Vragenlijsten</h4>
+    <table class="table">
+        <tr>
+            <th>
+                Naam
+            </th>
+            <th>
+                Beschikbaar
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.survey)
+        {
+            if (item.user != null && item.user.UserId == ViewBag.UserId)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Invullen", "Answer", "Surveys", new { id = item.SurveyId }, null)
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>
+
+<p>
+    @Html.ActionLink("Terug naar overzicht", "Index")
+</p>

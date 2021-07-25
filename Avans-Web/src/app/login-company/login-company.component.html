@@ -1,0 +1,36 @@
+<div class="container" id="loginContainer">
+  <mat-card>
+    <mat-card-content id="loginTitle">
+      <mat-card-title class="titleText">Speedmeet Avans</mat-card-title>
+    </mat-card-content>
+    <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit(loginFormGroup.value)" #f="ngForm">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email" />
+          <mat-error *ngIf="loginFormGroup.get('email').hasError('required')">
+           Email is <strong>verplicht</strong>
+          </mat-error>
+          <mat-error *ngIf="loginFormGroup.get('email').hasError('email')">
+            Email is <strong>niet</strong> geldig
+           </mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field class="full-width">
+          <mat-label>Wachtwoord</mat-label>
+          <input matInput type="password" placeholder="Wachtwoord" formControlName="password" />
+          <mat-error *ngIf="loginFormGroup.get('password').hasError('required')">
+            Wachtwoord is <strong>verplicht</strong>
+          </mat-error>
+        </mat-form-field>
+        <br>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="submit" mat-raised-button color="primary" class="full-width"
+          [disabled]="!loginFormGroup.valid">Inloggen</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

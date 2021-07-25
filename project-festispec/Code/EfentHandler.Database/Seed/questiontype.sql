@@ -1,0 +1,10 @@
+﻿/* ---------------   FINISHED, STATIC    --------------------------- */
+INSERT INTO questiontype ([Type]) VALUES ('Schaal')
+INSERT INTO questiontype ([Type]) VALUES ('Open vraag')
+INSERT INTO questiontype ([Type]) VALUES ('Afbeeldingen')
+INSERT INTO questiontype ([Type]) VALUES ('Afstand meten')
+INSERT INTO questiontype ([Type]) VALUES ('Tekenen')
+INSERT INTO questiontype ([Type]) VALUES ('Tellen')
+INSERT INTO questiontype ([Type]) VALUES ('Meerkeuze')
+INSERT INTO questiontype ([Type]) VALUES ('Tijdschatting')
+INSERT INTO questiontype ([Type]) VALUES ('5 minuten')

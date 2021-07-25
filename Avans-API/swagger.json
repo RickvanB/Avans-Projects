@@ -1,0 +1,3664 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"CompanyStatus": {
+				"enum": [
+					0,
+					1,
+					2,
+					3
+				],
+				"type": "integer"
+			},
+			"Company": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string",
+						"nullable": true
+					},
+					"logoPath": {
+						"type": "string",
+						"nullable": true
+					},
+					"address": {
+						"type": "string",
+						"nullable": true
+					},
+					"city": {
+						"type": "string",
+						"nullable": true
+					},
+					"zipcode": {
+						"type": "string",
+						"nullable": true
+					},
+					"country": {
+						"type": "string",
+						"nullable": true
+					},
+					"website": {
+						"type": "string",
+						"nullable": true
+					},
+					"status": {
+						"$ref": "#/components/schemas/CompanyStatus",
+						"nullable": true
+					},
+					"tables": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					}
+				},
+				"required": [
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiResponse": {
+				"properties": {
+					"status": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"status",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CompanyBannerPatchRequest": {
+				"properties": {
+					"banner": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Contact": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"department": {
+						"type": "string",
+						"nullable": true
+					},
+					"name": {
+						"type": "string",
+						"nullable": true
+					},
+					"insertion": {
+						"type": "string",
+						"nullable": true
+					},
+					"lastname": {
+						"type": "string",
+						"nullable": true
+					},
+					"emailaddress": {
+						"type": "string"
+					},
+					"mainContact": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"receiveNewsletter": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"phone": {
+						"type": "string",
+						"nullable": true
+					},
+					"phoneAlternative": {
+						"type": "string",
+						"nullable": true
+					},
+					"password": {
+						"type": "string",
+						"nullable": true
+					},
+					"internshipContact": {
+						"type": "boolean",
+						"nullable": true
+					}
+				},
+				"required": [
+					"emailaddress"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Major": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"name": {
+						"type": "string"
+					},
+					"maxEnrollmentsPerCompany": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"shortName": {
+						"type": "string"
+					},
+					"educationCode": {
+						"type": "string"
+					},
+					"archived": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"name",
+					"shortName",
+					"educationCode",
+					"archived"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MajorsPatch": {
+				"properties": {
+					"majorIds": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					},
+					"add": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"majorIds",
+					"add"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Round": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"timestart": {
+						"type": "string"
+					},
+					"timeend": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"timestart",
+					"timeend"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Timeslot": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"shareCv": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"enabled": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"table": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"round": {
+						"$ref": "#/components/schemas/Round",
+						"nullable": true
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ContactPutPost": {
+				"properties": {
+					"department": {
+						"type": "string",
+						"nullable": true
+					},
+					"name": {
+						"type": "string",
+						"nullable": true
+					},
+					"insertion": {
+						"type": "string",
+						"nullable": true
+					},
+					"lastname": {
+						"type": "string",
+						"nullable": true
+					},
+					"emailaddress": {
+						"type": "string"
+					},
+					"mainContact": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"receiveNewsletter": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"phone": {
+						"type": "string",
+						"nullable": true
+					},
+					"phoneAlternative": {
+						"type": "string",
+						"nullable": true
+					},
+					"password": {
+						"type": "string",
+						"nullable": true
+					},
+					"internshipContact": {
+						"type": "boolean",
+						"nullable": true
+					}
+				},
+				"required": [
+					"emailaddress"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CompanyPutPost": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string",
+						"nullable": true
+					},
+					"logoPath": {
+						"type": "string",
+						"nullable": true
+					},
+					"address": {
+						"type": "string",
+						"nullable": true
+					},
+					"city": {
+						"type": "string",
+						"nullable": true
+					},
+					"zipcode": {
+						"type": "string",
+						"nullable": true
+					},
+					"country": {
+						"type": "string",
+						"nullable": true
+					},
+					"website": {
+						"type": "string",
+						"nullable": true
+					},
+					"status": {
+						"$ref": "#/components/schemas/CompanyStatus",
+						"nullable": true
+					},
+					"tables": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					}
+				},
+				"required": [
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TableMajorsPut": {
+				"properties": {
+					"majorIds": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"majorIds"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MajorPutPost": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"maxEnrollmentsPerCompany": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"shortName": {
+						"type": "string"
+					},
+					"educationCode": {
+						"type": "string"
+					},
+					"archived": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"name",
+					"shortName",
+					"educationCode",
+					"archived"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TimeslotPutPost": {
+				"properties": {
+					"shareCv": {
+						"type": "boolean"
+					},
+					"enabled": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"shareCv",
+					"enabled"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TimeslotPatchRequest": {
+				"properties": {
+					"enroll": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"enroll"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RoundPutPost": {
+				"properties": {
+					"timestart": {
+						"type": "string"
+					},
+					"timeend": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"timestart",
+					"timeend"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Speedmeet": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"start": {
+						"type": "string"
+					},
+					"end": {
+						"type": "string"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"welcomeMessage": {
+						"type": "string"
+					},
+					"enrollmentStart": {
+						"type": "string"
+					},
+					"mapPath": {
+						"type": "string",
+						"nullable": true
+					},
+					"maxEnrollmentsPerStudent": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"start",
+					"end",
+					"title",
+					"description",
+					"welcomeMessage",
+					"enrollmentStart",
+					"maxEnrollmentsPerStudent"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"StudentProfilePatchRequest": {
+				"properties": {
+					"aboutMe": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"aboutMe"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"StudentPatchRequest": {
+				"properties": {
+					"majorId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"majorId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"StudentCVPatchRequest": {
+				"properties": {
+					"cv": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserType": {
+				"enum": [
+					0,
+					1,
+					2,
+					3
+				],
+				"type": "integer"
+			},
+			"Employee": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"name": {
+						"type": "string"
+					},
+					"lastname": {
+						"type": "string"
+					},
+					"avansId": {
+						"type": "string"
+					},
+					"usertype": {
+						"$ref": "#/components/schemas/UserType",
+						"nullable": true
+					}
+				},
+				"required": [
+					"name",
+					"lastname",
+					"avansId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EmployeePost": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"lastname": {
+						"type": "string"
+					},
+					"avansId": {
+						"type": "string"
+					},
+					"usertype": {
+						"$ref": "#/components/schemas/UserType"
+					}
+				},
+				"required": [
+					"name",
+					"lastname",
+					"avansId",
+					"usertype"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"JWT": {
+				"type": "apiKey",
+				"name": "Authorization",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "speedmeet-api",
+		"version": "0.0.1",
+		"description": "Spec for the Avans Speedmeet API",
+		"license": {
+			"name": "MIT"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/Companies": {
+			"get": {
+				"operationId": "GetAllCompanies",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Company"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "majorId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "status",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateCompany",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Company"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CompanyPutPost"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Companies/{id}": {
+			"get": {
+				"operationId": "GetCompany",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Company"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Company not found"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "ReplaceCompany",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "Unauthorized",
+											"code": "404",
+											"message": "Wijzigen niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "Unauthorized"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Bedrijf niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CompanyPutPost"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteCompany",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "Unauthorized",
+											"code": "404",
+											"message": "Verwijderen niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "Unauthorized"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Bedrijf niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Companies/{id}/banner": {
+			"get": {
+				"operationId": "GetCompanyBanner",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Company"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Banner niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateCompanyBanner",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"400": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "InvalidJWTError",
+											"code": "400",
+											"message": "JWT is invalide"
+										}
+									}
+								}
+							}
+						},
+						"description": "InvalidJWTError"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "UnauthorizedError",
+											"code": "401",
+											"message": "Bekijken niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "UnauthorizedError"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Major niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"WebSockets",
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CompanyBannerPatchRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Companies/{id}/contacts": {
+			"get": {
+				"operationId": "GetContacts",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Contact"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Bedrijf niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateCompanyContact",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Contact"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "Unauthorized",
+											"code": "404",
+											"message": "Toevoegen niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "Unauthorized"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Bedrijf niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					},
+					"409": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "Conflict",
+											"code": "409",
+											"message": "Dit emailadres is al gebruikt"
+										}
+									}
+								}
+							}
+						},
+						"description": "Conflict"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ContactPutPost"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Companies/{id}/majors": {
+			"get": {
+				"operationId": "GetCompanyMajors",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Major"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Bedrijf niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "ReplaceCompanyMajors",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Bedrijf niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MajorsPatch"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Companies/{id}/timeslots": {
+			"get": {
+				"operationId": "GetCompanyTimeslots",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Timeslot"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Bedrijf niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "withLocked",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "ExcludeTimeslotMajorsPerTable",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Timeslot niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "table",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MajorsPatch"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Companies/{id}/contacts/{cId}": {
+			"get": {
+				"operationId": "GetContact",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Contact"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "Unauthorized",
+											"code": "404",
+											"message": "Bekijken niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "Unauthorized"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Contact niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "cId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "ReplaceContact",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "Unauthorized",
+											"code": "401",
+											"message": "Wijzigen niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "Unauthorized"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Contact niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "cId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ContactPutPost"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteContact",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "Unauthorized",
+											"code": "401",
+											"message": "Verwijderen niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "Unauthorized"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Contact niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [
+					{
+						"JWT": [
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "cId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Companies/{id}/tables": {
+			"get": {
+				"operationId": "GetCompanyTablesWithExcludedMajors",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Timeslot"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Companies/{id}/tables/{tId}/majors": {
+			"put": {
+				"operationId": "UpdateExcludedMajorsOfTable",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Timeslot niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Companies"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "tId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TableMajorsPut"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Majors": {
+			"get": {
+				"operationId": "GetAllMajors",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Major"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Majors"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "educationCode",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateMajor",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Major"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Majors"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MajorPutPost"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Majors/{id}": {
+			"get": {
+				"operationId": "GetMajor",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Major"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Major niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Majors"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "ReplaceMajor",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Major niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Majors"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MajorPutPost"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteMajor",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Major niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Majors"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Timeslots": {
+			"get": {
+				"operationId": "GetAllTimeslots",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Timeslot"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "UnauthorizedEror",
+											"code": "401",
+											"message": "Ophalen niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "UnauthorizedEror"
+					}
+				},
+				"tags": [
+					"Timeslots"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "available",
+						"required": true,
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					{
+						"in": "query",
+						"name": "majorId",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Timeslots/{id}": {
+			"get": {
+				"operationId": "GetTimeslot",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Timeslot"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Timeslot niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Timeslots"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "ReplaceTimeslot",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Timeslot niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Timeslots"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TimeslotPutPost"
+							}
+						}
+					}
+				}
+			},
+			"patch": {
+				"operationId": "UpdateTimeslot",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "UnauthorizedError",
+											"code": "401",
+											"message": "Inschrijven niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "UnauthorizedError"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Timeslot niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					},
+					"409": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "Conflict",
+											"code": "409",
+											"message": "Er is al een student ingeschreven"
+										}
+									}
+								}
+							}
+						},
+						"description": "Conflict"
+					}
+				},
+				"tags": [
+					"WebSockets",
+					"Timeslots"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TimeslotPatchRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Timeslots/{id}/excludedmajors": {
+			"patch": {
+				"operationId": "ExcludeTimeslotMajors",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Timeslot niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Timeslots"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MajorsPatch"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Rounds": {
+			"get": {
+				"operationId": "GetAllRounds",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Round"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Rounds"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateRound",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Round"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"400": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "ValidationError",
+											"code": "400",
+											"message": "Time must be in HH:MM format"
+										}
+									}
+								}
+							}
+						},
+						"description": "ValidationError"
+					}
+				},
+				"tags": [
+					"Rounds"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RoundPutPost"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Rounds/{id}": {
+			"put": {
+				"operationId": "ReplaceRound",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"400": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "ValidationError",
+											"code": "400",
+											"message": "Time must be in HH:MM format"
+										}
+									}
+								}
+							}
+						},
+						"description": "ValidationError"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Company not found"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Rounds"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RoundPutPost"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteRound",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"403": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "Forbidden",
+											"code": "403",
+											"message": "Round cannot be deleted when a student has enrolled to an associated timeslot"
+										}
+									}
+								}
+							}
+						},
+						"description": "Forbidden"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Round not found"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Rounds"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Speedmeet": {
+			"get": {
+				"operationId": "Get",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Speedmeet"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Speedmeet"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": []
+			},
+			"put": {
+				"operationId": "ReplaceSpeedmeet",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Speedmeet bestaat niet"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					},
+					"x-WS": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"id": 1,
+											"start": "2020-03-03 09:00:00",
+											"end": "2020-03-03 17:00:00",
+											"title": "string",
+											"description": "string",
+											"welcomeMessage": "string",
+											"enrollmentStart": "string",
+											"maxEnrollmentsPerStudent": 3
+										}
+									}
+								}
+							}
+						},
+						"description": "Room: global | Event: speedmeet_change"
+					}
+				},
+				"tags": [
+					"WebSockets",
+					"Speedmeet"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Speedmeet"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Speedmeet/map": {
+			"get": {
+				"operationId": "GetMap",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "byte"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Map path niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Speedmeet"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": []
+			},
+			"patch": {
+				"operationId": "UpdateMap",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Speedmeet"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/Speedmeet/reset": {
+			"post": {
+				"operationId": "ResetSpeedmeetData",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Speedmeet"
+				],
+				"security": [
+					{
+						"JWT": [
+							"3"
+						]
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/students/{id}": {
+			"get": {
+				"operationId": "GetStudent",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Major"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Student niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Students"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateStudentProfile",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"400": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "InvalidJWTError",
+											"code": "400",
+											"message": "JWT is invalide"
+										}
+									}
+								}
+							}
+						},
+						"description": "InvalidJWTError"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "UnauthorizedError",
+											"code": "401",
+											"message": "Bekijken niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "UnauthorizedError"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Major niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"WebSockets",
+					"Students"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/StudentProfilePatchRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/students/{id}/majors": {
+			"get": {
+				"operationId": "GetStudentMajors",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Major"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Major niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Students"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateStudentMajor",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"400": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "InvalidJWTError",
+											"code": "400",
+											"message": "JWT is invalide"
+										}
+									}
+								}
+							}
+						},
+						"description": "InvalidJWTError"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "UnauthorizedError",
+											"code": "401",
+											"message": "Inschrijven niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "UnauthorizedError"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Major niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"WebSockets",
+					"Students"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/StudentPatchRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/students/{id}/timeslots": {
+			"get": {
+				"operationId": "GetCompanyTimeslots",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Timeslot"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Bedrijf niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Students"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/students/{id}/cv": {
+			"patch": {
+				"operationId": "UpdateStudentCv",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"400": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "InvalidJWTError",
+											"code": "400",
+											"message": "JWT is invalide"
+										}
+									}
+								}
+							}
+						},
+						"description": "InvalidJWTError"
+					},
+					"401": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "UnauthorizedError",
+											"code": "401",
+											"message": "Bekijken niet toegestaan"
+										}
+									}
+								}
+							}
+						},
+						"description": "UnauthorizedError"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Major niet gevonden"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"WebSockets",
+					"Students"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/StudentCVPatchRequest"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetStudentCv",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "byte"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Students"
+				],
+				"security": [
+					{
+						"JWT": [
+							"0",
+							"1",
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "header",
+						"name": "Authorization",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Admins": {
+			"get": {
+				"operationId": "GetAllAdmins",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Employee"
+									},
+									"type": "array"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Admins"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateAdmin",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Employee"
+								}
+							}
+						},
+						"description": "Ok"
+					}
+				},
+				"tags": [
+					"Admins"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EmployeePost"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/Admins/{id}": {
+			"put": {
+				"operationId": "ReplaceAdmin",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Employee not found"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Admins"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EmployeePost"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteAdmin",
+				"responses": {
+					"200": {
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiResponse"
+								}
+							}
+						},
+						"description": "Ok"
+					},
+					"404": {
+						"content": {
+							"application/json": {
+								"examples": {
+									"example": {
+										"value": {
+											"name": "NotFoundError",
+											"code": "404",
+											"message": "Employee not found"
+										}
+									}
+								}
+							}
+						},
+						"description": "NotFoundError"
+					}
+				},
+				"tags": [
+					"Admins"
+				],
+				"security": [
+					{
+						"JWT": [
+							"2"
+						]
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "https://speedmeet-api.mardy.tk/"
+		}
+	]
+}

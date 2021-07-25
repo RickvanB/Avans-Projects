@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Photo-Hunt</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse strech-navbar" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link">Playground<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/targets">Targets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/players">Deelnemers</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav signSection">
+            <li class="nav-item" *ngIf="signedIn">
+                <div class="user">
+                    <span class="user">{{username}}</span>
+                </div>
+            </li>
+            <li class="nav-item signButton" *ngIf="!signedIn">
+                <a href="{{ apiUrl }}/auth/google">Inloggen met Google</a>
+            </li>
+            <li class="nav-item signButton" *ngIf="!signedIn">
+                <a href="{{ apiUrl }}/auth/facebook">Inloggen met Facebook</a>
+            </li>
+            <li class="nav-item signButton" *ngIf="signedIn">
+                <a (click)="signOut()">Uitloggen</a>
+            </li>
+        </ul>
+    </div>
+</nav>

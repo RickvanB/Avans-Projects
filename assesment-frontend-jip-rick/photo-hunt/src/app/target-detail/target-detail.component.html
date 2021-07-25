@@ -1,0 +1,49 @@
+<div class="body-styling">
+    <img src="{{ target.imagePath }}" class="image" />
+
+
+    <ul>
+        <li>Naam: {{ target.name }}</li>
+        <li>Target ingediend door: {{ target.user.name }}</li>
+        <li>Thumbs up: {{ target.thumbsUp }}</li>
+        <li>Thumbs down: {{ target.thumbsDown }}</li>
+    </ul>
+
+    <h3>Scores van Google Vision</h3>
+    <table class="table">
+        <thead>
+            <th>Beschrijving</th>
+            <th>Score</th>
+        </thead>
+        <tbody *ngFor="let label of target.score.label">
+            <tr>
+                <td>{{ label.description }}</td>
+                <td>{{ label.score }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Attempts: </h3>
+    <table class="table">
+        <thead>
+            <th>Naam</th>
+            <th>Acties</th>
+        </thead>
+        <tbody *ngFor="let attempt of attempts">
+            <tr>
+                <td>{{ attempt.name }}</td>
+                <td><a href="attempt/{{ attempt._id }}" class="btn btn-primary">Attempt detail</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Foto's</h3>
+    <div *ngFor="let photo of photos">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ photo.attempt }}">
+            <!--<div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>-->
+        </div>
+    </div>
+</div>

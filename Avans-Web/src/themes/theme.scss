@@ -1,0 +1,78 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$md-avans: (
+  50 : #f6e5e6,
+  100 : #e9bec1,
+  200 : #db9298,
+  300 : #cc666f,
+  400 : #c14650,
+  500 : #b62531,
+  600 : #af212c,
+  700 : #a61b25,
+  800 : #9e161f,
+  900 : #8e0d13,
+  A100 : #ffbec0,
+  A200 : #ff8b8f,
+  A400 : #ff585e,
+  A700 : #ff3f45,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #ffffff,
+  )
+);
+
+$md-accent: (
+  50 : #edfcf0,
+  100 : #d2f6da,
+  200 : #b4f1c1,
+  300 : #96eba8,
+  400 : #80e695,
+  500 : #69e282,
+  600 : #61df7a,
+  700 : #56da6f,
+  800 : #4cd665,
+  900 : #3bcf52,
+  A100 : #ffffff,
+  A200 : #e8ffeb,
+  A400 : #b5ffc0,
+  A700 : #9cffaa,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$speedmeet-primary: mat-palette($md-avans);
+$speedmeet-accent: mat-palette($md-accent);
+
+$speedmeet-warn: mat-palette($mat-red);
+
+$speedmeet-theme: mat-light-theme($speedmeet-primary, $speedmeet-accent, $speedmeet-warn);
+
+@include angular-material-theme($speedmeet-theme);

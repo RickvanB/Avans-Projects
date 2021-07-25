@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b96591c97fd4818bbfd2ac715c08b3e" Name="Diagram1">
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.answer" Width="1.5" PointX="12.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.assignment" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.availability" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.chart_type" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.client" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.contactperson" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.multiplechoiceanswer" Width="1.5" PointX="10.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.question" Width="1.5" PointX="8.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.question_choice" Width="1.5" PointX="10.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.questiontype" Width="1.5" PointX="6" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.request" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.schedule" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.status" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.survey" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.survey_question" Width="1.5" PointX="10.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.user" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.user_assignment" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EfentHandler.Domain.Model.usertype" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_answer_multiplechoiceanswer" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_answer_question_choice" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_answer_question_choice2" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_answer_survey_question" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_assignment_client" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_assignment_status" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_Assignment_User_Assignment" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_schedule_assignment" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_survey_assignment" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_availability_user" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_question_chart" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_contactperson_client" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_request_client" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_multiplechoiceanswer_question" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_question_choice_question" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_question_questiontype" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_survey_question_question" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_schedule_user" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_survey_question_survey" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_survey_survey" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_survey_user" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_User_User_Assignment" ManuallyRouted="false" />
+        <AssociationConnector Association="EfentHandler.Domain.Model.FK_user_usertype" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,24 @@
+.sideBox{
+  width: 23%;
+  vertical-align: top;
+  display: inline-block;
+  margin-left: 3%;
+
+  button {
+    margin-top: 3%;
+    font-size: 12px;
+  }
+}
+
+#detailCard{
+  width: 40%;
+  display: inline-block;
+
+  img{
+    max-height: 250px;
+  }
+}
+
+.contactCard{
+  margin-top: 5%;
+}

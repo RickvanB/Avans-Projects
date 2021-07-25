@@ -1,0 +1,53 @@
+<div class="content">
+    <div class="new-sprint">
+        <h1>Nieuwe sprint aanmaken</h1>
+        <span>{{validation.general}}</span>
+        <div class="sprint-prop">
+            <label>Kies een naam voor uw sprint</label>
+            <div class="input">
+                <input type="text" [(ngModel)]="sprint.name" />
+                <span>{{validation.name}}</span>
+            </div>
+        </div>
+        <div class="sprint-prop">
+            <label>Geef een korte omschrijving van de sprint</label>
+            <div class="input">
+                <textarea [(ngModel)]="sprint.description"></textarea>
+                <span></span>
+            </div>
+        </div>
+        <div class="sprint-prop">
+            <label>Wat is de startdatum van deze sprint?</label>
+            <div class="input">
+                <input type="date" [(ngModel)]="sprint.startDate" />
+                <span>{{validation.status}}</span>
+            </div>
+        </div>
+        <div class="sprint-prop">
+            <label>Wat is de einddatum van deze sprint?</label>
+            <div class="input">
+                <input type="date" [(ngModel)]="sprint.endDate" />
+                <span>{{validation.status}}</span>
+            </div>
+        </div>
+        <div class="sprint-prop">
+            <label>Welke stories horen bij deze sprint?</label>
+            <div class="input">
+                <select [(ngModel)]="selectedStories" multiple>
+                    <option *ngFor="let story of availableStories | async" value="{{ story.id }}">{{ story.name }}</option>
+                </select>
+                <span>{{validation.status}}</span>
+            </div>
+        </div>
+        <div class="sprint-prop">
+            <label>Is de sprint actief?</label>
+            <div class="input">
+                <input type="checkbox" [(ngModel)]="sprint.isActive" value="{{ sprint.isActive }}" />
+            </div>
+        </div>
+        <div class="actions">
+            <button (click)="backToProject()">Terug</button>
+            <button (click)="submitSprint()">Wijzigingen Opslaan</button>
+        </div>
+    </div>
+</div>

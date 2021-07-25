@@ -1,0 +1,40 @@
+﻿<Window x:Class="Front.Circuits.views.CircuitWindow"
+		x:Name="CircuitView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Front.Circuits.views"
+        mc:Ignorable="d"
+        Title="CircuitWindow" Height="450" Width="800"	    
+		DataContext="{Binding CircuitWindow, Source={StaticResource Locator}}">
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="35" />
+			<RowDefinition Height="50" />
+			<RowDefinition Height="2*" />
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0" Background="LightGray">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="100" />
+				<ColumnDefinition Width="100" />
+				<ColumnDefinition Width="100" />
+			</Grid.ColumnDefinitions>
+			<Button Command="{Binding StartCircuitButton}" Grid.Column="0" Margin="6,3,3,3" Background="LightGreen" Content="{Binding Path=ActivateButton, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></Button>
+			<Button Command="{Binding ResetCircuitButton}" Grid.Column="1" Margin="3,3,3,3" Background="Red">Reset Circuit</Button>
+			<Button Command="{Binding ExitCircuitButton}" CommandParameter="{Binding ElementName=CircuitView}" Grid.Column="2" Margin="3,3,3,3" Background="Gray">Exit Circuit</Button>
+		</Grid>
+		<Grid Grid.Row="1">
+			<Canvas Height="50" Name="legendGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+
+			</Canvas>
+		</Grid>
+		<Grid  Grid.Row="2">
+			<ScrollViewer HorizontalScrollBarVisibility="Auto">
+				<Canvas Width="4000" Margin="10,10,10,10" Height="4000" Name="adderGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+				</Canvas>
+			</ScrollViewer>
+		</Grid>
+	</Grid>
+</Window>

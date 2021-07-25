@@ -1,0 +1,42 @@
+.names {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.header h4 {
+    color: #B62531;
+    margin: 0 0 10px 0;
+    line-height: 1.4em;
+}
+
+.header h3 {
+    color: #B62531;
+    margin: 0 0 10px 0;
+    line-height: 1.4em;
+    font-weight: bold;
+}
+
+.credits {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    height: 100vh;
+    width: 100vw;
+    animation: creditsAni 18s infinite ease-out;
+    animation-direction: normal;
+    position: relative;
+}
+
+@keyframes creditsAni {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -120%;
+    }
+}

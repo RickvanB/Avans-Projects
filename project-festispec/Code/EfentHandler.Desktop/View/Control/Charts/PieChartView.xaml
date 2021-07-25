@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="EfentHandler.Desktop.View.Control.Charts.PieChartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EfentHandler.Desktop.View"
+			 xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+			 mc:Ignorable="d" 
+			 Background="White"
+             d:DesignHeight="1000" d:DesignWidth="770">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <!-- Set grid definitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+			<RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!-- Header text -->
+		<TextBlock Text="{Binding VM.QuestionTitle}" FontSize="15" FontWeight="SemiBold" Grid.Row="0" TextWrapping="Wrap" Margin="0,0,0,20"/>
+		<TextBlock Text="{Binding VM.Question}" FontSize="15" FontWeight="SemiBold" Grid.Row="1" TextWrapping="Wrap" Margin="0,0,0,20"/>
+        
+        <!-- Actual Chart -->
+        <Grid Grid.Row="2">
+            <Wpf:PieChart x:Name="Chart" Series="{Binding Path=SeriesCollection }" Background="White" InnerRadius="100" LegendLocation="Right" MinHeight="320">
+                <Wpf:PieChart.ChartLegend>
+                    <Wpf:DefaultLegend BulletSize="20"></Wpf:DefaultLegend>
+                </Wpf:PieChart.ChartLegend>
+                <Wpf:PieChart.DataTooltip>
+                    <Wpf:DefaultTooltip BulletSize="20"></Wpf:DefaultTooltip>
+                </Wpf:PieChart.DataTooltip>
+            </Wpf:PieChart>
+        </Grid>
+        
+        <!-- DataGrid -->
+        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding GivenAnswers}" Grid.Row="3" Margin="0,20" VerticalScrollBarVisibility="Disabled">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Antwoorden" Width="*" Binding="{Binding DatagridAnswer}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- Seperator -->
+        <Rectangle Grid.Row="4" Margin="0 0 0 20" Fill="#FFBE9E21" Height="5"/>
+    </Grid>
+</UserControl>

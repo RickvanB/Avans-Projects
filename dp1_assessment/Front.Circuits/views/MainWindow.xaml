@@ -1,0 +1,21 @@
+﻿<Window x:Class="Front.Circuits.views.MainWindow"
+		x:Name="MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Front.Circuits.views"
+        mc:Ignorable="d"
+        Title="Circuit Tester" Height="450" Width="800"
+	    DataContext="{Binding MainWindow, Source={StaticResource Locator}}">
+
+    <Grid>
+		<Label Content="Circuit Tester&#xD;&#xA;" HorizontalAlignment="Center" VerticalAlignment="Top" Height="36" FontSize="24"/>
+		<Rectangle Fill="#d9d9d9" HorizontalAlignment="Center" Height="360" Margin="20,40,20,20" Stroke="Black" VerticalAlignment="Center" Width="720">
+		</Rectangle>
+		<Label Content="Kies een Circuit&#xD;&#xA;" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+		<Button Command="{Binding UploadFileButton}" Content="Bestand Uploaden" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Center" Width="140" FontSize="15px" Background="#6699ff"/>
+		<Label Content="{Binding FileName}" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Center" RenderTransformOrigin="-0.272,0.017" FontSize="14"/>
+		<Button Command="{Binding LoadCircuitButton}" CommandParameter="{Binding ElementName=MainView}" Content="Circuit Laden" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Center" Width="140" FontSize="15px" Background="#8cff66"/>
+	</Grid>
+</Window>

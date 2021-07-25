@@ -1,0 +1,17 @@
+.nav-bar {
+    background-color: #7B7D7D;
+    color: #F3F5F5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.branding,
+.page,
+.auth {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.3em;
+    font-weight: lighter;
+}

@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "taskboard",
+      "public": "dist/taskboard",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

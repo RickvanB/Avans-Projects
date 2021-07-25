@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F440EF2E-5ABC-4171-AE8B-30A4C4AF914A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EfentHandler.Domain</RootNamespace>
+    <AssemblyName>EfentHandler.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.8.12.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Plus.EF6.1.8.12\lib\net45\Z.EntityFramework.Plus.EF6.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Geodan\GeodanAPI.cs" />
+    <Compile Include="Model\answer.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\assignment.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\availability.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\chart_type.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\client.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\contactperson.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EfentHandlerEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EfentHandlerEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EfentHandlerEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EfentHandlerEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EfentHandlerEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\multiplechoiceanswer.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\question.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\questiontype.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\question_choice.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\request.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\schedule.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\status.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\survey.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\survey_question.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\user.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\usertype.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\user_assignment.cs">
+      <DependentUpon>EfentHandlerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AssignmentRepository.cs" />
+    <Compile Include="Repository\ClientRepository.cs" />
+    <Compile Include="Repository\MainRepository.cs" />
+    <Compile Include="Repository\ReportRepository.cs" />
+    <Compile Include="Repository\ScheduleRepository.cs" />
+    <Compile Include="Repository\SurveyRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\Validation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Model\EfentHandlerEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EfentHandlerEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\EfentHandlerEntities.edmx.diagram">
+      <DependentUpon>EfentHandlerEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\EfentHandlerEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EfentHandlerEntities.edmx</DependentUpon>
+      <LastGenOutput>EfentHandlerEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\EfentHandlerEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EfentHandlerEntities.edmx</DependentUpon>
+      <LastGenOutput>EfentHandlerEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

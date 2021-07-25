@@ -1,0 +1,20 @@
+<div class="details" *ngIf="project">
+    <h2>{{project.name}}</h2>
+    <div class="prop">
+        <span>Omschrijving:</span>
+        <span>{{project.description}}</span>
+    </div>
+    <div class="prop">
+        <span>Status:</span>
+        <span>{{project.status}}</span>
+    </div>
+    <div *ngIf="project.owner" class="prop">
+        <span>Project Initiator:</span>
+        <span>{{project.owner.fullName}}</span>
+    </div>
+    <div class="actions">
+        <button (click)="archiveProject()">Archiveren</button>
+        <button (click)="navigateToEditProject()">Aanpassen</button>
+        <button (click)="closeDetails()">Sluiten</button>
+    </div>
+</div>

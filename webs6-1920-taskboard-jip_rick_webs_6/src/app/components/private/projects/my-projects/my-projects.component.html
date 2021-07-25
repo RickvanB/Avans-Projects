@@ -1,0 +1,55 @@
+<div class="projects" *ngIf="!showAsTable">
+    <div class="new-project card" routerLink="/project/add">
+        <div>
+            <span class="name">+ Nieuw Project</span>
+        </div>
+    </div>
+    <div class="new-project card" *ngIf="!myProjects">
+        <div>
+            <span class="name">Projecten Laden...</span>
+        </div>
+    </div>
+    <div class="new-project card" *ngIf="myProjects && myProjects.length == 0">
+        <div>
+            <span class="name">Geen Projecten Gevonden</span>
+        </div>
+    </div>
+    <div *ngFor="let projectToShow of myProjects" class="existing-project card">
+        <div class="project" (click)="navigateToProject(projectToShow.id, projectToShow.name)">
+            <span class="name">{{projectToShow.name}}</span>
+        </div>
+        <div class="information"><button (click)="getDetails(projectToShow.id)">Details</button></div>
+    </div>
+    <div class="new-project card" routerLink="/projects/archived">
+        <div>
+            <span class="name">Gearchiveerde Projecten</span>
+        </div>
+    </div>
+</div>
+<div class="table-view">
+    <button (click)="changeView()">
+        <span *ngIf="!showAsTable">Als Tabel Weergeven</span>
+        <span *ngIf="showAsTable">Origineel Weergeven</span>
+    </button>
+</div>
+<app-details-of-project [(project)]="project" *ngIf="project"></app-details-of-project>
+<div *ngIf="showAsTable" class="new">
+    <button routerLink="/project/add">Nieuw Project</button>
+</div>
+<div class="table" *ngIf="showAsTable">
+    <table id="projects">
+        <tr>
+            <th>Project</th>
+            <th>Omschrijving</th>
+            <th>Status</th>
+            <th>Project Initiator</th>
+        </tr>
+        <tr *ngFor="let project of myProjects" (click)="navigateToProject(project.id, project.name)">
+            <td>{{project.name}}</td>
+            <td>{{project.description}}</td>
+            <td>{{project.status}}</td>
+            <td *ngIf="project.owner">{{project.owner.fullName}}</td>
+            <td *ngIf="!project.owner">Aan Het Laden...</td>
+        </tr>
+    </table>
+</div>

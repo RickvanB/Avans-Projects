@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>admin</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="pokemonLocations" *ngIf="!loading">
+        <h4>Manage Pokemon Locations</h4>
+        <button class="action-button" (click)="resetPlacedPokemons(false)">Reset & Replace on base location</button>
+        <button class="action-button" (click)="resetPlacedPokemons(true)">Reset & Replace on current location</button>
+        <button class="action-button" (click)="clearStorage()">Clear Storage</button>
+    </div>
+
+    <div class="pokemon-crud" *ngIf="!loading">
+        <h4>Add Pokemon to the map</h4>
+        <app-new-pokemon></app-new-pokemon>
+    </div>
+
+    <div class="pokemon-crud" *ngIf="!loading">
+        <h4>Update Pokemon on the map</h4>
+        <app-manage-pokemon></app-manage-pokemon>
+    </div>
+
+    <div class="pokemon-crud" *ngIf="!loading">
+        <h4>Remove a Pokemon from the map</h4>
+        <app-remove-pokemon></app-remove-pokemon>
+    </div>
+
+    <div class="info" *ngIf="loading">
+        <div class="loader"></div>
+        <span class="loading-info">Reloading Pokemon Map...</span>
+        <span class="warning">Make sure your location service is enabled</span>
+    </div>
+</ion-content>

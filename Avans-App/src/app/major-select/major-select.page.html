@@ -1,0 +1,15 @@
+<ion-content>
+  <h1>Major selecteren</h1>
+
+  <p>Selecteer hieronder de major die je op dit moment volgt. Hierdoor kunnen we de juiste bedrijven voor jou selecteren!</p>
+
+  <ul class="sm-list">
+    <li *ngFor="let major of majors | async" (click)="selectMajor(major)">
+      {{ major.name }}
+
+      <div class="goto-button">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </div>
+    </li>
+  </ul>
+</ion-content>

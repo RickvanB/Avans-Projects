@@ -1,0 +1,82 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-container {
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.table-container h2 {
+    font-weight: lighter;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+input,
+select {
+    padding: 8px 6px;
+    margin: 8px 0px 0px 0px;
+    display: inline-block;
+    border: 1px solid #7B7D7D;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td,
+table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #7A70A1;
+    color: white;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.bottom-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.feedback .neg {
+    color: #ff3333;
+}
+
+.feedback .pos {
+    color: #7A70A1;
+}
+
+.feedback {
+    width: 95%;
+}

@@ -1,0 +1,37 @@
+<div class="player">
+
+    <h2>Speler {{ player.name }}</h2>
+
+    <h3>Targets</h3>
+    <table *ngIf="targets.length > 0" class="table">
+        <thead>
+            <th scope="col">Target</th>
+            <th scope="col">Acties</th>
+        </thead>
+        <tbody *ngFor="let target of targets">
+            <tr>
+                <td>{{ target.name }}</td>
+                <td>
+                    <a href="/target/{{ target._id }}" class="btn btn-primary">Target</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Attempts</h3>
+    <table *ngIf="attempts.length > 0" class="table">
+        <thead>
+            <th scope="col">Target</th>
+            <th scope="col">Acties</th>
+        </thead>
+        <tbody *ngFor="let attempt of attempts">
+            <tr>
+                <td>{{ attempt.name }}</td>
+                <td>
+                    <a href="/attempt/{{ attempt._id }}" class="btn btn-primary">Attempt</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

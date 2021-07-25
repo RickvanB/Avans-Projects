@@ -1,0 +1,28 @@
+<div class="container" *ngIf="speedmeet">
+    <h1>{{ speedmeet.title }}</h1>
+    <hr />
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Aanmeldingen</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="students" class="mat-elevation-z8 full-width" matSort>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="Naam">
+                    <th mat-header-cell *matHeaderCellDef>Naam </th>
+                    <td mat-cell *matCellDef="let element"><span *ngIf="element.student != null"> {{ element.student.name }} {{ element.student.lastname }}</span> </td>
+                </ng-container>
+
+                <!-- Tijdsslot Column -->
+                <ng-container matColumnDef="Tijdslot">
+                    <th mat-header-cell *matHeaderCellDef>Tijdslot </th>
+                    <td mat-cell *matCellDef="let element">{{ element.round.timestart }} - {{ element.round.timeend }} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,7 @@
+{
+  "name": "Speedmeet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

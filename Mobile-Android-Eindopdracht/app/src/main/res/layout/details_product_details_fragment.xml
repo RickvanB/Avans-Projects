@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.DetailsProductDetailsFragment">
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/imageViewer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/product_header"
+        android:layout_width="64dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/product_type"
+        android:textColor="@color/normalText"
+        app:layout_constraintEnd_toStartOf="@+id/product_number_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+    <TextView
+        android:id="@+id/product_type"
+        android:layout_width="63dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="17dp"
+        android:text="@string/test_data_string"
+        app:layout_constraintEnd_toStartOf="@+id/product_number"
+        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_header" />
+
+    <TextView
+        android:id="@+id/product_number_header"
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/product_number"
+        android:textColor="@color/normalText"
+        app:layout_constraintEnd_toStartOf="@+id/product_length_header"
+        app:layout_constraintStart_toEndOf="@+id/product_header"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+    <TextView
+        android:id="@+id/product_number"
+        android:layout_width="0dp"
+        android:layout_height="17dp"
+        android:text="@string/test_data_string"
+        app:layout_constraintEnd_toStartOf="@+id/length"
+        app:layout_constraintStart_toEndOf="@+id/product_type"
+        app:layout_constraintTop_toBottomOf="@+id/product_number_header" />
+
+    <TextView
+        android:id="@+id/product_length_header"
+        android:layout_width="50dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="37dp"
+        android:text="@string/length"
+        android:textColor="@color/normalText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintStart_toEndOf="@+id/product_number_header"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+
+    <TextView
+        android:id="@+id/length"
+        android:layout_width="83dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/test_data_string"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_number"
+        app:layout_constraintTop_toBottomOf="@+id/product_length_header" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

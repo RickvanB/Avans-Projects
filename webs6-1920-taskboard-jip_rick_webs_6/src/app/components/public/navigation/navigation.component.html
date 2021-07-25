@@ -1,0 +1,23 @@
+<nav>
+    <div class="nav-bar">
+        <div class="branding">
+            <span>LIMITED - TaskBoard</span>
+        </div>
+        <div class="page">
+            <span>Projecten</span>
+        </div>
+        <div class="auth">
+            <div *ngIf="user == null">
+                <button (click)="signIn()">Inloggen</button>
+            </div>
+            <div *ngIf="user != null">
+                <span>
+                    Welkom {{user.fullName}}
+                </span>
+                <button (click)="signOut()">
+                    Uitloggen
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>

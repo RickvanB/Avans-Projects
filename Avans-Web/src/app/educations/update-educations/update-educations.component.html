@@ -1,0 +1,87 @@
+<div class="container">
+  <h1>Speedmeet - Major Aanpassen</h1>
+
+  <div class="content">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Major Aanpassen</mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="educationFormGroup" (ngSubmit)="onSubmit(educationFormGroup.value)">
+        <mat-card-content>
+
+          <!-- Naam -->
+          <mat-form-field class="full-width">
+            <mat-label>Major</mat-label>
+            <input matInput placeholder="Naam" formControlName="name" />
+            <mat-error *ngIf="educationFormGroup.get('name').hasError('required')">
+              Major Naam is <strong>verplicht</strong>
+            </mat-error>
+          </mat-form-field>
+          <br>
+
+          <!-- Afkorting -->
+          <mat-form-field class="full-width">
+            <mat-label>Afkorting</mat-label>
+            <input matInput placeholder="Afkorting" formControlName="shortName" />
+            <mat-error *ngIf="educationFormGroup.get('shortName').hasError('required')">
+              Afkorting is <strong>verplicht</strong>
+            </mat-error>
+          </mat-form-field>
+          <br>
+
+          <!-- Opleiding -->
+          <mat-form-field class="full-width">
+            <mat-label>Opleiding</mat-label>
+            <input matInput placeholder="Opleiding" formControlName="educationCode" />
+            <mat-error *ngIf="educationFormGroup.get('educationCode').hasError('required')">
+              Opleiding is <strong>verplicht</strong>
+            </mat-error>
+          </mat-form-field>
+          <br>
+
+          <!--  Max inschrijvingen -->
+          <mat-form-field class="full-width">
+            <mat-label> Max inschrijvingen</mat-label>
+            <input matInput placeholder="Max inschrijvingen" formControlName="maxEnrollmentsPerCompany" />
+            <mat-error *ngIf="educationFormGroup.get('maxEnrollmentsPerCompany').hasError('required')">
+              Max inschrijvingen is <strong>verplicht</strong>
+            </mat-error>
+          </mat-form-field>
+          <br>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="secondary" routerLink="/educations">Terug</button>
+          <button type="submit" mat-raised-button color="primary"
+            [disabled]="!educationFormGroup.valid">Aanpassen</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+
+
+    <div class="sidebar">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Majors</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+          <table mat-table [dataSource]="educations" class="mat-elevation-z8 full-width">
+
+            <ng-container matColumnDef="Major">
+              <th mat-header-cell *matHeaderCellDef> Major </th>
+              <td mat-cell *matCellDef="let education"> {{education.name}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+/* Smartphone */
+.gallery img {
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+
+/* Tablet */
+@media screen and (min-width: 480px) {
+    .gallery {
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background-color: white;
+    }
+
+    .gallery div {
+        width: 50%;
+    }
+
+    .gallery div:nth-child(odd) {
+        padding-right: 10px;
+    }
+
+    .gallery div:nth-child(even) {
+        padding-left: 10px;
+    }
+
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+    .gallery div,
+    .gallery div:nth-child(odd),
+    .gallery div:nth-child(even) {
+        width: 33.3%;
+        padding: 0 20px 20px 20px;
+    }
+
+    .gallery div:hover img {
+        transform: scale(1.7,1.7);
+        transition: .3s transform;
+    }
+}

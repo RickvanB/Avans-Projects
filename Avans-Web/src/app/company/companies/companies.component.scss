@@ -1,0 +1,45 @@
+.options-card {
+  [mat-raised-button] {
+    margin-bottom: 10px;
+  }
+}
+
+mat-paginator {
+  margin-top: 20px;
+}
+
+.company-row {
+  position: relative;
+}
+
+.company-row.expanded td {
+  border-bottom-color: transparent;
+}
+
+.detail-row-hidden {
+  display: none;
+}
+
+.detail-row td {
+  border-bottom-color:rgba(0, 0, 0, 0.12);
+  border-bottom-style:solid;
+  border-bottom-width:1px;
+}
+
+.company-tables {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  .company-table {
+    min-width: 250px;
+    margin-right: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+
+    th {
+      text-align: left;
+    }
+  }
+}

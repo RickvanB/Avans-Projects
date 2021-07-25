@@ -1,0 +1,30 @@
+<div class="card" *ngIf="data && !minimalize">
+    <div class="content" *ngIf="data.name">
+        <h3>{{ data.name }}</h3>
+        <div class="description" *ngIf="data.description">
+            <span>Omschrijving:</span>
+            <span>{{ data.description }}</span>
+        </div>
+        <div class="description" *ngIf="data.storyPoints">
+            <span>Story punten:</span>
+            <span>{{ data.storyPoints }}</span>
+        </div>
+        <div class="description" *ngIf="data.owner">
+            <span>Eigenaar:</span>
+            <span>{{ data.owner.fullName }}</span>
+        </div>
+        <div class="go-to-and-edit">
+            <button (click)="goToEdit(data)">Bewerk Story</button>
+            <button *ngIf="!data.isArchived" (click)="archive(data)">Archiveer Story</button>
+            <button *ngIf="data.isArchived" (click)="dearchive(data)">Dearchiveer Story</button>
+        </div>
+    </div>
+</div>
+<div class="min-card" *ngIf="data && minimalize">
+    <div class="min-content">
+        <span class="name">{{ data.name }}</span>
+        <div class="points">
+            <span *ngIf="data.storyPoints">Punten: {{ data.storyPoints }}</span>
+        </div>
+    </div>
+</div>

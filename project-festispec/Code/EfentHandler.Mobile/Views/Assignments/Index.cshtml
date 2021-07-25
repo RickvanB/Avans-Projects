@@ -1,0 +1,31 @@
+﻿@model IEnumerable<EfentHandler.Domain.Model.schedule>
+
+@{
+    ViewBag.Title = "Opdrachten";
+}
+
+<h2>Mijn Opdrachten</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Opdracht
+        </th>
+        <th>
+            Acties
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.assignment.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.AssignmentId })
+            </td>
+        </tr>
+    }
+
+</table>

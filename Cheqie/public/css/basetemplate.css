@@ -1,0 +1,79 @@
+/* Default font-family */
+body{
+    font-family: Tahoma, Geneva, sans-serif;
+
+}
+
+/* Logo setting */
+.logo{
+    max-width: 200px;
+}
+
+.placeholder_logo{
+    position: absolute;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+/* Nav bar setting */
+.navbar{
+    background-color: #b3b3ff;
+}
+
+#dropdownMenuButton {
+    background-color: #b3b3ff;
+}
+
+#language-dropdown-color {
+    color: black;
+}
+
+/* Text color links on navbar */
+.navbar a{
+    color:white;
+}
+
+.navbar a:hover{
+    background-color: #9999ff;
+}
+
+/* Exclude title from hover action */
+#exclude_hover:hover{
+    background-color: transparent;
+}
+
+/* Footer Setting */
+.footer-block{
+    background-color: #b3b3ff;
+    color: #FFFFFF;
+    width: 100%;
+}
+.footer-block footer{
+    padding: 2px!important;
+}
+
+.content_section{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.buttons{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.dropdown-item{
+    color: black !important;
+}
+
+.margin-signin{
+    margin-left: 200px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#share-email {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

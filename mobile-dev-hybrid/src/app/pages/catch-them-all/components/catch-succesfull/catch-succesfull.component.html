@@ -1,0 +1,24 @@
+<ion-content>
+    <ion-card *ngIf="pokemon != null" class="poke-card">
+        <ion-card-content>
+            <div class="content-header">
+                <h3 class="header-pokemon"><span id="boldType">You've caught: </span></h3>
+                <h3 class="header-pokemon"><span>{{pokemon.name | titlecase}}</span></h3>
+            </div>
+            <div>
+                <img src="{{pokemon.imageUrl}}">
+            </div>
+            <div class="start-hunt">
+                <span start id="#start">The Pokemon was added to your inventory</span>
+            </div>
+            <div class="catch">
+                <button class="to-map" routerLink="/catch">To the map</button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <div class="message-no-pokemon" *ngIf="pokemon == null">
+        <h4>Whoops!</h4>
+        <p>This pokemon does not exists. You may have already caught it!
+        </p>
+    </div>
+</ion-content>

@@ -1,0 +1,12 @@
+.tab-structure {
+    background-color: #336863;
+    color: white
+}
+
+ion-tab-button {
+    --color-selected: #F9A764;
+}
+
+ion-tab-button[aria-selected=true] {
+    --color-selected: #F9A764;
+}

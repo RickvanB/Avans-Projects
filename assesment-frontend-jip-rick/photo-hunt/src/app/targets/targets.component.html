@@ -1,0 +1,113 @@
+<div class="content-wrapper">
+    <h2>Alle Targets</h2>
+    <button type="button" routerLink="/targets/new" class="btn btn-primary new-target">Nieuw Target</button>
+    <button type="button" (click)="getTargetWithHighestScore()" class="btn btn-primary new-target">Target met hoogste score</button>
+    <button type="button" (click)="getTargetWithLowestScore()" class="btn btn-primary new-target">Target met laagste score</button>
+    <div>
+        <table *ngIf="targets.length > 0" class="table">
+            <thead>
+                <th scope="col">Naam:</th>
+                <th scope="col">Aangemaakt door:</th>
+                <th scope="col">Beoordeling:</th>
+                <th scope="col">Locatie:</th>
+                <th scope="col">Acties:</th>
+            </thead>
+            <tbody *ngFor="let target of targets">
+                <tr>
+                    <td>{{target.name}}</td>
+                    <td>{{target.user.name}}</td>
+                    <td>
+                        <div class="review">
+                            <span>{{target.thumbsUp}}</span>
+                            <button type="button" (click)="addReviewToTarget(true, target._id)" class="btn btn-success">+</button>
+                            <span>{{target.thumbsDown}}</span>
+                            <button type="button" (click)="addReviewToTarget(false, target._id)" class="btn btn-danger">-</button>
+                        </div>
+                    </td>
+                    <td>Lat: {{target.location.coordinates[0]}} - Long: {{target.location.coordinates[1]}}</td>
+                    <td class="actionrow" *ngIf="(target.user._id == cur_user_id && cur_user_id != null) || currentUser.role == 'Admin'">
+                        <button (click)="deleteTarget(target._id)" type="button" class="btn btn-danger">Verwijderen</button>
+                    </td>
+                    <td class="actionrow" *ngIf="target.user._id != cur_user_id && cur_user_id != null">
+                        <a href="target/{{ target._id }}/attempt" class="btn btn-primary">Poging Wagen</a>
+                        <a href="target/{{ target._id }}" class="btn btn-primary">Target details</a>
+                    </td>
+                    <td class="actionrow" *ngIf="cur_user_id == null">
+                        <span>Inloggen vereist</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="targets.length == 0">
+            <span>Geen targets gevonden</span>
+        </div>
+    </div>
+
+    <h2>Targets in een straal van:</h2>
+    <div class="searchRange">
+        <form class="form-horizontal" [formGroup]="rangeForm" (ngSubmit)="targetsWithinRange()">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="range">Straal in Kilometer:</label>
+                    <div class="col-md-4">
+                        <input id="textinput" required formControlName="range" type="number" min="0" class="form-control input-md">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="lat">Huidige Latitude:</label>
+                    <div class="col-md-4">
+                        <input id="textinput" required formControlName="lat" type="text" class="form-control input-md">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="long">Huidige Longitude:</label>
+                    <div class="col-md-4">
+                        <input id="textinput" required formControlName="long" type="text" class="form-control input-md">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary new-target">Zoeken</button>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+    <p *ngIf="!targetsNearBy">Geen Targets gevonden</p>
+    <div *ngIf="targetsNearBy">
+        <table *ngIf="targetsNearBy.length > 0" class="table">
+            <thead>
+                <th scope="col">Naam:</th>
+                <th scope="col">Aangemaakt door:</th>
+                <th scope="col">Beordeling:</th>
+                <th scope="col">Locatie:</th>
+                <th scope="col">Acties:</th>
+            </thead>
+            <tbody *ngFor="let target of targetsNearBy">
+                <tr>
+                    <td>{{target.name}}</td>
+                    <td>{{target.user.name}}</td>
+                    <td>
+                        <div class="review">
+                            <span>{{target.thumbsUp}} - </span>
+                            <span>{{target.thumbsDown}}</span>
+                        </div>
+                    </td>
+                    <td>Lat: {{target.location.coordinates[0]}} - Long: {{target.location.coordinates[1]}}</td>
+                    <td class="actionrow" *ngIf="target.user._id == cur_user_id && cur_user_id != null">
+                        <button type="button" class="btn btn-primary">Wijzigen</button>
+                        <button (click)="deleteTarget(target._id)" type="button" class="btn btn-danger">Verwijderen</button>
+                    </td>
+                    <td class="actionrow" *ngIf="target.user._id != cur_user_id && cur_user_id != null">
+                        <a href="target/{{ target._id }}/attempt" class="btn btn-primary">Poging Wagen</a>
+                    </td>
+                    <td class="actionrow" *ngIf="cur_user_id == null">
+                        <span>Inloggen vereist</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="targets.totalDocs == 0">
+            <span>Geen targets gevonden</span>
+        </div>
+    </div>
+</div>

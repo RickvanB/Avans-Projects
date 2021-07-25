@@ -1,0 +1,25 @@
+<div class="body-styling">
+    <img src="{{ attempt.imagePath }}" class="image" />
+
+
+    <ul>
+        <li>Naam: {{ attempt.name }}</li>
+        <li>Target ingediend door: {{ attempt.user.name }}</li>
+        <li>Thumbs up: {{ attempt.thumbsUp }}</li>
+        <li>Thumbs down: {{ attempt.thumbsDown }}</li>
+    </ul>
+
+    <h3>Scores van Google Vision</h3>
+    <table class="table">
+        <thead>
+            <th>Beschrijving</th>
+            <th>Score</th>
+        </thead>
+        <tbody *ngFor="let label of attempt.score[0].label">
+            <tr>
+                <td>{{ label.description }}</td>
+                <td>{{ label.score }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

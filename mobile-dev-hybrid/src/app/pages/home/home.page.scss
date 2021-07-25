@@ -1,0 +1,29 @@
+.introduction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #F9A754;
+    color: white;
+}
+
+.introduction div button {
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+    background-color: #336863;
+    font-size: 1.3em;
+}
+
+.catch-them-all {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+}
+
+.catch-them-all h2 {
+    text-align: center;
+}

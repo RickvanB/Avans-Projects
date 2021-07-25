@@ -1,0 +1,24 @@
+.user {
+    color: white;
+}
+
+.signSection li:first-child {
+    margin-right: 5px;
+}
+
+.signButton {
+    color: white;
+    cursor: pointer;
+    background-color: tomato;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.signButton a {
+    color: white;
+    text-decoration: none;
+}
+
+.user {
+    padding: 5px;
+}

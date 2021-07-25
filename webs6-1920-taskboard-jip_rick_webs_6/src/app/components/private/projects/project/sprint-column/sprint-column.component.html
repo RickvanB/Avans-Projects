@@ -1,0 +1,13 @@
+<div class="column-row">
+    <div class="top-part">
+        <div class="title">
+            <h1>Sprints</h1>
+        </div>
+        <div class="cards">
+            <app-sprint-card *ngFor="let sprint of sprints" [data]="sprint"></app-sprint-card>
+        </div>
+    </div>
+    <div class="create">
+        <button routerLink="/sprint/add/{{project.id}}">Nieuwe Sprint</button>
+    </div>
+</div>

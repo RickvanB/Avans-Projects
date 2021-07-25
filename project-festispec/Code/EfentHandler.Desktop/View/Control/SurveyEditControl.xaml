@@ -1,0 +1,558 @@
+﻿<UserControl x:Class="EfentHandler.Desktop.View.Control.SurveyEditControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EfentHandler.Desktop.View"
+             xmlns:VM="clr-namespace:EfentHandler.Desktop.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding SurveyEdit, Source={StaticResource Locator}}">
+
+    <UserControl.Resources >
+        <local:DateConverter x:Key="DateConverter"/>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF000000"/>
+            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Grid.Column="2">
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="Algemene gegevens" Margin="10" FontSize="14" FontWeight="Bold">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Vragenlijstnaam"/>
+                        <TextBox Grid.Column="1" FontWeight="Normal" Text="{Binding Path=SelectedSurvey.Name, Mode=TwoWay}" Margin="0,0,10,0"/>
+
+                        <TextBlock Grid.Column="2" Text="Gecontroleerd?" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                        <CheckBox Grid.Column="3" IsChecked="{Binding Path=SelectedSurvey.ConfirmedByEmployee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Header="Inspecteurs" Margin="10" FontSize="14" FontWeight="Bold">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <ListView Grid.Row="0" FontWeight="Normal" BorderThickness="0" ItemsSource="{Binding ChildSurveys, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedChildSurvey}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                            <ColumnDefinition Width="50"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Grid.Column="0" Text="Naam" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,10,0"/>
+                                        <ComboBox Grid.Column="1" ItemsSource="{Binding Inspectors}" DisplayMemberPath="FullName" SelectedValuePath="Id" SelectedValue="{Binding Path=InspectorId, Mode=TwoWay}" Margin="0,0,10,0"/>
+                                        <TextBlock Grid.Column="2" Text="Datum beschikbaar" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,10,0"/>
+                                        <DatePicker Grid.Column="3" DisplayDateStart="{Binding DataContext._assignmentEditVM.Assignment.StartDate, RelativeSource={RelativeSource AncestorType=ListView}}" DisplayDateEnd="{Binding DataContext._assignmentEditVM.Assignment.EndDate, RelativeSource={RelativeSource AncestorType=ListView}}" Text="{Binding Path=Date, Converter={StaticResource DateConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,10,0"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding ConfirmedByInspectorString}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="0,0,10,0"/>
+                                        <Button Grid.Column="5" Content="X" Width="50" Command="{Binding DataContext.RemoveChildSurveyCommand, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="IsSelected" Value="True"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+
+                        <Button Grid.Row="1" Content="+" FontWeight="Normal" HorizontalAlignment="Left" Width="50" Command="{Binding AddChildSurveyCommand}"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Header="Template" Margin="10" FontSize="14" FontWeight="Bold">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ComboBox Grid.Column="0" ItemsSource="{Binding Templates}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedTemplateLoad, Mode=TwoWay}" Padding="10" />
+                        <Button Grid.Column="2" Content="Inladen" FontWeight="Normal" Command="{Binding LoadTemplateCommand}"/>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="3" Header="{Binding QuestionsCount, StringFormat='Vragen (\{0\} in totaal)'}" Margin="10" FontSize="14" FontWeight="Bold">
+                    <ListView FontWeight="Normal" BorderThickness="0" Margin="10" ItemsSource="{Binding Questions, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedQuestion}">
+                        <ListView.Resources>
+
+                            <DataTemplate DataType="{x:Type VM:QuestionVM}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding QuestionId, StringFormat='Open vraag (\{0\})'}" FontWeight="Bold" TextDecorations="Underline"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vraagnaam" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                                    <Rectangle Grid.Row="2" Grid.ColumnSpan="3" Margin="0 20 0 20" Fill="#FFBE9E21" Height="5"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Content="X" Margin="0,0,0,5" Command="{Binding DataContext.DeleteQuestionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                </Grid>
+                            </DataTemplate>
+
+                            <DataTemplate DataType="{x:Type VM:QuestionScaleVM}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding QuestionId, StringFormat='Schaal (\{0\})'}" FontWeight="Bold" TextDecorations="Underline"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vraagnaam" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Grafiektype" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ChartTypes}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Path=ChartTypeId, Mode=TwoWay}" Margin="0,10,0,0"/>
+                                    <Rectangle Grid.Row="3" Grid.ColumnSpan="3" Margin="0 20 0 20" Fill="#FFBE9E21" Height="5"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Content="X" Margin="0,0,0,5" Command="{Binding DataContext.DeleteQuestionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                </Grid>
+                            </DataTemplate>
+
+                            <DataTemplate DataType="{x:Type VM:QuestionImagesVM}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding QuestionId, StringFormat='Afbeeldingen (\{0\})'}" FontWeight="Bold" TextDecorations="Underline"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vraagnaam" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                                    <Rectangle Grid.Row="2" Grid.ColumnSpan="3" Margin="0 20 0 20" Fill="#FFBE9E21" Height="5"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Content="X" Margin="0,0,0,5" Command="{Binding DataContext.DeleteQuestionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                </Grid>
+                            </DataTemplate>
+
+                            <DataTemplate DataType="{x:Type VM:QuestionCountVM}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding QuestionId, StringFormat='Tellen (\{0\})'}" FontWeight="Bold" TextDecorations="Underline"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vraagnaam" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                                    <Rectangle Grid.Row="2" Grid.ColumnSpan="3" Margin="0 20 0 20" Fill="#FFBE9E21" Height="5"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Content="X" Margin="0,0,0,5" Command="{Binding DataContext.DeleteQuestionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                </Grid>
+                            </DataTemplate>
+
+                            <DataTemplate DataType="{x:Type VM:QuestionEstimateVM}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding QuestionId, StringFormat='Tijdschatting (\{0\})'}" FontWeight="Bold" TextDecorations="Underline"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Content="X" Margin="0,0,0,5" Command="{Binding DataContext.DeleteQuestionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vraagnaam" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Grafiektype" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ChartTypes}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Path=ChartTypeId, Mode=TwoWay}" Margin="0,10,0,0"/>
+
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Tijden" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <Grid Grid.Row="3" Grid.Column="1" Margin="0,10,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <ListView Grid.Row="0" FontWeight="Normal" ItemsSource="{Binding QuestionChoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedQuestionChoice}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="50"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBox Grid.Column="0" Text="{Binding Name}"/>
+                                                        <Button Grid.Column="1" Content="X" Command="{Binding DataContext.DeleteQuestionChoiceCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="IsSelected" Value="True"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                        </ListView>
+                                        <Button Grid.Row="1" Width="50" HorizontalAlignment="Left" Content="+" FontWeight="Bold" Command="{Binding DataContext.AddQuestionChoiceCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                    </Grid>
+
+                                    <Rectangle Grid.Row="4" Grid.ColumnSpan="3" Margin="0 20 0 20" Fill="#FFBE9E21" Height="5"/>
+                                </Grid>
+                            </DataTemplate>
+
+                            <DataTemplate DataType="{x:Type VM:QuestionDistanceVM}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding QuestionId, StringFormat='Afstand meten (\{0\})'}" FontWeight="Bold" TextDecorations="Underline"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Content="X" Margin="0,0,0,5" Command="{Binding DataContext.DeleteQuestionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vraagnaam" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Grafiektype" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ChartTypes}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Path=ChartTypeId, Mode=TwoWay}" Margin="0,10,0,0"/>
+
+                                    <TextBlock Grid.Row="3" Grid.Column="1" Text="Geef als meetpunten de (herkennings)punten waartussen gemeten moet worden" Margin="0,10,0,0"/>
+
+                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Meetpunten" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <Grid Grid.Row="4" Grid.Column="1" Margin="0,10,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <ListView Grid.Row="0" FontWeight="Normal" ItemsSource="{Binding QuestionChoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedQuestionChoice}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="50"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBox Grid.Column="0" Text="{Binding Name}"/>
+                                                        <Button Grid.Column="1" Content="X" Command="{Binding DataContext.DeleteQuestionChoiceCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="IsSelected" Value="True"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                        </ListView>
+                                        <Button Grid.Row="1" Width="50" HorizontalAlignment="Left" Content="+" FontWeight="Bold" Command="{Binding DataContext.AddQuestionChoiceCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                    </Grid>
+
+                                    <Rectangle Grid.Row="5" Grid.ColumnSpan="3" Margin="0 20 0 20" Fill="#FFBE9E21" Height="5"/>
+                                </Grid>
+                            </DataTemplate>
+
+                            <DataTemplate DataType="{x:Type VM:Question5MinutesVM}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding QuestionId, StringFormat='5 minuten (\{0\})'}" FontWeight="Bold" TextDecorations="Underline"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Content="X" Margin="0,0,0,5" Command="{Binding DataContext.DeleteQuestionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vraagnaam" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Grafiektype" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ChartTypes}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Path=ChartTypeId, Mode=TwoWay}" Margin="0,10,0,0"/>
+
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Keuzes" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <Grid Grid.Row="3" Grid.Column="1" Margin="0,10,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <ListView Grid.Row="0" FontWeight="Normal" ItemsSource="{Binding QuestionChoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedQuestionChoice}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="50"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBox Grid.Column="0" Text="{Binding Name}"/>
+                                                        <Button Grid.Column="1" Content="X" Command="{Binding DataContext.DeleteQuestionChoiceCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="IsSelected" Value="True"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                        </ListView>
+                                        <Button Grid.Row="1" Width="50" HorizontalAlignment="Left" Content="+" FontWeight="Bold" Command="{Binding DataContext.AddQuestionChoiceCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                    </Grid>
+
+                                    <Rectangle Grid.Row="4" Grid.ColumnSpan="3" Margin="0 20 0 20" Fill="#FFBE9E21" Height="5"/>
+                                </Grid>
+                            </DataTemplate>
+
+                            <DataTemplate DataType="{x:Type VM:QuestionMultiplechoiceVM}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding QuestionId, StringFormat='Meerkeuze (\{0\})'}" FontWeight="Bold" TextDecorations="Underline"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Content="X" Margin="0,0,0,5" Command="{Binding DataContext.DeleteQuestionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vraagnaam" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Grafiektype" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ChartTypes}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Path=ChartTypeId, Mode=TwoWay}" Margin="0,10,0,0"/>
+
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Keuzes" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <Grid Grid.Row="3" Grid.Column="1" Margin="0,10,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <ListView Grid.Row="0" FontWeight="Normal" ItemsSource="{Binding QuestionChoice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedQuestionChoice}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="50"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBox Grid.Column="0" Text="{Binding Name}"/>
+                                                        <Button Grid.Column="1" Content="X" Command="{Binding DataContext.DeleteQuestionChoiceCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="IsSelected" Value="True"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                        </ListView>
+                                        <Button Grid.Row="1" Width="50" HorizontalAlignment="Left" Content="+" FontWeight="Bold" Command="{Binding DataContext.AddQuestionChoiceCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                    </Grid>
+
+                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Antwoorden" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <Grid Grid.Row="4" Grid.Column="1" Margin="0,10,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <ListView Grid.Row="0" FontWeight="Normal" ItemsSource="{Binding MultiplechoiceAnswer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedMultiplechoiceAnswer}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="50"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBox Grid.Column="0" Text="{Binding Answer}"/>
+                                                        <Button Grid.Column="1" Content="X" Command="{Binding DataContext.DeleteMultiplechoiceAnswerCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="IsSelected" Value="True"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                        </ListView>
+                                        <Button Grid.Row="1" Width="50" HorizontalAlignment="Left" Content="+" FontWeight="Bold" Command="{Binding DataContext.AddMultiplechoiceAnswerCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                    </Grid>
+
+                                    <Rectangle Grid.Row="5" Grid.ColumnSpan="3" Margin="0 20 0 20" Fill="#FFBE9E21" Height="5"/>
+                                </Grid>
+                            </DataTemplate>
+
+                            <DataTemplate DataType="{x:Type VM:QuestionDrawVM}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding QuestionId, StringFormat='Tekenen (\{0\})'}" FontWeight="Bold" TextDecorations="Underline"/>
+                                    <Button Grid.Row="0" Grid.Column="2" Content="X" Margin="0,0,0,5" Command="{Binding DataContext.DeleteQuestionCommand, RelativeSource={RelativeSource AncestorType=ListView}}"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Vraagnaam" FontWeight="Bold"/>
+                                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Afbeelding" FontWeight="Bold" Margin="0,10,0,0"/>
+                                    <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Content="Selecteer een afbeelding" Command="{Binding UploadImageWindowCommand}" Margin="0,10,0,0" Padding="5,0"/>
+
+                                    <Image Grid.Row="3" Grid.Column="1" Source="{Binding Image}" Width="250" Margin="0 10 0 0"/>
+
+                                    <Rectangle Grid.Row="4" Grid.ColumnSpan="4" Margin="0 20 0 20" Fill="#FFBE9E21" Height="5"/>
+                                </Grid>
+                            </DataTemplate>
+
+                        </ListView.Resources>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="IsSelected" Value="True"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+
+                </GroupBox>
+
+                <Grid Grid.Row="4" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Vraag toevoegen?" FontWeight="Bold" FontSize="14"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="Selecteer uit de onderstaande keuzelijst het gewenste vraagtype en klik op Toevoegen" Margin="0,0,0,10"/>
+
+                    <ComboBox Grid.Row="2" Grid.Column="0" ItemsSource="{Binding QuestionTypes}" DisplayMemberPath="Name" SelectedValue="{Binding SelectedQuestionType, Mode=TwoWay}" Padding="10" />
+                    <Button Grid.Row="2" Grid.Column="2" Content="Toevoegen" Command="{Binding AddQuestionCommand}"/>
+
+                    <Button Grid.Row="3" Grid.Column="2" Content="Opslaan" Margin="0 10 0 0" Padding="10" Command="{Binding SaveSurveyCommand}"/>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

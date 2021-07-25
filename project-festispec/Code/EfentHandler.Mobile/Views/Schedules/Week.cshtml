@@ -1,0 +1,92 @@
+﻿@model IEnumerable<EfentHandler.Domain.Model.schedule>
+
+@{
+    ViewBag.Title = "Rooster";
+}
+
+<h2 class="text-center">Rooster</h2>
+<hr />
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <select class="form-control" onchange="location=this.value;">
+                <option value="">Week @ViewBag.currentWeek</option>
+                @for (int i = 1; i <= 52; i++)
+                {
+                    <option value="/Schedules/Week/@i">Week @i</option>
+                }
+            </select>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Datum
+        </th>
+        <th>
+            Opdracht
+        </th>
+        <th>
+
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td></td>
+            <td>Geen afspraken deze week!</td>
+            <td></td>
+        </tr>
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.assignment.StartDate.ToString("ddd, dd MMM yyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.assignment.Description)
+            </td>
+            <td>
+                <form action="/Schedules/Update/@item.ScheduleId" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="checkbox" @(item.Confirmed == 1 ? "checked" : "")
+                           onChange="this.form.submit();" />
+                    <input type="hidden" name="ScheduleId" value="@item.ScheduleId" />
+                </form>
+            </td>
+        </tr>
+    }
+
+
+
+</table>
+
+<div class="row">
+    <div class="col-xs-2">
+        @if (ViewBag.currentWeek != 1)
+        {
+            <a href="/Schedules/Week/@(ViewBag.currentWeek-1)" class="btn btn-lg btn-default"><</a>}
+    </div>
+    <div class="col-xs-8"></div>
+    <div class="col-xs-2">
+        @if (ViewBag.currentWeek != 52)
+        {
+            <a href="/Schedules/Week/@(ViewBag.currentWeek+1)" class="btn btn-lg btn-default">></a>}
+    </div>
+</div>
+
+<script>
+    function check() {
+        alert("Bevestiging is opgeslagen.");
+        this.form.submit();
+    }
+</script>

@@ -1,0 +1,35 @@
+<h2 class="header">Nieuw Target Toevoegen</h2>
+
+<form class="form-horizontal" [formGroup]="targetForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <fieldset>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="targetname">Target Naam:</label>
+            <div class="col-md-4">
+                <input id="textinput" required formControlName="targetName" type="text" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="targetlat">Target Latitude:</label>
+            <div class="col-md-4">
+                <input id="textinput" required formControlName="targetLat" type="text" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="targetlot">Target Longitude:</label>
+            <div class="col-md-4">
+                <input id="textinput" required formControlName="targetLong" type="text" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="imagefile">Target Afbeelding:</label>
+            <div class="col-md-4">
+                <input id="filebutton" (change)="onFileSelect($event)" type="file">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <button id="singlebutton" type="submit" class="btn btn-primary">Opslaan</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

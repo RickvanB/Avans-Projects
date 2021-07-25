@@ -1,0 +1,25 @@
+<div *ngIf="speedmeet && studentTimeslots">
+    <ul class="sm-list" *ngIf="visibleTimeslots && visibleTimeslots.length && canEnroll()">
+        <li *ngFor="let timeslot of visibleTimeslots" class="content-slot" [class.disabled]="isEnrolledInRound(timeslot.round.id)" (click)="enroll(timeslot)">
+            <div class="time">
+                {{ timeslot.round.timestart }} - {{ timeslot.round.timeend }}
+            </div>
+
+            <div class="goto-button">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </div>
+        </li>
+    </ul>
+    <div *ngIf="visibleTimeslots == null && !error" class="no-results">
+        <span>Beschikbare tijden worden geladen...</span>
+    </div>
+    <div *ngIf="visibleTimeslots != null && visibleTimeslots.length == 0" class="no-results">
+        <span>Er zijn helaas geen beschikbare tijden meer.</span>
+    </div>
+    <div *ngIf="error">
+        <p>Er is een fout opgetreden tijdens het ophalen van de beschikbare tijden. Probeer het later opnieuw.</p>
+    </div>
+    <div *ngIf="!canEnroll()">
+            <p>{{ enrollError }}</p>
+    </div>
+</div>

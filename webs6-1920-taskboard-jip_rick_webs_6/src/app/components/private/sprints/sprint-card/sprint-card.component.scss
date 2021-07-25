@@ -1,0 +1,77 @@
+.card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    border: 1px solid #7A70A1;
+    border-radius: 5px;
+    color: #7A70A1;
+    position: relative;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 10px 10px 17px -5px rgba(230, 230, 230, 1);
+    -moz-box-shadow: 10px 10px 17px -5px rgba(230, 230, 230, 1);
+    box-shadow: 10px 10px 17px -5px rgba(230, 230, 230, 1);
+}
+
+.content {
+    margin: 5px;
+}
+
+.user {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.content h3 {
+    font-weight: lighter;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    font-size: 1.6em;
+    color: #46495C;
+}
+
+.image {
+    margin: 10px;
+}
+
+.image img {
+    max-width: 60px;
+    border-radius: 50px;
+}
+
+.actions {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.actions button {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.email {
+    font-size: 0.8em;
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 5px;
+    span:first-child {
+        font-weight: bold;
+    }
+}
+
+.go-to-and-edit {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}

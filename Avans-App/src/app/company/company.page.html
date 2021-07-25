@@ -1,0 +1,18 @@
+<ion-content>
+    <div *ngIf="company">
+        <div class="company-branding" *ngIf="company">
+            <app-company-banner [companyId]="company.id"></app-company-banner>
+        </div>
+        <div class="tabs" *ngIf="showTabs">
+            <div class="tab" [class.active]="tab == 'info'" (click)="changeTab('info')">Informatie</div>
+            <div class="tab" [class.active]="tab == 'enroll'" (click)="changeTab('enroll')">Inschrijven</div>
+        </div>
+
+        <div class="company-name-city">
+            <h2>{{ company.name }}</h2>
+            <h3>{{ company.city }}</h3>
+        </div>
+    </div>
+
+    <router-outlet></router-outlet>
+</ion-content>

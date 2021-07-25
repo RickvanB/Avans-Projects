@@ -1,0 +1,41 @@
+<div class="table">
+    <table id="stories">
+        <tr>
+            <th>Naam</th>
+            <th>Omschrijving</th>
+            <th>Startdatum</th>
+            <th>Einddatum</th>
+            <th>Actief</th>
+        </tr>
+        <tr *ngFor="let sprint of sprints">
+            <td>{{ sprint.name }}</td>
+            <td>{{ sprint.description }}</td>
+            <td>{{ sprint.startDate }}</td>
+            <td>{{ sprint.endDate }}</td>
+            <td>{{ sprint.isActive ? 'Ja' : 'Nee' }}</td>
+        </tr>
+    </table>
+</div>
+<br />
+<div class="table">
+    <table id="stories">
+        <tr>
+            <th>User story</th>
+            <th>Omschrijving</th>
+            <th>Status</th>
+            <th>Storypoints</th>
+            <th>Story eigenaar</th>
+            <th>Gearchiveerd</th>
+            <th>Acties</th>
+        </tr>
+        <tr *ngFor="let story of userstories | async">
+            <td>{{ story.name }}</td>
+            <td>{{ story.description }}</td>
+            <td>{{ story.status }}</td>
+            <td>{{ story.storyPoints }}</td>
+            <td><span *ngIf="story.owner">{{ story.owner.fullName }}</span></td>
+            <td>{{ story.isArchived ? 'Ja' : 'Nee' }}</td>
+            <td><span *ngIf="story.isArchived"><button (click)="deArchive(story)">Dearchiveer</button></span></td>
+        </tr>
+    </table>
+</div>

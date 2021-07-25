@@ -1,0 +1,157 @@
+#topBar {
+    background-color: #52527a;
+    padding: 10px;
+    display: flex;
+    margin-right: 2%;
+    flex-wrap: wrap;
+    max-width: 500px;
+}
+
+#body {
+    display: flex;
+    margin: 2%;
+}
+
+.basicStyling {
+    font-family: Black Ops One;
+    color: #d2d22d !important;
+    border-radius: 4px;
+}
+
+.regionManager {
+    background-color: #7575a3;
+    padding: 10px;
+    max-height: 100px;
+    padding-bottom: 0px;
+    width: 100%;
+}
+
+.custom-weather {
+    background-color: #7575a3;
+    padding: 10px;
+    max-height: 180px;
+    padding-bottom: 0px;
+    width: 100%;
+}
+
+.dragZone {
+    background-color: #7575a3;
+    padding: 10px;
+    max-height: 200px;
+    padding-bottom: 0px;
+    width: 100%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.weatherCard {
+    background-color: #7575a3 !important;
+    /* max-width: 420px; */
+    max-height: 150px;
+}
+
+.regionTitle {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.monsterDragZone {
+    background-color: white;
+    min-height: 120px;
+    min-width: 100px;
+    max-height: 120px;
+    max-width: 100px;
+}
+
+.monsterDragZone img {
+    min-height: 100px;
+    min-width: 100px;
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.bodyFiller {
+    padding: 10px !important;
+}
+
+.newMonster {
+    margin-left: 1%;
+    margin-bottom: 2%;
+}
+
+.createButton {
+    width: 100%;
+}
+
+.selectedRegion {
+    background-color: #bfbfbf !important;
+    border-color: #bfbfbf !important;
+}
+
+.popUpPos {
+    position: absolute;
+    top: 45%;
+    left: 39%;
+    width: 800px;
+    height: 500px;
+    margin-left: -100px;
+    margin-top: -200px;
+}
+
+.popUpPos-Side {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    width: 380px;
+    height: 500px;
+}
+
+.popUpBack {
+    background-color: #52527a;
+    border: none !important;
+}
+
+.closeColor {
+    color: white;
+}
+
+.popUpBorder {
+    border-radius: 4px;
+}
+
+img {
+    cursor: pointer;
+    min-height: 70px;
+    min-width: 70px;
+    max-height: 70px;
+    max-width: 70px;
+}
+
+
+/* Overwrite styling element */
+
+#blockImage {
+    cursor: auto !important;
+}
+
+.statisticControl {
+    background-color: #7575a3;
+    padding: 4px;
+    font-family: Black Ops One;
+    color: #d2d22d !important;
+    border-radius: 4px;
+    width: 360px !important;
+}
+
+.marginFromborder {
+    margin-left: 1px !important;
+}
+
+#statistic {
+    margin-left: 5%;
+}
+
+#editZone {
+    visibility: hidden;
+}

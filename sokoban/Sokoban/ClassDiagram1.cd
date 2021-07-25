@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Sokoban.Chest">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <InheritanceLine Type="Sokoban.GameObjects" FixedToPoint="true">
+      <Path>
+        <Point X="10" Y="4.353" />
+        <Point X="10" Y="5.125" />
+        <Point X="9" Y="5.125" />
+        <Point X="9" Y="5.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIIAAACAAAAAABgAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Chest.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_levelManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sokoban.DestinationTile">
+    <Position X="2.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DestinationTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Game">
+    <Position X="5.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="manager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sokoban.GameObjects">
+    <Position X="9.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.GamePlay">
+    <Position X="9.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAQAAAABAAAEAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GamePlay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.KeyListener">
+    <Position X="11.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAEAAIAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>KeyListener.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Truck" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sokoban.LevelBuilder">
+    <Position X="2.5" Y="6.75" Width="1.5" />
+    <AssociationLine Name="_wall" Type="Sokoban.Wall" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.688" Y="6.75" />
+        <Point X="3.688" Y="4.185" />
+        <Point X="5" Y="4.185" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABAAAAEIAAoAAAAAAAAAAAgAACAAABAAAAAAAAAAAQA=</HashCode>
+      <FileName>LevelBuilder.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_destinationTile" />
+      <Field Name="_normalTile" />
+      <Field Name="_wall" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sokoban.LevelManager">
+    <Position X="5.5" Y="7" Width="1.5" />
+    <AssociationLine Name="_keyListener" Type="Sokoban.KeyListener" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="8.664" />
+        <Point X="11.688" Y="8.664" />
+        <Point X="11.688" Y="9" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAgAgAAAAEAAQAACQAQAAAgAAAAAAAAAAEAAAAACDQE=</HashCode>
+      <FileName>LevelManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_levelBuilder" />
+      <Field Name="_gameplay" />
+      <Field Name="_keyListener" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sokoban.NormalTile">
+    <Position X="0.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NormalTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Tile">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAACAAAABAAAA=</HashCode>
+      <FileName>Tile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sokoban.Truck">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <AssociationLine Name="_levelManager" Type="Sokoban.LevelManager" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.125" Y="8.021" />
+        <Point X="11.125" Y="8.368" />
+        <Point X="7" Y="8.368" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAIAAAAAAAAAAABAAABAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Truck.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_levelManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Sokoban.Wall">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAACAAAABAAAA=</HashCode>
+      <FileName>Wall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

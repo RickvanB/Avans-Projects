@@ -1,0 +1,52 @@
+<section class="scrum-board">
+    <div class="actions">
+        <button (click)="goBack()">Terug naar Projecten</button>
+    </div>
+    <app-sprint-burndown class="burndown" *ngIf="projectId && sprintId" [projectId]="projectId" [sprintId]="sprintId"></app-sprint-burndown>
+    <div class="board" *ngIf="participants">
+        <table cdkDropListGroup>
+            <thead>
+                <tr>
+                    <th>Project Lid</th>
+                    <th>Todo</th>
+                    <th>In Progress</th>
+                    <th>Ready For Review</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let participant of participants">
+                    <td class="identification">
+                        <div *ngIf="participant.user">
+                            <span *ngIf="participant.user.fullName">{{participant.user.fullName}}</span>
+                        </div>
+                        <div *ngIf="!participant.user">
+                            <span>Niet toegewezen</span>
+                        </div>
+                    </td>
+                    <td class="card-td">
+                        <div *ngIf="participant.todo" (cdkDropListDropped)="drop($event)" cdkDropList #todoList="cdkDropList" [cdkDropListData]="participant.todo">
+                            <app-story-card cdkDrag *ngFor="let card of participant.todo" id="{{card.id}}" [data]="card" [minimalize]="true"></app-story-card>
+                        </div>
+                    </td>
+                    <td class="card-td">
+                        <div *ngIf="participant.inProgress" (cdkDropListDropped)="drop($event)" cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="participant.inProgress">
+                            <app-story-card cdkDrag *ngFor="let card of participant.inProgress" id="{{card.id}}" [data]="card" [minimalize]="true"></app-story-card>
+
+                        </div>
+                    </td>
+                    <td class="card-td">
+                        <div *ngIf="participant.readyForReview" (cdkDropListDropped)="drop($event)" cdkDropList #readyForReviewList="cdkDropList" [cdkDropListData]="participant.readyForReview">
+                            <app-story-card cdkDrag *ngFor="let card of participant.readyForReview" id="{{card.id}}" [data]="card" [minimalize]="true"></app-story-card>
+                        </div>
+                    </td>
+                    <td class="card-td">
+                        <div *ngIf="participant.done" cdkDropList (cdkDropListDropped)="drop($event)" #doneList="cdkDropList" [cdkDropListData]="participant.done">
+                            <app-story-card cdkDrag *ngFor="let card of participant.done" [data]="card" id="{{card.id}}" [minimalize]="true"></app-story-card>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

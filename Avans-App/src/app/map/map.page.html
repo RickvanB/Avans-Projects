@@ -1,0 +1,29 @@
+<ion-content>
+    <app-current-speedmeet></app-current-speedmeet>
+    <div class="map">
+        <div class="actual-map">
+            <h4>Plattegrond</h4>
+            <ion-item class="close-fake" lines="none" text-center *ngIf="logoPath">
+                <ion-button (click)="zoom(true)" fill="clear">
+                    <ion-icon name="add" slot="start"></ion-icon>
+                    In
+                </ion-button>
+                <ion-button (click)="zoom(false)" fill="clear">
+                    <ion-icon name="remove" slot="start"></ion-icon>
+                    Uit
+                </ion-button>
+            </ion-item>
+            <ion-slides [options]="sliderOpts" #slider>
+                <ion-slide>
+                    <div class="swiper-zoom-container">
+                        <img *ngIf="logoPath" [src]="logoPath" />
+                        <span *ngIf="!logoPath && err" class="no-map">Er is op dit moment geen plattegrond beschikbaar</span>
+                        <span *ngIf="!logoPath && !err" class="no-map">De plattegrond wordt geladen...</span>
+                    </div>
+                </ion-slide>
+            </ion-slides>
+            <span *ngIf="logoPath">Inzoomen is mogelijk</span>
+        </div>
+
+    </div>
+</ion-content>

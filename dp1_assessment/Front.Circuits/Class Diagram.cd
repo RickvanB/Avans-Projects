@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Front.Circuits.controllers.GuiController" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAANQAAAABAAAMAAgBAAAACAgAAAIAAAAAAAQAAIA=</HashCode>
+      <FileName>controllers\GuiController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Front.Circuits.repository.CircuitRepository" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Front.Circuits.repository.CircuitRepository.CircuitChanges" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>repository\CircuitRepository.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAgAAAIAAAAQAAAAACACAAAAEAAAAAAAQA=</HashCode>
+      <FileName>repository\CircuitRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_circuitController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Front.Circuits.viewModel.CircuitVM" Collapsed="true">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="Front.Circuits.viewModel.CircuitVM.RedrawView" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>viewModel\CircuitVM.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ZAAgAAAAEAAARAAAEAAEAgBggACBAQSAIEQAADxABAA=</HashCode>
+      <FileName>viewModel\CircuitVM.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_circuit" />
+      <Field Name="_circuitRepo" />
+      <Field Name="_guiController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Domain.Circuits.Circuit" Collapsed="true">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Domain.Circuits.controller.CircuitController" Collapsed="true">
+    <Position X="3.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,28 @@
+.company-name {
+    font-weight: bold;
+}
+
+p {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.title {
+    color: var(--ion-color-primary);
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.no-results {
+    text-align: center;
+}
+
+.no-active-results {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.no-active-results span {
+    font-weight: bold;
+    font-size: 1.2em;
+}

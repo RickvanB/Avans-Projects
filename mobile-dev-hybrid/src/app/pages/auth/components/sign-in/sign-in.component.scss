@@ -1,0 +1,46 @@
+.filler {
+    margin: 5px;
+    margin-top: 65px;
+}
+
+.filler h4 {
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #336863;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.auth {
+    --background: #76B4A6;
+}
+
+.signUp {
+    padding: 8px 15px 8px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+    background-color: #F9A754;
+}
+
+.back {
+    padding: 8px 15px 8px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+    font-size: 18px;
+    background-color: #336863;
+}
+
+.sideButton {
+    margin-left: 5px;
+}
+
+.send {
+    display: flex;
+    justify-content: flex-end;
+}

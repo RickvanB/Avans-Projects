@@ -1,0 +1,95 @@
+.information {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #336863;
+    padding: 5px;
+    border-radius: 50px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.information span:first-child {
+    font-weight: lighter;
+    margin-left: 5px;
+}
+
+.information span:last-child {
+    background-color: #F9A754;
+    padding: 2px 10px 2px 5px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    width: 45%;
+}
+
+.loading {
+    background-color: #336863;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.header-pokemon {
+    background-color: #336863;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.header-pokemon span:first-child {
+    margin-right: 3px;
+}
+
+.poke-card {
+    background-color: #76B4A6;
+}
+
+.information span {
+    font-size: 1.2em;
+}
+
+#boldType {
+    font-weight: bold;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 70px;
+    color: black;
+}
+
+.loading-info {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.warning {
+    margin-top: 5px;
+    font-weight: lighter;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #336863;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+button {
+    background-color: #336863;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+    font-size: 1.2em;
+}

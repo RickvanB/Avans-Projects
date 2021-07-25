@@ -1,0 +1,111 @@
+.content-group{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.header-group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.header-group h1{
+    color: #ffb366;
+}
+
+/* Button Setting table */
+.leave{
+    background-color: #ff4d4d;
+}
+
+.details{
+   background-color: #b3b3ff;
+}
+
+.leave:hover{
+    background-color: #ff0000;
+}
+
+.details:hover{
+    background-color: #9999ff;
+}
+/*  END --> Button Setting table */
+
+.name_column{
+    min-width: 200px;
+}
+
+.no_results{
+    border-style: solid;
+    border-color: #ffb366;
+    border-width: 1px;
+    -webkit-box-shadow: 5px 5px 5px 1px rgba(191,189,191,1);
+    -moz-box-shadow: 5px 5px 5px 1px rgba(191,189,191,1);
+    box-shadow: 5px 5px 5px 1px rgba(191,189,191,1);
+}
+
+.no_results h1{
+    width: 50%;
+}
+
+.no_results p{
+    width: 50%;
+}
+
+/* Details section */
+.header_group_details{
+    width: 55%;
+}
+
+.change_name{
+    margin-top: 2%;
+}
+
+.new-group{
+    width: 55%;
+}
+
+.header-border{
+    border-width: 5px;
+    border-color: #ffb366;
+}
+.redirect_buttons{
+    width: 55%;
+}
+
+.attached_users{
+    width: 55%;
+}
+
+.create_content{
+    margin-left: 25%;
+}
+
+/* New group form */
+.new-group{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b3b3ff;
+    padding: 2%;
+}
+#text{
+    display: none;
+    visibility: hidden;
+}
+
+.group-actions{
+    width: 55%;
+    border-style: solid;
+    border-color: #ffb366;
+    border-width: 2px;
+
+    margin: 1%;
+    padding: 1%;
+}
+
+.group-actions p{
+    margin: 0;
+}

@@ -1,0 +1,121 @@
+.checkMarkContainer {
+    display: inline-block;
+    position: relative;
+    padding-left: 45px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    width: 240%;
+
+    .text{
+        border: 2px solid black;
+        border-radius: 25px;
+        padding: 10px;
+        display: inline-block;
+        width: 90%;
+    }
+}
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0px;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #9e161f;
+    border-radius: 30%;
+}
+
+.checkMarkContainer:hover input ~ .checkmark {
+    border-color: #9e161f;
+}
+
+.checkMarkContainer input:checked ~ .checkmark {
+    border-color: #9e161f;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkMarkContainer input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkMarkContainer .checkmark:after {
+    left: 5px;
+    bottom: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid #9e161f;
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkMarkContainer input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.majorTable {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    width: 100%;
+
+    th{
+        text-align: left;
+    }
+
+    td{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .firstColumn{
+        padding-left: 6.4%;
+        width: 20%;
+    }
+
+    .secondColumn{
+        width: 20%;
+    }
+
+    .thirdColumn{
+        width: 10%;
+    }
+}
+
+.checkMarkContainer .checkmark:after {
+    left: 5px;
+    bottom: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid #9e161f;
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#searchInput{
+    padding: 12px 20px 12px 40px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 95%;
+    border: none;
+    background-image: url('/assets/searchIcon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}

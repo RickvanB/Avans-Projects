@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Tijdsloten
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ul *ngIf="rounds && rounds.length" class="rounds-list">
+      <li *ngFor="let round of rounds">
+        {{ round.timestart }} - {{ round.timeend }}
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>

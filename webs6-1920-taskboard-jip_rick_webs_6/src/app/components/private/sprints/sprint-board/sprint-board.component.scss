@@ -1,0 +1,90 @@
+.scrum-board {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.burndown {
+    width: 98%;
+}
+
+.board table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+.board {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 98%;
+}
+
+.board table td,
+.board table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.board table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.board table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #7A70A1;
+    color: white;
+}
+
+.card-td {
+    min-width: 120px;
+    width: 22.5%;
+    vertical-align: top;
+}
+
+.card-td div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 80px;
+}
+
+.identification {
+    min-width: 120px;
+    width: 10%;
+}
+
+app-story-card {
+    margin: 3px;
+    cursor: move;
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.card-td div.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 98%;
+    align-items: center;
+    margin-top: 15px;
+}

@@ -1,0 +1,32 @@
+.company-branding {
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.tabs {
+    display: flex;
+    .tab {
+        flex: 1;
+        text-align: center;
+        padding: 10px 0;
+        &:not(.active) {
+            background-color: #D4D4D4;
+        }
+    }
+}
+
+.company-name-city {
+    padding: 15px 15px 0 15px;
+    h2 {
+        color: #B62531;
+        margin: 0;
+        font-weight: bold;
+    }
+    h3 {
+        color: #B62531;
+        margin: 0;
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,12 @@
+<div class="card" *ngIf="user">
+    <div class="content">
+        <div class="image" *ngIf="user.photoURL">
+            <img src="{{user.photoURL}}" />
+        </div>
+        <div class="user">
+            <h3>{{user.fullName}}</h3>
+            <span class="email">{{user.email}}</span>
+            <span>{{user.role}}</span>
+        </div>
+    </div>
+</div>

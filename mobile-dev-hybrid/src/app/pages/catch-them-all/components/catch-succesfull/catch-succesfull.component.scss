@@ -1,0 +1,80 @@
+.catch {
+    display: flex;
+    justify-content: center;
+}
+
+.learn-to {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.start-hunt {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: white;
+}
+
+#boldType {
+    font-weight: bold;
+}
+
+.content-header {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content-header h3 {
+    margin-bottom: 5px;
+}
+
+.content-header h3 {
+    font-size: 1.8em;
+}
+
+.header-pokemon {
+    background-color: #336863;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.header-pokemon span:first-child {
+    margin-right: 3px;
+}
+
+.poke-card {
+    background-color: #76B4A6;
+}
+
+.message-no-pokemon {
+    background-color: #336863;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.to-map {
+    background-color: #f9a754;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+    font-size: 1.3em;
+}
+
+.message-no-pokemon p {
+    text-align: center;
+}

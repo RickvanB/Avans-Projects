@@ -1,0 +1,42 @@
+<div class="content">
+    <div class="table-container">
+        <h2>Projectleden Beheren:</h2>
+        <table>
+            <tr>
+                <th>Naam van Projectlid</th>
+                <th>Email Adres</th>
+                <th>Rol binnen Project</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let participant of participants">
+                <td>{{participant.fullName}}</td>
+                <td>{{participant.email}}</td>
+                <td><select *ngIf="participant.id != project.ownerId" (change)="onSelectRole($event.target.value, participant.id)" [(ngModel)]="participant.role"> 
+                    <option *ngFor="let option of roles">{{option}}</option>
+                </select>
+                </td>
+                <td><button *ngIf="participant.id != project.ownerId" (click)="removeUser(participant.id)">Verwijder</button></td>
+            </tr>
+            <tr>
+                <td>Email Adres:</td>
+                <td><input type="email" [(ngModel)]="newUserEmail" /></td>
+                <td>
+                    <select (change)="onSelectRole($event.target.value)"> 
+                        <option *ngFor="let option of roles">{{option}}</option>
+                    </select>
+                </td>
+                <td><button (click)="addUser()">Toevoegen</button></td>
+            </tr>
+        </table>
+        <div class="bottom-section">
+            <div class="feedback">
+                <span class="neg" *ngIf="userNotFound && !userUpdate">De gebruiker die u probeerd toe te voegen is niet gevonden</span>
+                <span class="neg" *ngIf="noInput && !userUpdate">Voer een email adres in om een projectlid toe te voegen</span>
+                <span class="pos" *ngIf="userUpdate">{{userUpdate}}</span>
+            </div>
+            <div class="actions" *ngIf="project">
+                <button (click)="backToProject()">Terug</button>
+            </div>
+        </div>
+    </div>
+</div>

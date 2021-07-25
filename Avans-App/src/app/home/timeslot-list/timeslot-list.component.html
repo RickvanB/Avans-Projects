@@ -1,0 +1,33 @@
+<div class="title">Mijn inschrijvingen</div>
+
+<ul class="sm-list" *ngIf="timeslots && timeslots.length">
+    <li *ngFor="let timeslot of timeslots" class="content-slot" (click)="gotoCompany(timeslot.company.id)">
+        <div class="company-time">
+            <div class="company-name">
+                {{ timeslot.company.name }}
+            </div>
+            <div class="time">
+                {{ timeslot.round.timestart }} - {{ timeslot.round.timeend }}
+            </div>
+        </div>
+
+        <div class="goto-button">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+        </div>
+    </li>
+</ul>
+<div *ngIf="timeslots == null && !error" class="no-results">
+    <p>Beschikbare tijden worden geladen...</p>
+</div>
+
+<div *ngIf="timeslots != null && !timeslots.length" class="no-active-results">
+    <span>Je hebt nog geen inschrijvingen!</span>
+    <p>Schrijf je nu in bij je favoriete bedrijven!</p>
+</div>
+<div *ngIf="error">
+    <p>Er is een fout opgetreden tijdens het ophalen van de beschikbare tijden. Probeer het later opnieuw.</p>
+</div>
+
+<div *ngIf="speedmeet && timeslots != null && timeslots.length >= speedmeet.maxEnrollmentsPerStudent">
+    <p>Maximaal aantal inschrijvingen bereikt.</p>
+</div>

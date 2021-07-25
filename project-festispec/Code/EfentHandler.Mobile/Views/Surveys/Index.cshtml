@@ -1,0 +1,36 @@
+﻿@model IEnumerable<EfentHandler.Domain.Model.survey>
+
+@{
+    ViewBag.Title = "Vragenlijsten";
+}
+
+<h2>Vragenlijsten</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Goedgekeurd
+        </th>
+        <th>
+            Omschrijving
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "Answer", new { id = item.SurveyId })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConfirmedByInspector)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.assignment.Description)
+        </td>
+    </tr>
+}
+
+</table>

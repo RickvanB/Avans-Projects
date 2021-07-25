@@ -1,0 +1,55 @@
+<ion-content>
+    <div class="refresher">
+        <ion-refresher slot="fixed" (ionRefresh)="refreshCatches($event)">
+            <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
+    </div>
+    <div *ngIf="catches != null && !err" class="my-pokemon">
+        <div *ngIf="catches.length == 0" class="no-catch"><span>You didn't catch any Pokemons yet</span></div>
+        <div class="sort-header">
+        </div>
+        <ion-list>
+            <ion-reorder-group (ionItemReorder)="reorderItems($event)" disabled="false">
+                <ion-card *ngFor="let catch of catches" class="poke-card">
+                    <div *ngIf="catch.pokemon != null" routerLink="/pokemons/{{catch.pokemon.name}}/general/{{catch.pokemon.name}}">
+                        <div>
+                            <ion-reorder class="reorder" slot="end"></ion-reorder>
+                        </div>
+                        <ion-card-header *ngIf="catch.pokemon != null">
+                            <ion-card-title class="header-pokemon">{{catch.pokemon.name | titlecase }}</ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content>
+                            <div class="stats">
+                                <div *ngIf="catch.pokemon != null">
+                                    <img src="{{catch.pokemon.imageUrl}}">
+                                </div>
+                                <div class="information">
+                                    <span>Latitude:</span>
+                                    <span>{{catch.lat}}</span>
+                                </div>
+                                <div class="information">
+                                    <span>Longitude:</span>
+                                    <span>{{catch.long}}</span>
+                                </div>
+                                <div class="information">
+                                    <span>Caught On:</span>
+                                    <span>{{catch.catchDate  | date:'dd-MM-yyyy hh:mm a'}}</span>
+                                </div>
+                            </div>
+                        </ion-card-content>
+                    </div>
+                </ion-card>
+            </ion-reorder-group>
+        </ion-list>
+    </div>
+    <div class="info" *ngIf="catches == null && !err">
+        <div class="loader"></div>
+        <span class="loading-info">Loading Pokemons...</span>
+        <span class="warning">Make sure you've an internet connection</span>
+    </div>
+    <div class="info" *ngIf="err">
+        <span class="loading-info">Loading Pokemons has failed</span>
+        <span class="warning">Make sure you've an internet connection</span>
+        <button onclick="location.reload()">Try Again</button>
+    </div>
+</ion-content>

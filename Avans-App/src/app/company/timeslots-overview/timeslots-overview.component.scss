@@ -1,0 +1,17 @@
+.no-results {
+    color: grey;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-slot {
+    &.disabled {
+        background-color: #e7e7e7;
+    }
+}
+
+p {
+    margin: 15px;
+}

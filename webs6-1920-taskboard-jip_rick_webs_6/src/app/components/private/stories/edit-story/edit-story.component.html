@@ -1,0 +1,48 @@
+<div class="content">
+    <div class="new-story">
+        <h1>Story bewerken</h1>
+        <span>{{validation.general}}</span>
+        <div class="story-prop">
+            <label>Kies een naam voor uw story</label>
+            <div class="input">
+                <input type="text" [(ngModel)]="story.name" value="{{ story.name }}" />
+                <span>{{validation.name}}</span>
+            </div>
+        </div>
+        <div class="story-prop">
+            <label>Geef een korte omschrijving van de story</label>
+            <div class="input">
+                <textarea [(ngModel)]="story.description" value="{{ story.description }}"></textarea>
+                <span></span>
+            </div>
+        </div>
+        <div class="story-prop">
+            <label>Hoeveel storypoints heeft deze story?</label>
+            <div class="input">
+                <input type="number" value="{{ story.storyPoints }}" [(ngModel)]="story.storyPoints" />
+                <span>{{validation.status}}</span>
+            </div>
+        </div>
+        <div class="story-prop">
+            <label>Bij welke sprint hoort deze story?</label>
+            <div class="input">
+                <select [(ngModel)]="story.sprintId">
+                    <option *ngFor="let sprint of sprints | async" value="{{ sprint.id }}">{{ sprint.name }}</option>
+                </select>
+                <span>{{validation.status}}</span>
+            </div>
+        </div>
+        <div class="story-prop">
+            <label>Bij welke user hoort deze story?</label>
+            <div class="input">
+                <select [(ngModel)]="story.ownerId">
+                    <option *ngFor="let user of users | async" value="{{ user.id }}">{{ user.fullName }}</option>
+                </select>
+                <span>{{validation.status}}</span>
+            </div>
+        </div>
+        <div class="actions">
+            <button (click)="submitStory()">Wijzigingen Opslaan</button>
+        </div>
+    </div>
+</div>

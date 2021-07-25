@@ -1,0 +1,35 @@
+.producten-page h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.parallax {
+    width: 100%;
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.drone1 {
+    background-image: url('../images/parallax/inspire2.jpg');
+}
+
+.drone2 {
+    background-image: url('../images/parallax/phantom4pro.jpg');
+}
+
+.drone3 {
+    background-image: url('../images/parallax/mavicpro.jpg');
+}
+
+.drone4 {
+    background-image: url('../images/parallax/spark.jpg');
+}
+
+.producten-page section article {
+    background-color: white;
+    width:100%;
+    padding: 30px;
+}

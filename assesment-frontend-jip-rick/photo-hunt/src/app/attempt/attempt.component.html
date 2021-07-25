@@ -1,0 +1,35 @@
+<h2 class="header">Nieuw target attempt toevoegen</h2>
+
+<form class="form-horizontal" [formGroup]="attemptForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <fieldset>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="attemptname">Attempt Naam:</label>
+            <div class="col-md-4">
+                <input id="textinput" required formControlName="attemptName" type="text" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="attemptlat">Attempt Latitude:</label>
+            <div class="col-md-4">
+                <input id="textinput" required formControlName="attemptLat" type="text" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="attemptlot">Attempt Longitude:</label>
+            <div class="col-md-4">
+                <input id="textinput" required formControlName="attemptLong" type="text" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="imagefile">Attempt Afbeelding:</label>
+            <div class="col-md-4">
+                <input id="filebutton" (change)="onFileSelect($event)" type="file">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <button id="singlebutton" type="submit" class="btn btn-primary">Opslaan</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

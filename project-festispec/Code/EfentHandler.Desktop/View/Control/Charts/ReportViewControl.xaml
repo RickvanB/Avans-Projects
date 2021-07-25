@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="EfentHandler.Desktop.View.Control.ReportViewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EfentHandler.Desktop.View"
+             xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="711" d:DesignWidth="800"
+			 DataContext="{Binding Report, Source={StaticResource Locator}}">
+
+    <UserControl.Resources >
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <Border Grid.Column="2">
+        <StackPanel Margin="10">
+            <Grid>
+                <!-- Set grid definitions-->
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <!-- Information -->
+                <TextBlock Grid.Row="0" Text="Dit is een voorbeeldweergave van de rapportage zoals de klant deze zal ontvangen in PDF-formaat" FontWeight="Medium" FontSize="14" Foreground="Red"/>
+
+                <!-- Charts overview -->
+                <Grid Grid.Row="1">
+                    <Grid>
+                        <!-- Set grid definitions-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Header -->
+                        <Label Content="Grafieken" FontSize="28" Grid.Row="0" FontWeight="ExtraBold"/>
+                        <!-- Charts -->
+                        <Grid Grid.Row="1">
+                            <ItemsControl ItemsSource="{Binding ReportCharts}"/>
+                        </Grid>
+                        
+                        <!-- Header -->
+                        <Label Content="Overige vragen" FontSize="28" Grid.Row="2" FontWeight="ExtraBold"/>
+                        <Label Content="Let op! In de offline-modus worden de vraagtypes Afbeeldingen en Afstand meten niet getoond in de rapportage" Grid.Row="3" FontWeight="Medium" FontSize="14" Foreground="Red" Visibility="{Binding OfflineInfoVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                        
+                        <!-- Tables -->
+                        <Grid Grid.Row="4">
+                            <ItemsControl ItemsSource="{Binding ReportQuestions}"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <!-- Advice section -->
+                <Grid Grid.Row="2">
+                    <!-- Set grid definitions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Header -->
+                    <Label Content="Advies" FontSize="28" Grid.Row="0" FontWeight="ExtraBold"/>
+                    <Label Content="Stylen met CTRL + B(old) / I(talic) / U(nderlined)" Grid.Row="1" FontWeight="Medium" FontSize="14" Foreground="Red"/>
+
+                    <!-- Advice text -->
+                    <toolkit:RichTextBox AcceptsReturn="True" AcceptsTab="True" Height="150" Text="{Binding Advice, Mode=TwoWay}" Grid.Row="2" Margin="0,0,0,10"/>
+                </Grid>
+
+                <!-- Button Panel -->
+                <Button Content="Advies opslaan" Grid.Row="3" Command="{Binding SaveAdviceCommand}" Background="#FF000000" Foreground="#FFFFFFFF" HorizontalAlignment="Left" Padding="10 5 10 5"/>
+                <Button Content="Mailen" Grid.Row="3" Command="{Binding MailPDFCommand}" Background="#FF000000" Foreground="#FFFFFFFF" HorizontalAlignment="Right" Padding="10 5 10 5"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,52 @@
+.column-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.title {
+    height: 50px;
+    background-color: #7A70A1;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title>h1 {
+    text-align: center;
+    color: #F3F5F5;
+    font-weight: lighter;
+}
+
+.top-part {
+    height: 80%;
+    width: 100%;
+}
+
+.cards {
+    height: 100%;
+    overflow-y: scroll;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.create {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-top: 1px solid #7A70A1;
+    margin-top: 10px;
+    padding: 5px;
+    width: 96%;
+}
+
+.create>button {
+    background-color: #46495C;
+}

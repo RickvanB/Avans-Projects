@@ -1,0 +1,33 @@
+<div class="content">
+    <div class="existing-project" *ngIf="project">
+        <h1>Project Aanpassen</h1>
+        <span>{{validation.general}}</span>
+        <div class="project-prop">
+            <label>De huidige naam van uw project</label>
+            <div class="input">
+                <input type="text" [(ngModel)]="project.name" class="projectName" />
+                <span>{{validation.name}}</span>
+            </div>
+        </div>
+        <div class="project-prop">
+            <label>Een korte omschrijving van het project</label>
+            <div class="input">
+                <textarea [(ngModel)]="project.description"></textarea>
+                <span></span>
+            </div>
+        </div>
+        <div class="project-prop">
+            <label>Wat is de huidige status van het project?</label>
+            <div class="input">
+                <select (change)="onSelectStatus($event.target.value)"> 
+                    <option *ngFor="let option of status" [value]="option" [selected]="option == project.status">{{option}}</option>
+                </select>
+                <span>{{validation.status}}</span>
+            </div>
+        </div>
+        <div class="actions">
+            <button routerLink="/projects">Terug</button>
+            <button (click)="submitProject()">Wijzigingen Opslaan</button>
+        </div>
+    </div>
+</div>

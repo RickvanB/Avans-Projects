@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="project-colums" *ngIf="!showAsTable && project">
+        <app-backlog-column class="column first" [(project)]="project"></app-backlog-column>
+        <app-sprint-column class="column" [(project)]="project"></app-sprint-column>
+        <app-participants-column class="column" [(project)]="project"></app-participants-column>
+    </div>
+    <div class="table-view">
+        <button (click)="changeView()">
+            <span *ngIf="!showAsTable">Kolommen als tabel weergeven</span>
+            <span *ngIf="showAsTable">Origineel weergeven</span>
+        </button>
+        <button routerLink="/projects">
+            <span>Terug Naar Projecten</span>
+        </button>
+    </div>
+</div>
+<div class="container">
+    <app-project-table *ngIf="showAsTable" [sprints]="sprints" [userstories]="userstories"></app-project-table>
+</div>

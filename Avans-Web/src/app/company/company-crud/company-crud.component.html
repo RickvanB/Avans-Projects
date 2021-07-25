@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Speedmeet - Bedrijven beheren</h1>
+  <mat-card>
+      <mat-card-content>
+        <div class="table-actions">
+          <mat-form-field>
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput (keyup)="applyFilter($event)"/>
+          </mat-form-field>
+
+          <div class="buttons">
+            <button mat-raised-button color="primary" (click)="exportToExcel()">Exporteer deelnemende bedrijven</button>
+          </div>
+        </div>
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort class="full-width">
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Bedrijfsnaam </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef style="width: 20%;"> Status </th>
+              <td mat-cell *matCellDef="let row"> {{status[statusInt[row.status]]}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="opties">
+              <th mat-header-cell *matHeaderCellDef style="width: 110px; text-align: right;"> Opties </th>
+              <td mat-cell *matCellDef="let row" class="actions" style="text-align: right;">
+                <button mat-raised-button color="primary" [routerLink]="['/companies', row.id]">Details</button>
+                <button mat-raised-button color="primary" (click)="deleteCompany(row.id, row.name)">
+                  <mat-icon>remove_circle_outline</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[10, 20]"></mat-paginator>
+        </div>
+      </mat-card-content>
+  </mat-card>
+</div>

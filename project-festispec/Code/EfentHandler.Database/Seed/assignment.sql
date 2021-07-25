@@ -1,0 +1,4 @@
+﻿INSERT INTO assignment ([Description], [StartDate], [EndDate], [Street], [HouseNumber], [HouseNumberAddition], [City], [ZipCode], [StatusId], [Request], [Advice], [ClientId], [Lat], [Long]) 
+VALUES ('Inspectie 24-uurs Solexrace', '2018-08-29', '2018-08-31', 'Heibloemsedijk', 7, null, 'Heeswijk', '5473TC', 1, 'Graag controleren op de sanitaire voorziening', 'Kom ook s avonds', 1, 51.69112, 5.28807)
+INSERT INTO assignment ([Description], [StartDate], [EndDate], [Street], [HouseNumber], [HouseNumberAddition], [City], [ZipCode], [StatusId], [Request], [Advice], [ClientId], [Lat], [Long]) 
+VALUES ('Inspectie Paaspop', '2019-04-19', '2019-04-21', 'De Heikampen', 8, null, 'Schijndel', null, 1, 'Graag controleren op drugsgebruik', 'Kom ook s ochtends', 2, 51.69112, 5.28807)

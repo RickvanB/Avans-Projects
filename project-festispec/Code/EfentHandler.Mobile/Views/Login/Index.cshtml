@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Log in";
+}
+
+<h2>Log in</h2>
+
+<form action="/Login/Login" method="post">
+    <label for="inputEmail" class="sr-only">Email-adres</label>
+    <input type="text" id="inputEmail" name="email" class="form-control" placeholder="Email-adres"  autofocus><br />
+    <label for="inputPassword" class="sr-only">Wachtwoord</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Wachtwoord" ><br />
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+

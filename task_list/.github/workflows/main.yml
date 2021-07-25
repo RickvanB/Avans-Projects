@@ -1,0 +1,37 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  build:
+    name: Build, push, and deploy
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout master
+      uses: actions/checkout@master
+
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Save DigitalOcean kubeconfig
+      run: doctl kubernetes cluster kubeconfig save 52e1f18e-722a-455e-9d92-f8fda26efaa3
+
+    - name: Deploy to DigitalOcean Kubernetes - Database
+      run: kubectl apply -f $GITHUB_WORKSPACE/db-deployment.yaml
+    
+    - name: Deploy to DigitalOcean Kubernetes - Database service
+      run: kubectl apply -f $GITHUB_WORKSPACE/db-service.yaml
+    
+    - name: Deploy to DigitalOcean Kubernetes - Node app deployment
+      run: kubectl apply -f $GITHUB_WORKSPACE/node-app-deployment.yaml
+    
+    - name: Deploy to DigitalOcean Kubernetes - Node app service
+      run: kubectl apply -f $GITHUB_WORKSPACE/node-app-service.yaml
+
+    - name: Verify deployment
+      run: kubectl get deployments

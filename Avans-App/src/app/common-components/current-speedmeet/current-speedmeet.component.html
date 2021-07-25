@@ -1,0 +1,12 @@
+<div class="current-speedmeet" *ngIf="speedmeet">
+  <h1>{{ speedmeet.title }}</h1>
+  <div class="date">{{ speedmeet.start | date:'dd-MM-yyyy' }}</div>
+</div>
+<div class="current-speedmeet placeholder" *ngIf="!speedmeet && !error">
+  <h1>Speedmeet</h1>
+  <div class="date">Bezig met laden...</div>
+</div>
+<div class="current-speedmeet placeholder" *ngIf="error">
+  <h1>Speedmeet</h1>
+  <div class="date">Speedmeet kan niet worden geladen</div>
+</div>

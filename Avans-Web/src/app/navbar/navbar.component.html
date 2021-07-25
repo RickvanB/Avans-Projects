@@ -1,0 +1,25 @@
+<div class="app-header">
+  <div class="container">
+    <div class="name">Speedmeet</div>
+    <div class="logo">
+      <img src="assets/avans-logo.png" alt="Avans logo" />
+    </div>
+  </div>
+</div>
+<nav class="mat-elevation-z6 st-main-menu">
+  <div class="container">
+    <a *ngIf="isAdmin" mat-button routerLink="/admin-dashboard" [routerLinkActive]="'is-active'">Dashboard</a>
+    <a *ngIf="isCompany" mat-button routerLink="/company-dashboard" [routerLinkActive]="'is-active'">Dashboard</a>
+    <a *ngIf="isAdmin" mat-button routerLink="/companies-overview" [routerLinkActive]="'is-active'">Speedmeet</a>
+
+<!--    <a mat-button routerLink="/companies">Bedrijven</a>-->
+<!--    <a mat-button routerLink="/members">Leden beheer</a>-->
+
+    <a *ngIf="isAdmin" mat-button routerLink="/educations" [routerLinkActive]="'is-active'">Majors</a>
+
+    <div class="topnav-right">
+      <a *ngIf="isAdmin || isCompany" mat-button (click)="logout()">Uitloggen</a>
+    </div>
+
+  </div>
+</nav>

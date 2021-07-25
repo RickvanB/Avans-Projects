@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "taskboard-manager-7a88a": {
+      "hosting": {
+        "taskboard": [
+          "taskboard-manager-7a88a"
+        ]
+      }
+    }
+  }
+}

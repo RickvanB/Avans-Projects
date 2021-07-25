@@ -1,0 +1,38 @@
+<ion-app>
+    <ion-header>
+        <ion-toolbar class="pokemon-header">
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title>
+                Pokemon-Hunt
+            </ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-fab vertical="top" horizontal="end" edge slot="fixed" class="fab-button">
+            <ion-fab-button class="options">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-list side="bottom">
+                <ion-fab-button routerLink="/">
+                    <ion-icon name="home"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button routerLink="/pokemons">
+                    <ion-icon name="list"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button routerLink="/pokemons/my/catches">
+                    <ion-icon name="book"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button routerLink="/catch">
+                    <ion-icon name="color-wand"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button (click)="signOut()">
+                    <ion-icon name="power"></ion-icon>
+                </ion-fab-button>
+            </ion-fab-list>
+        </ion-fab>
+    </ion-content>
+    <app-navigation></app-navigation>
+    <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

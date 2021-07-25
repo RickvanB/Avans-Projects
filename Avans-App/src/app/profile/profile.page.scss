@@ -1,0 +1,130 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+h2,
+h4,
+h5,
+h6 {
+    color: #B62531;
+    margin: 0;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+h5 {
+    font-weight: lighter;
+}
+
+.content-profile {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-profile div {
+    margin: 10px 10px 0px 15px
+}
+
+.file-upload {
+    display: none;
+}
+
+.upload-label {
+    background-color: #B62531;
+    color: white;
+    border-radius: 50px;
+    padding: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.file-chosen span:first-child {
+    font-weight: bolder;
+    margin-left: 5px;
+}
+
+.action-button {
+    --border-radius: 45px;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 5px;
+    height: 25px;
+    font-size: 0.8em;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 0px !important;
+    margin-top: 3px !important;
+}
+
+.profile-card {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sec-section {
+    margin-top: 10px;
+}
+
+.sign-out {
+    margin-top: 15px;
+}
+
+.education {
+    margin-top: 8px;
+    font-weight: lighter;
+}
+
+p {
+    margin-top: 5px;
+}
+
+.about-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0px !important;
+}
+
+.edit-button {
+    background-color: #B62531;
+    margin-left: 10px;
+    color: white;
+    border-radius: 50px;
+    padding: 4px;
+    font-size: 18px;
+}
+
+.edit-about-me {
+    margin-top: 5px;
+    width: 100%;
+    background-color: #f2f2f2;
+}
+
+.save-button {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0px !important;
+}
+
+.side-button {
+    margin-right: 5px;
+}

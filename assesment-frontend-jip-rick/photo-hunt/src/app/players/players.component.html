@@ -1,0 +1,18 @@
+<div class="players">
+    <h2>Spelers van PhotoHunt</h2>
+
+    <table *ngIf="players.length > 0" class="table">
+        <thead>
+            <th scope="col">Gebruiker:</th>
+            <th scope="col">Profiel</th>
+        </thead>
+        <tbody *ngFor="let player of players">
+            <tr>
+                <td>{{ player.name }}</td>
+                <td>
+                    <a href="/player/{{ player._id }}" class="btn btn-primary">Profiel</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

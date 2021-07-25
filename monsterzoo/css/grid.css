@@ -1,0 +1,18 @@
+#table-grid {
+    background-color: #009933;
+}
+
+td {
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 80px !important;
+    max-height: 80px !important;
+}
+
+.droptarget {
+    width: 80px;
+    height: 80px;
+    max-width: 80px !important;
+    max-height: 80px !important;
+    border: 1px solid black;
+}

@@ -1,0 +1,1519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EfentHandler.Domain.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="answer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="4" />
+          <Property Name="IntAnswer" Type="int" />
+          <Property Name="TextAnswer" Type="varchar(max)" />
+          <Property Name="MultipleChoiceAnswer" Type="int" />
+          <Property Name="SurveyQuestionId" Type="int" Nullable="false" />
+          <Property Name="QuestionChoiceId" Type="int" />
+          <Property Name="QuestionChoiceId2" Type="int" />
+        </EntityType>
+        <EntityType Name="assignment">
+          <Key>
+            <PropertyRef Name="AssignmentId" />
+          </Key>
+          <Property Name="AssignmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HouseNumber" Type="int" Nullable="false" />
+          <Property Name="HouseNumberAddition" Type="varchar" MaxLength="1" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="6" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="Request" Type="varchar(max)" />
+          <Property Name="Advice" Type="varchar(max)" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Long" Type="float" />
+        </EntityType>
+        <EntityType Name="availability">
+          <Key>
+            <PropertyRef Name="AvailabilityId" />
+          </Key>
+          <Property Name="AvailabilityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chart_type">
+          <Key>
+            <PropertyRef Name="ChartTypeId" />
+          </Key>
+          <Property Name="ChartTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar(max)" Nullable="false" />
+          <Property Name="KvKNumber" Type="int" />
+          <Property Name="EstablishmentNumber" Type="int" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HouseNumber" Type="int" Nullable="false" />
+          <Property Name="HouseNumberAddition" Type="char" MaxLength="1" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="Website" Type="varchar(max)" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Long" Type="float" />
+        </EntityType>
+        <EntityType Name="contactperson">
+          <Key>
+            <PropertyRef Name="ContactPersonId" />
+          </Key>
+          <Property Name="ContactPersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="multiplechoiceanswer">
+          <Key>
+            <PropertyRef Name="MultipleChoiceId" />
+          </Key>
+          <Property Name="MultipleChoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Answer" Type="varchar(max)" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="varchar(max)" Nullable="false" />
+          <Property Name="Image" Type="varchar(max)" />
+          <Property Name="QuestionTypeId" Type="int" Nullable="false" />
+          <Property Name="EditedByEmployee" Type="int" Nullable="false" />
+          <Property Name="ChartTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="question_choice">
+          <Key>
+            <PropertyRef Name="QuestionChoiceId" />
+          </Key>
+          <Property Name="QuestionChoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionId" Type="int" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="questiontype">
+          <Key>
+            <PropertyRef Name="QuestionTypeId" />
+          </Key>
+          <Property Name="QuestionTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="RequestId" />
+          </Key>
+          <Property Name="RequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="schedule">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ScheduleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Inspector" Type="int" Nullable="false" />
+          <Property Name="Confirmed" Type="int" Nullable="false" />
+          <Property Name="AssignmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="survey">
+          <Key>
+            <PropertyRef Name="SurveyId" />
+          </Key>
+          <Property Name="SurveyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="ConfirmedByEmployee" Type="bit" />
+          <Property Name="ConfirmedByInspector" Type="bit" />
+          <Property Name="IsTemplate" Type="bit" Nullable="false" />
+          <Property Name="ParentSurvey" Type="int" />
+          <Property Name="AssignmentId" Type="int" />
+          <Property Name="AssignedEmployee" Type="int" />
+        </EntityType>
+        <EntityType Name="survey_question">
+          <Key>
+            <PropertyRef Name="SurveyQuestionId" />
+          </Key>
+          <Property Name="SurveyQuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurveyId" Type="int" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HouseNumber" Type="int" Nullable="false" />
+          <Property Name="HouseNumberAddition" Type="char" MaxLength="1" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+          <Property Name="ServiceDate" Type="date" />
+          <Property Name="Certified" Type="bit" Nullable="false" />
+          <Property Name="CertificationEndDate" Type="date" />
+          <Property Name="IBAN" Type="varchar" MaxLength="18" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Long" Type="float" />
+        </EntityType>
+        <EntityType Name="user_assignment">
+          <Key>
+            <PropertyRef Name="User_AssignmentId" />
+          </Key>
+          <Property Name="User_AssignmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AssignmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usertype">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_answer_multiplechoiceanswer">
+          <End Role="multiplechoiceanswer" Type="Self.multiplechoiceanswer" Multiplicity="0..1" />
+          <End Role="answer" Type="Self.answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="multiplechoiceanswer">
+              <PropertyRef Name="MultipleChoiceId" />
+            </Principal>
+            <Dependent Role="answer">
+              <PropertyRef Name="MultipleChoiceAnswer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_question_choice">
+          <End Role="question_choice" Type="Self.question_choice" Multiplicity="0..1" />
+          <End Role="answer" Type="Self.answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question_choice">
+              <PropertyRef Name="QuestionChoiceId" />
+            </Principal>
+            <Dependent Role="answer">
+              <PropertyRef Name="QuestionChoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_question_choice2">
+          <End Role="question_choice" Type="Self.question_choice" Multiplicity="0..1" />
+          <End Role="answer" Type="Self.answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question_choice">
+              <PropertyRef Name="QuestionChoiceId" />
+            </Principal>
+            <Dependent Role="answer">
+              <PropertyRef Name="QuestionChoiceId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_survey_question">
+          <End Role="survey_question" Type="Self.survey_question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="answer" Type="Self.answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="survey_question">
+              <PropertyRef Name="SurveyQuestionId" />
+            </Principal>
+            <Dependent Role="answer">
+              <PropertyRef Name="SurveyQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assignment_client">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="assignment" Type="Self.assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="assignment">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assignment_status">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="assignment" Type="Self.assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="assignment">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Assignment_User_Assignment">
+          <End Role="assignment" Type="Self.assignment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_assignment" Type="Self.user_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Principal>
+            <Dependent Role="user_assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_availability_user">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="availability" Type="Self.availability" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="availability">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contactperson_client">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="contactperson" Type="Self.contactperson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="contactperson">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_multiplechoiceanswer_question">
+          <End Role="question" Type="Self.question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="multiplechoiceanswer" Type="Self.multiplechoiceanswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="multiplechoiceanswer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_chart">
+          <End Role="chart_type" Type="Self.chart_type" Multiplicity="0..1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chart_type">
+              <PropertyRef Name="ChartTypeId" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="ChartTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_choice_question">
+          <End Role="question" Type="Self.question" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="question_choice" Type="Self.question_choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="question_choice">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_questiontype">
+          <End Role="questiontype" Type="Self.questiontype" Multiplicity="1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questiontype">
+              <PropertyRef Name="QuestionTypeId" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="QuestionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_client">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_schedule_assignment">
+          <End Role="assignment" Type="Self.assignment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="schedule" Type="Self.schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Principal>
+            <Dependent Role="schedule">
+              <PropertyRef Name="AssignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_schedule_user">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="schedule" Type="Self.schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="schedule">
+              <PropertyRef Name="Inspector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_assignment">
+          <End Role="assignment" Type="Self.assignment" Multiplicity="0..1" />
+          <End Role="survey" Type="Self.survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Principal>
+            <Dependent Role="survey">
+              <PropertyRef Name="AssignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_question_question">
+          <End Role="question" Type="Self.question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="survey_question" Type="Self.survey_question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="survey_question">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_question_survey">
+          <End Role="survey" Type="Self.survey" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="survey_question" Type="Self.survey_question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="survey">
+              <PropertyRef Name="SurveyId" />
+            </Principal>
+            <Dependent Role="survey_question">
+              <PropertyRef Name="SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_survey">
+          <End Role="survey" Type="Self.survey" Multiplicity="0..1" />
+          <End Role="survey1" Type="Self.survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="survey">
+              <PropertyRef Name="SurveyId" />
+            </Principal>
+            <Dependent Role="survey1">
+              <PropertyRef Name="ParentSurvey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="survey" Type="Self.survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="survey">
+              <PropertyRef Name="AssignedEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User_Assignment">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_assignment" Type="Self.user_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="user_assignment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_usertype">
+          <End Role="usertype" Type="Self.usertype" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usertype">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EfentHandlerDomainModelStoreContainer">
+          <EntitySet Name="answer" EntityType="Self.answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="assignment" EntityType="Self.assignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="availability" EntityType="Self.availability" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chart_type" EntityType="Self.chart_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contactperson" EntityType="Self.contactperson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="multiplechoiceanswer" EntityType="Self.multiplechoiceanswer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="question" EntityType="Self.question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="question_choice" EntityType="Self.question_choice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="questiontype" EntityType="Self.questiontype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="request" EntityType="Self.request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="schedule" EntityType="Self.schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="survey" EntityType="Self.survey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="survey_question" EntityType="Self.survey_question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_assignment" EntityType="Self.user_assignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usertype" EntityType="Self.usertype" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_answer_multiplechoiceanswer" Association="Self.FK_answer_multiplechoiceanswer">
+            <End Role="multiplechoiceanswer" EntitySet="multiplechoiceanswer" />
+            <End Role="answer" EntitySet="answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_question_choice" Association="Self.FK_answer_question_choice">
+            <End Role="question_choice" EntitySet="question_choice" />
+            <End Role="answer" EntitySet="answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_question_choice2" Association="Self.FK_answer_question_choice2">
+            <End Role="question_choice" EntitySet="question_choice" />
+            <End Role="answer" EntitySet="answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_survey_question" Association="Self.FK_answer_survey_question">
+            <End Role="survey_question" EntitySet="survey_question" />
+            <End Role="answer" EntitySet="answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assignment_client" Association="Self.FK_assignment_client">
+            <End Role="client" EntitySet="client" />
+            <End Role="assignment" EntitySet="assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assignment_status" Association="Self.FK_assignment_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="assignment" EntitySet="assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Assignment_User_Assignment" Association="Self.FK_Assignment_User_Assignment">
+            <End Role="assignment" EntitySet="assignment" />
+            <End Role="user_assignment" EntitySet="user_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_availability_user" Association="Self.FK_availability_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="availability" EntitySet="availability" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contactperson_client" Association="Self.FK_contactperson_client">
+            <End Role="client" EntitySet="client" />
+            <End Role="contactperson" EntitySet="contactperson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_multiplechoiceanswer_question" Association="Self.FK_multiplechoiceanswer_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="multiplechoiceanswer" EntitySet="multiplechoiceanswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_chart" Association="Self.FK_question_chart">
+            <End Role="chart_type" EntitySet="chart_type" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_choice_question" Association="Self.FK_question_choice_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="question_choice" EntitySet="question_choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_questiontype" Association="Self.FK_question_questiontype">
+            <End Role="questiontype" EntitySet="questiontype" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_client" Association="Self.FK_request_client">
+            <End Role="client" EntitySet="client" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_schedule_assignment" Association="Self.FK_schedule_assignment">
+            <End Role="assignment" EntitySet="assignment" />
+            <End Role="schedule" EntitySet="schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_schedule_user" Association="Self.FK_schedule_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="schedule" EntitySet="schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_assignment" Association="Self.FK_survey_assignment">
+            <End Role="assignment" EntitySet="assignment" />
+            <End Role="survey" EntitySet="survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_question_question" Association="Self.FK_survey_question_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="survey_question" EntitySet="survey_question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_question_survey" Association="Self.FK_survey_question_survey">
+            <End Role="survey" EntitySet="survey" />
+            <End Role="survey_question" EntitySet="survey_question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_survey" Association="Self.FK_survey_survey">
+            <End Role="survey" EntitySet="survey" />
+            <End Role="survey1" EntitySet="survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_user" Association="Self.FK_survey_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="survey" EntitySet="survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User_Assignment" Association="Self.FK_User_User_Assignment">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_assignment" EntitySet="user_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_usertype" Association="Self.FK_user_usertype">
+            <End Role="usertype" EntitySet="usertype" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EfentHandler.Domain.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="answer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="Time" Precision="4" />
+          <Property Name="IntAnswer" Type="Int32" />
+          <Property Name="TextAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MultipleChoiceAnswer" Type="Int32" />
+          <Property Name="SurveyQuestionId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionChoiceId" Type="Int32" />
+          <Property Name="QuestionChoiceId2" Type="Int32" />
+          <NavigationProperty Name="multiplechoiceanswer1" Relationship="Self.FK_answer_multiplechoiceanswer" FromRole="answer" ToRole="multiplechoiceanswer" />
+          <NavigationProperty Name="question_choice" Relationship="Self.FK_answer_question_choice" FromRole="answer" ToRole="question_choice" />
+          <NavigationProperty Name="question_choice1" Relationship="Self.FK_answer_question_choice2" FromRole="answer" ToRole="question_choice" />
+          <NavigationProperty Name="survey_question" Relationship="Self.FK_answer_survey_question" FromRole="answer" ToRole="survey_question" />
+        </EntityType>
+        <EntityType Name="assignment">
+          <Key>
+            <PropertyRef Name="AssignmentId" />
+          </Key>
+          <Property Name="AssignmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HouseNumber" Type="Int32" Nullable="false" />
+          <Property Name="HouseNumberAddition" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="Request" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Advice" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="Long" Type="Double" />
+          <NavigationProperty Name="client" Relationship="Self.FK_assignment_client" FromRole="assignment" ToRole="client" />
+          <NavigationProperty Name="status" Relationship="Self.FK_assignment_status" FromRole="assignment" ToRole="status" />
+          <NavigationProperty Name="user_assignment" Relationship="Self.FK_Assignment_User_Assignment" FromRole="assignment" ToRole="user_assignment" />
+          <NavigationProperty Name="schedule" Relationship="Self.FK_schedule_assignment" FromRole="assignment" ToRole="schedule" />
+          <NavigationProperty Name="survey" Relationship="Self.FK_survey_assignment" FromRole="assignment" ToRole="survey" />
+        </EntityType>
+        <EntityType Name="availability">
+          <Key>
+            <PropertyRef Name="AvailabilityId" />
+          </Key>
+          <Property Name="AvailabilityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_availability_user" FromRole="availability" ToRole="user" />
+        </EntityType>
+        <EntityType Name="chart_type">
+          <Key>
+            <PropertyRef Name="ChartTypeId" />
+          </Key>
+          <Property Name="ChartTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="question" Relationship="Self.FK_question_chart" FromRole="chart_type" ToRole="question" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KvKNumber" Type="Int32" />
+          <Property Name="EstablishmentNumber" Type="Int32" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HouseNumber" Type="Int32" Nullable="false" />
+          <Property Name="HouseNumberAddition" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="Long" Type="Double" />
+          <NavigationProperty Name="assignment" Relationship="Self.FK_assignment_client" FromRole="client" ToRole="assignment" />
+          <NavigationProperty Name="contactperson" Relationship="Self.FK_contactperson_client" FromRole="client" ToRole="contactperson" />
+          <NavigationProperty Name="request" Relationship="Self.FK_request_client" FromRole="client" ToRole="request" />
+        </EntityType>
+        <EntityType Name="contactperson">
+          <Key>
+            <PropertyRef Name="ContactPersonId" />
+          </Key>
+          <Property Name="ContactPersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="client" Relationship="Self.FK_contactperson_client" FromRole="contactperson" ToRole="client" />
+        </EntityType>
+        <EntityType Name="multiplechoiceanswer">
+          <Key>
+            <PropertyRef Name="MultipleChoiceId" />
+          </Key>
+          <Property Name="MultipleChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="answer1" Relationship="Self.FK_answer_multiplechoiceanswer" FromRole="multiplechoiceanswer" ToRole="answer" />
+          <NavigationProperty Name="question" Relationship="Self.FK_multiplechoiceanswer_question" FromRole="multiplechoiceanswer" ToRole="question" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="QuestionTypeId" Type="Int32" Nullable="false" />
+          <Property Name="EditedByEmployee" Type="Int32" Nullable="false" />
+          <Property Name="ChartTypeId" Type="Int32" />
+          <NavigationProperty Name="chart_type" Relationship="Self.FK_question_chart" FromRole="question" ToRole="chart_type" />
+          <NavigationProperty Name="multiplechoiceanswer" Relationship="Self.FK_multiplechoiceanswer_question" FromRole="question" ToRole="multiplechoiceanswer" />
+          <NavigationProperty Name="question_choice" Relationship="Self.FK_question_choice_question" FromRole="question" ToRole="question_choice" />
+          <NavigationProperty Name="questiontype" Relationship="Self.FK_question_questiontype" FromRole="question" ToRole="questiontype" />
+          <NavigationProperty Name="survey_question" Relationship="Self.FK_survey_question_question" FromRole="question" ToRole="survey_question" />
+        </EntityType>
+        <EntityType Name="question_choice">
+          <Key>
+            <PropertyRef Name="QuestionChoiceId" />
+          </Key>
+          <Property Name="QuestionChoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="answer" Relationship="Self.FK_answer_question_choice" FromRole="question_choice" ToRole="answer" />
+          <NavigationProperty Name="answer1" Relationship="Self.FK_answer_question_choice2" FromRole="question_choice" ToRole="answer" />
+          <NavigationProperty Name="question" Relationship="Self.FK_question_choice_question" FromRole="question_choice" ToRole="question" />
+        </EntityType>
+        <EntityType Name="questiontype">
+          <Key>
+            <PropertyRef Name="QuestionTypeId" />
+          </Key>
+          <Property Name="QuestionTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="question" Relationship="Self.FK_question_questiontype" FromRole="questiontype" ToRole="question" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="RequestId" />
+          </Key>
+          <Property Name="RequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="client" Relationship="Self.FK_request_client" FromRole="request" ToRole="client" />
+        </EntityType>
+        <EntityType Name="schedule">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ScheduleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Inspector" Type="Int32" Nullable="false" />
+          <Property Name="Confirmed" Type="Int32" Nullable="false" />
+          <Property Name="AssignmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="assignment" Relationship="Self.FK_schedule_assignment" FromRole="schedule" ToRole="assignment" />
+          <NavigationProperty Name="user" Relationship="Self.FK_schedule_user" FromRole="schedule" ToRole="user" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="assignment" Relationship="Self.FK_assignment_status" FromRole="status" ToRole="assignment" />
+        </EntityType>
+        <EntityType Name="survey">
+          <Key>
+            <PropertyRef Name="SurveyId" />
+          </Key>
+          <Property Name="SurveyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ConfirmedByEmployee" Type="Boolean" />
+          <Property Name="ConfirmedByInspector" Type="Boolean" />
+          <Property Name="IsTemplate" Type="Boolean" Nullable="false" />
+          <Property Name="ParentSurvey" Type="Int32" />
+          <Property Name="AssignmentId" Type="Int32" />
+          <Property Name="AssignedEmployee" Type="Int32" />
+          <NavigationProperty Name="assignment" Relationship="Self.FK_survey_assignment" FromRole="survey" ToRole="assignment" />
+          <NavigationProperty Name="survey_question" Relationship="Self.FK_survey_question_survey" FromRole="survey" ToRole="survey_question" />
+          <NavigationProperty Name="survey1" Relationship="Self.FK_survey_survey" FromRole="survey" ToRole="survey1" />
+          <NavigationProperty Name="survey2" Relationship="Self.FK_survey_survey" FromRole="survey1" ToRole="survey" />
+          <NavigationProperty Name="user" Relationship="Self.FK_survey_user" FromRole="survey" ToRole="user" />
+        </EntityType>
+        <EntityType Name="survey_question">
+          <Key>
+            <PropertyRef Name="SurveyQuestionId" />
+          </Key>
+          <Property Name="SurveyQuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurveyId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="answer" Relationship="Self.FK_answer_survey_question" FromRole="survey_question" ToRole="answer" />
+          <NavigationProperty Name="question" Relationship="Self.FK_survey_question_question" FromRole="survey_question" ToRole="question" />
+          <NavigationProperty Name="survey" Relationship="Self.FK_survey_question_survey" FromRole="survey_question" ToRole="survey" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HouseNumber" Type="Int32" Nullable="false" />
+          <Property Name="HouseNumberAddition" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+          <Property Name="ServiceDate" Type="DateTime" Precision="0" />
+          <Property Name="Certified" Type="Boolean" Nullable="false" />
+          <Property Name="CertificationEndDate" Type="DateTime" Precision="0" />
+          <Property Name="IBAN" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="Long" Type="Double" />
+          <NavigationProperty Name="availability" Relationship="Self.FK_availability_user" FromRole="user" ToRole="availability" />
+          <NavigationProperty Name="schedule" Relationship="Self.FK_schedule_user" FromRole="user" ToRole="schedule" />
+          <NavigationProperty Name="survey" Relationship="Self.FK_survey_user" FromRole="user" ToRole="survey" />
+          <NavigationProperty Name="user_assignment" Relationship="Self.FK_User_User_Assignment" FromRole="user" ToRole="user_assignment" />
+          <NavigationProperty Name="usertype" Relationship="Self.FK_user_usertype" FromRole="user" ToRole="usertype" />
+        </EntityType>
+        <EntityType Name="user_assignment">
+          <Key>
+            <PropertyRef Name="User_AssignmentId" />
+          </Key>
+          <Property Name="User_AssignmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="AssignmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="assignment" Relationship="Self.FK_Assignment_User_Assignment" FromRole="user_assignment" ToRole="assignment" />
+          <NavigationProperty Name="user" Relationship="Self.FK_User_User_Assignment" FromRole="user_assignment" ToRole="user" />
+        </EntityType>
+        <EntityType Name="usertype">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_usertype" FromRole="usertype" ToRole="user" />
+        </EntityType>
+        <Association Name="FK_answer_multiplechoiceanswer">
+          <End Role="multiplechoiceanswer" Type="Self.multiplechoiceanswer" Multiplicity="0..1" />
+          <End Role="answer" Type="Self.answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="multiplechoiceanswer">
+              <PropertyRef Name="MultipleChoiceId" />
+            </Principal>
+            <Dependent Role="answer">
+              <PropertyRef Name="MultipleChoiceAnswer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_question_choice">
+          <End Role="question_choice" Type="Self.question_choice" Multiplicity="0..1" />
+          <End Role="answer" Type="Self.answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question_choice">
+              <PropertyRef Name="QuestionChoiceId" />
+            </Principal>
+            <Dependent Role="answer">
+              <PropertyRef Name="QuestionChoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_question_choice2">
+          <End Role="question_choice" Type="Self.question_choice" Multiplicity="0..1" />
+          <End Role="answer" Type="Self.answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question_choice">
+              <PropertyRef Name="QuestionChoiceId" />
+            </Principal>
+            <Dependent Role="answer">
+              <PropertyRef Name="QuestionChoiceId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_answer_survey_question">
+          <End Role="survey_question" Type="Self.survey_question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="answer" Type="Self.answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="survey_question">
+              <PropertyRef Name="SurveyQuestionId" />
+            </Principal>
+            <Dependent Role="answer">
+              <PropertyRef Name="SurveyQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assignment_client">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="assignment" Type="Self.assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="assignment">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_assignment_status">
+          <End Role="status" Type="Self.status" Multiplicity="1" />
+          <End Role="assignment" Type="Self.assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="assignment">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Assignment_User_Assignment">
+          <End Role="assignment" Type="Self.assignment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_assignment" Type="Self.user_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Principal>
+            <Dependent Role="user_assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_schedule_assignment">
+          <End Role="assignment" Type="Self.assignment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="schedule" Type="Self.schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Principal>
+            <Dependent Role="schedule">
+              <PropertyRef Name="AssignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_assignment">
+          <End Role="assignment" Type="Self.assignment" Multiplicity="0..1" />
+          <End Role="survey" Type="Self.survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assignment">
+              <PropertyRef Name="AssignmentId" />
+            </Principal>
+            <Dependent Role="survey">
+              <PropertyRef Name="AssignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_availability_user">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="availability" Type="Self.availability" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="availability">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_chart">
+          <End Role="chart_type" Type="Self.chart_type" Multiplicity="0..1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chart_type">
+              <PropertyRef Name="ChartTypeId" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="ChartTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_contactperson_client">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="contactperson" Type="Self.contactperson" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="contactperson">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_request_client">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_multiplechoiceanswer_question">
+          <End Role="question" Type="Self.question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="multiplechoiceanswer" Type="Self.multiplechoiceanswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="multiplechoiceanswer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_choice_question">
+          <End Role="question" Type="Self.question" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="question_choice" Type="Self.question_choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="question_choice">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_questiontype">
+          <End Role="questiontype" Type="Self.questiontype" Multiplicity="1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questiontype">
+              <PropertyRef Name="QuestionTypeId" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="QuestionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_question_question">
+          <End Role="question" Type="Self.question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="survey_question" Type="Self.survey_question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="survey_question">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_schedule_user">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="schedule" Type="Self.schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="schedule">
+              <PropertyRef Name="Inspector" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_question_survey">
+          <End Role="survey" Type="Self.survey" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="survey_question" Type="Self.survey_question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="survey">
+              <PropertyRef Name="SurveyId" />
+            </Principal>
+            <Dependent Role="survey_question">
+              <PropertyRef Name="SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_survey">
+          <End Role="survey" Type="Self.survey" Multiplicity="0..1" />
+          <End Role="survey1" Type="Self.survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="survey">
+              <PropertyRef Name="SurveyId" />
+            </Principal>
+            <Dependent Role="survey1">
+              <PropertyRef Name="ParentSurvey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_survey_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="survey" Type="Self.survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="survey">
+              <PropertyRef Name="AssignedEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_User_Assignment">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_assignment" Type="Self.user_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="user_assignment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_usertype">
+          <End Role="usertype" Type="Self.usertype" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usertype">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EfentHandlerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="answer" EntityType="Self.answer" />
+          <EntitySet Name="assignment" EntityType="Self.assignment" />
+          <EntitySet Name="availability" EntityType="Self.availability" />
+          <EntitySet Name="chart_type" EntityType="Self.chart_type" />
+          <EntitySet Name="client" EntityType="Self.client" />
+          <EntitySet Name="contactperson" EntityType="Self.contactperson" />
+          <EntitySet Name="multiplechoiceanswer" EntityType="Self.multiplechoiceanswer" />
+          <EntitySet Name="question" EntityType="Self.question" />
+          <EntitySet Name="question_choice" EntityType="Self.question_choice" />
+          <EntitySet Name="questiontype" EntityType="Self.questiontype" />
+          <EntitySet Name="request" EntityType="Self.request" />
+          <EntitySet Name="schedule" EntityType="Self.schedule" />
+          <EntitySet Name="status" EntityType="Self.status" />
+          <EntitySet Name="survey" EntityType="Self.survey" />
+          <EntitySet Name="survey_question" EntityType="Self.survey_question" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="user_assignment" EntityType="Self.user_assignment" />
+          <EntitySet Name="usertype" EntityType="Self.usertype" />
+          <AssociationSet Name="FK_answer_multiplechoiceanswer" Association="Self.FK_answer_multiplechoiceanswer">
+            <End Role="multiplechoiceanswer" EntitySet="multiplechoiceanswer" />
+            <End Role="answer" EntitySet="answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_question_choice" Association="Self.FK_answer_question_choice">
+            <End Role="question_choice" EntitySet="question_choice" />
+            <End Role="answer" EntitySet="answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_question_choice2" Association="Self.FK_answer_question_choice2">
+            <End Role="question_choice" EntitySet="question_choice" />
+            <End Role="answer" EntitySet="answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_answer_survey_question" Association="Self.FK_answer_survey_question">
+            <End Role="survey_question" EntitySet="survey_question" />
+            <End Role="answer" EntitySet="answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assignment_client" Association="Self.FK_assignment_client">
+            <End Role="client" EntitySet="client" />
+            <End Role="assignment" EntitySet="assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_assignment_status" Association="Self.FK_assignment_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="assignment" EntitySet="assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Assignment_User_Assignment" Association="Self.FK_Assignment_User_Assignment">
+            <End Role="assignment" EntitySet="assignment" />
+            <End Role="user_assignment" EntitySet="user_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_schedule_assignment" Association="Self.FK_schedule_assignment">
+            <End Role="assignment" EntitySet="assignment" />
+            <End Role="schedule" EntitySet="schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_assignment" Association="Self.FK_survey_assignment">
+            <End Role="assignment" EntitySet="assignment" />
+            <End Role="survey" EntitySet="survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_availability_user" Association="Self.FK_availability_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="availability" EntitySet="availability" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_chart" Association="Self.FK_question_chart">
+            <End Role="chart_type" EntitySet="chart_type" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_contactperson_client" Association="Self.FK_contactperson_client">
+            <End Role="client" EntitySet="client" />
+            <End Role="contactperson" EntitySet="contactperson" />
+          </AssociationSet>
+          <AssociationSet Name="FK_request_client" Association="Self.FK_request_client">
+            <End Role="client" EntitySet="client" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_multiplechoiceanswer_question" Association="Self.FK_multiplechoiceanswer_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="multiplechoiceanswer" EntitySet="multiplechoiceanswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_choice_question" Association="Self.FK_question_choice_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="question_choice" EntitySet="question_choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_questiontype" Association="Self.FK_question_questiontype">
+            <End Role="questiontype" EntitySet="questiontype" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_question_question" Association="Self.FK_survey_question_question">
+            <End Role="question" EntitySet="question" />
+            <End Role="survey_question" EntitySet="survey_question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_schedule_user" Association="Self.FK_schedule_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="schedule" EntitySet="schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_question_survey" Association="Self.FK_survey_question_survey">
+            <End Role="survey" EntitySet="survey" />
+            <End Role="survey_question" EntitySet="survey_question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_survey" Association="Self.FK_survey_survey">
+            <End Role="survey" EntitySet="survey" />
+            <End Role="survey1" EntitySet="survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_survey_user" Association="Self.FK_survey_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="survey" EntitySet="survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_User_Assignment" Association="Self.FK_User_User_Assignment">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_assignment" EntitySet="user_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_usertype" Association="Self.FK_user_usertype">
+            <End Role="usertype" EntitySet="usertype" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EfentHandlerDomainModelStoreContainer" CdmEntityContainer="EfentHandlerEntities">
+          <EntitySetMapping Name="answer">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.answer">
+              <MappingFragment StoreEntitySet="answer">
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="IntAnswer" ColumnName="IntAnswer" />
+                <ScalarProperty Name="TextAnswer" ColumnName="TextAnswer" />
+                <ScalarProperty Name="MultipleChoiceAnswer" ColumnName="MultipleChoiceAnswer" />
+                <ScalarProperty Name="SurveyQuestionId" ColumnName="SurveyQuestionId" />
+                <ScalarProperty Name="QuestionChoiceId" ColumnName="QuestionChoiceId" />
+                <ScalarProperty Name="QuestionChoiceId2" ColumnName="QuestionChoiceId2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assignment">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.assignment">
+              <MappingFragment StoreEntitySet="assignment">
+                <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="HouseNumberAddition" ColumnName="HouseNumberAddition" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Request" ColumnName="Request" />
+                <ScalarProperty Name="Advice" ColumnName="Advice" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="availability">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.availability">
+              <MappingFragment StoreEntitySet="availability">
+                <ScalarProperty Name="AvailabilityId" ColumnName="AvailabilityId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chart_type">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.chart_type">
+              <MappingFragment StoreEntitySet="chart_type">
+                <ScalarProperty Name="ChartTypeId" ColumnName="ChartTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.client">
+              <MappingFragment StoreEntitySet="client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="KvKNumber" ColumnName="KvKNumber" />
+                <ScalarProperty Name="EstablishmentNumber" ColumnName="EstablishmentNumber" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="HouseNumberAddition" ColumnName="HouseNumberAddition" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contactperson">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.contactperson">
+              <MappingFragment StoreEntitySet="contactperson">
+                <ScalarProperty Name="ContactPersonId" ColumnName="ContactPersonId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="multiplechoiceanswer">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.multiplechoiceanswer">
+              <MappingFragment StoreEntitySet="multiplechoiceanswer">
+                <ScalarProperty Name="MultipleChoiceId" ColumnName="MultipleChoiceId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.question">
+              <MappingFragment StoreEntitySet="question">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Question1" ColumnName="Question" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+                <ScalarProperty Name="EditedByEmployee" ColumnName="EditedByEmployee" />
+                <ScalarProperty Name="ChartTypeId" ColumnName="ChartTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question_choice">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.question_choice">
+              <MappingFragment StoreEntitySet="question_choice">
+                <ScalarProperty Name="QuestionChoiceId" ColumnName="QuestionChoiceId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questiontype">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.questiontype">
+              <MappingFragment StoreEntitySet="questiontype">
+                <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="request">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.request">
+              <MappingFragment StoreEntitySet="request">
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="schedule">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.schedule">
+              <MappingFragment StoreEntitySet="schedule">
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="Inspector" ColumnName="Inspector" />
+                <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+                <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Status1" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="survey">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.survey">
+              <MappingFragment StoreEntitySet="survey">
+                <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ConfirmedByEmployee" ColumnName="ConfirmedByEmployee" />
+                <ScalarProperty Name="ConfirmedByInspector" ColumnName="ConfirmedByInspector" />
+                <ScalarProperty Name="IsTemplate" ColumnName="IsTemplate" />
+                <ScalarProperty Name="ParentSurvey" ColumnName="ParentSurvey" />
+                <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+                <ScalarProperty Name="AssignedEmployee" ColumnName="AssignedEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="survey_question">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.survey_question">
+              <MappingFragment StoreEntitySet="survey_question">
+                <ScalarProperty Name="SurveyQuestionId" ColumnName="SurveyQuestionId" />
+                <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="HouseNumberAddition" ColumnName="HouseNumberAddition" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ServiceDate" ColumnName="ServiceDate" />
+                <ScalarProperty Name="Certified" ColumnName="Certified" />
+                <ScalarProperty Name="CertificationEndDate" ColumnName="CertificationEndDate" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Long" ColumnName="Long" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_assignment">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.user_assignment">
+              <MappingFragment StoreEntitySet="user_assignment">
+                <ScalarProperty Name="User_AssignmentId" ColumnName="User_AssignmentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usertype">
+            <EntityTypeMapping TypeName="EfentHandler.Domain.Model.usertype">
+              <MappingFragment StoreEntitySet="usertype">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserType1" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

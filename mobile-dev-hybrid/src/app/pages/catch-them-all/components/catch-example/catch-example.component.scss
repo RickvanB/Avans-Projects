@@ -1,0 +1,23 @@
+.instrcutrion {
+    padding: 5px;
+    background-color: #76B4A6;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.instrcutrion h4,
+.instrcutrion p {
+    text-align: center;
+}
+
+.popover-content {
+    width: 500px !important;
+}
+
+#catch-button {
+    background-color: #F9A754;
+    padding: 2px;
+    color: white;
+    border-radius: 5px;
+}

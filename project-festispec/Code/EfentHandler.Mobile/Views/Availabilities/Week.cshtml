@@ -1,0 +1,66 @@
+﻿<br />
+
+@{
+    ViewBag.Title = "Week " + ViewBag.currentWeek;
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <select class="form-control" onchange="location=this.value;">
+                <option value="">Week @ViewBag.currentWeek</option>
+                @for (int i = 1; i <= 52; i++)
+                {
+                    <option value="/Availabilities/Week/@i">Week @i</option>
+                }
+            </select>
+        </div>
+        <table class="table">
+
+            <tr>
+                <th></th>
+                <th>
+                    Datum
+                </th>
+                <th>
+                    Tijdstip
+                </th>
+            </tr>
+
+            @foreach (var item in ViewBag.availabilities)
+            {
+                <tr>
+                    <td>
+                        <form action="/Availabilities/@(item.Value ? "Delete" : "Week")" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="checkbox" @(item.Value ? "checked" : "")
+                                   onChange="check(); this.form.submit();" />
+                            <input type="hidden" name="date" value="@item.Key" />
+                            <input type="hidden" name="week" value="@ViewBag.currentWeek" />
+                        </form>
+                    </td>
+                    <td>@item.Key.ToString("ddd, dd MMM yyy")</td>
+                    <td>06:00 - 02:00 uur</td>
+                </tr>
+            }
+
+        </table>
+        <div class="row">
+            <div class="col-xs-2">
+                @if(ViewBag.currentWeek != 1) {
+                <a href="/Availabilities/Week/@(ViewBag.currentWeek-1)" class="btn btn-lg btn-default"><</a> }
+            </div>
+            <div class="col-xs-8"></div>
+            <div class="col-xs-2">
+                @if (ViewBag.currentWeek != 52) {
+                    <a href="/Availabilities/Week/@(ViewBag.currentWeek+1)" class="btn btn-lg btn-default">></a> }
+                </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function check() {
+        alert("Beschikbaarheid is gewijzigd.");
+    }
+</script>

@@ -1,0 +1,29 @@
+<ion-content>
+    <div class="content">
+        <ion-card *ngIf="pokemon != null" class="poke-card">
+            <ion-card-content>
+                <div class="content-header">
+                    <h3 class="header-pokemon"><span id="boldType">Catch: </span></h3>
+                    <h3 class="header-pokemon"><span>{{pokemon.name | titlecase}}</span></h3>
+                </div>
+                <div>
+                    <img (click)="setRandomVibration()" src="{{pokemon.imageUrl}}">
+                </div>
+                <div class="start-hunt">
+                    <span start id="#start">Click on the pokemon to start the hunt</span>
+                </div>
+                <div class="catch">
+                    <button class="catch-pokemon" (click)="tryCatchPokemon()">CATCH POKEMON!</button>
+                </div>
+                <div class="learn-to">
+                    <button class="learn-to-catch" (click)="presentTutorial($event)">Learn how to catch</button>
+                </div>
+            </ion-card-content>
+        </ion-card>
+        <div class="info" *ngIf="pokemon == null">
+            <div class="loader"></div>
+            <span class="loading-info">Loading Pokemon...</span>
+            <span class="warning">Make sure your location service is enabled</span>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,48 @@
+@import "../../themes/theme";
+
+.app-header {
+  background-color: mat-color($speedmeet-primary);
+  color: white;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 3em;
+  }
+
+  .logo {
+    img {
+      max-width: 200px;
+    }
+  }
+}
+
+.st-main-menu {
+  display: flex;
+  padding: 8px 16px;
+  background: mat-color($speedmeet-primary, 900);
+  color: white;
+  margin-bottom: 20px;
+
+  .flex-spacer {
+    flex-grow: 1;
+  }
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+
+  a{
+    border: 1px solid white;
+  }
+}
+
+.is-active
+{
+  //border: 1px solid white;
+  //color: darkred;
+  background-color: #7A001A;
+}

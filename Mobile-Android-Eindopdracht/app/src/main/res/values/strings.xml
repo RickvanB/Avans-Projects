@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">Limited</string>
+    <string name="search">Zoeken</string>
+    <string name="station_input">Stationsnaam</string>
+    <string name="settings">Instellingen</string>
+
+    <string-array name="stations">
+        <item>Utrecht Centraal</item>
+        <item>Amersfoort Centraal</item>
+        <item>Eindhoven Centraal</item>
+        <item>\'s-Hertogenbosch</item>
+        <item>Amsterdam Centraal</item>
+        <item>Maastricht</item>
+        <item>Rosmalen</item>
+        <item>Deventer</item>
+        <item>Breda</item>
+        <item>Arnhem Centraal</item>
+    </string-array>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="length">Lengte</string>
+    <string name="to_contact">Helpdesk Contact</string>
+    <string name="helpdesk_succes">Contact is succesvol toegevoegd</string>
+    <string name="helpdesk_error">Er is iets mis gegaan. Probeer het later opnieuw</string>
+    <string name="product_type">Materieel</string>
+    <string name="product_number">Treinstel</string>
+    <string name="favorite">Favoriete</string>
+    <string name="saved_to_favorite">Opgeslagen als favoriet</string>
+    <string name="removed_from_favorite">Verwijderd van favorieten</string>
+    <string name="to_agenda">Export naar Agenda</string>
+    <string name="favorite_travels">Favoriete Vertrektijden</string>
+    <string name="favorite_help">Door een vertrektijd ingedrukt te houden kan deze verwijderd worden uit de lijst met favoriete</string>
+    <string name="type">IC</string>
+    <string name="direction">DIRECTION</string>
+    <string name="time">XX:XX</string>
+    <string name="track">XX</string>
+    <string name="train_resourse">Plannend Train</string>
+    <string name="test_data_string">Onbekend</string>
+    <string name="ride_number">Ritnummer:</string>
+    <string name="refresh">Refresh</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="no_internet">Er is op dit moment helaas geen internet verbinding</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Voorkeur station</string>
+    <string name="refresh_message">Vertrektijden zijn gerefresht</string>
+    <string name="import_text">Geïmporteerde tekst:</string>
+
+</resources>

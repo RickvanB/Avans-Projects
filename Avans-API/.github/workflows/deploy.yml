@@ -1,0 +1,58 @@
+name: Publish
+
+on: 
+  push:
+    branches: ['master', 'develop' ]
+    tags: '*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Prepare
+        id: prepare
+        run: |
+          if [[ $GITHUB_REF == refs/heads/master ]]; then
+            echo ::set-output name=version::latest
+          else
+            echo ::set-output name=version::develop
+          fi
+          echo ::set-output name=build_date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          # echo ::set-output name=docker_platforms::linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
+          echo ::set-output name=docker_platforms::linux/arm/v6
+          echo ::set-output name=docker_username::themardy
+          echo ::set-output name=docker_image::docker.io/themardy/avans-api
+      -
+        # https://github.com/crazy-max/ghaction-docker-buildx
+        name: Set up Docker Buildx
+        uses: crazy-max/ghaction-docker-buildx@v1.2.0
+        with:
+          version: latest
+      -
+        # https://github.com/actions/checkout
+        name: Checkout
+        uses: actions/checkout@v1
+      -
+        name: Docker Login
+        if: success()
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          echo "${DOCKER_PASSWORD}" | docker login --username "${{ steps.prepare.outputs.docker_username }}" --password-stdin
+      -
+        name: Docker Buildx
+        if: success()
+        run: |
+          docker buildx build --platform ${{ steps.prepare.outputs.docker_platforms }} \
+            --output type=image,name=${{ steps.prepare.outputs.docker_image }},push=true \
+            --label "org.label-schema.build-date=${{ steps.prepare.outputs.build_date }}" \
+            --label "org.label-schema.version=${{ steps.prepare.outputs.version }}" \
+            --label "org.label-schema.vcs-ref=${GITHUB_SHA::8}" \
+            --tag "${{ steps.prepare.outputs.docker_image }}:latest" \
+            --file Dockerfile .
+      -
+        name: Clear
+        if: always()
+        run: |
+          rm -f ${HOME}/.docker/config.json

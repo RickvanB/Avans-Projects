@@ -1,0 +1,276 @@
+﻿<UserControl x:Class="EfentHandler.Desktop.View.Control.ClientEditControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EfentHandler.Desktop.View.Control"
+             xmlns:dgx="clr-namespace:DataGridExtensions;assembly=DataGridExtensions"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding ClientEdit, Source={StaticResource Locator}}">
+    <Border Grid.Column="2">
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TabControl Grid.Row="0" Margin="10">
+                    <TabItem Header="Algemene gegevens">
+                        <!-- Client Edit -->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <GroupBox Grid.Row="0" Margin="10" FontSize="14">
+                                <GroupBox.Header>
+                                    <TextBlock FontWeight="Bold">Bedrijfsgegevens</TextBlock>
+                                </GroupBox.Header>
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="260" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Content="Bedrijfsnaam" Grid.Row="0" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.CompanyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"></TextBox>
+
+                                    <Label Content="KvK-nummer" Grid.Row="1" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.KvKNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"></TextBox>
+
+                                    <Label Content="Vestigingsnr." Grid.Row="2" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.EstablishmentNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"></TextBox>
+                                </Grid>
+                            </GroupBox>
+
+                            <GroupBox Grid.Row="1" Margin="10" FontSize="14">
+                                <GroupBox.Header>
+                                    <TextBlock FontWeight="Bold">Vestigingsgegevens</TextBlock>
+                                </GroupBox.Header>
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="260" />
+                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="260" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Content="Straatnaam" Grid.Row="0" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.Street, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"></TextBox>
+
+                                    <Label Content="Huisnummer" Grid.Row="1" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.HouseNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"></TextBox>
+
+                                    <Label Content="Aanvulling" Grid.Row="1" Grid.Column="2"></Label>
+                                    <TextBox Text="{Binding Path=Client.HouseNumberAddition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="3"></TextBox>
+
+                                    <Label Content="Postcode" Grid.Row="2" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.ZipCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"></TextBox>
+
+                                    <Label Content="Plaatsnaam" Grid.Row="3" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.City, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"></TextBox>
+                                </Grid>
+                            </GroupBox>
+
+                            <GroupBox Grid.Row="2" Margin="10" FontSize="14">
+                                <GroupBox.Header>
+                                    <TextBlock FontWeight="Bold">Contactgegevens</TextBlock>
+                                </GroupBox.Header>
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="260" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Content="E-mailadres" Grid.Row="0" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"></TextBox>
+
+                                    <Label Content="Telefoonnummer" Grid.Row="1" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"></TextBox>
+
+                                    <Label Content="Website" Grid.Row="2" Grid.Column="0"></Label>
+                                    <TextBox Text="{Binding Path=Client.Website, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"></TextBox>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </TabItem>
+                    <!-- Assignment List -->
+                    <TabItem Header="Opdrachten">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Button Grid.Row="0" Command="{Binding AddAssignmentCommand}" Content="Toevoegen" Margin="5" Padding="10 5 10 5" Background="#FF000000" Foreground="#FFFFFFFF" HorizontalAlignment="Right"></Button>
+
+                            <DataGrid Grid.Row="1" dgx:DataGridFilter.IsAutoFilterEnabled="True" HorizontalAlignment="Stretch" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Assignments}" SelectedItem="{Binding AssignmentListVM.SelectedAssignment, Mode=TwoWay}" BorderBrush="#FF979494" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#FFF0E0E0" HeadersVisibility="Column">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Omschrijving" Binding="{Binding Description}" Width="*" />
+                                    <DataGridTextColumn Header="Klant" Binding="{Binding ClientName}" Width="*" />
+                                    <DataGridTextColumn Header="Startdatum" Binding="{Binding StartDate, StringFormat=d, ConverterCulture=nl-NL}" Width="100" />
+                                    <DataGridTextColumn Header="Einddatum" Binding="{Binding EndDate, StringFormat=d, ConverterCulture=nl-NL}" Width="100" />
+                                    <DataGridTemplateColumn Width="75" dgx:DataGridFilterColumn.IsFilterVisible="False">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Command="{Binding DataContext.AssignmentListVM.ShowAssignmentEditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    BorderThickness="0,0,0,1" BorderBrush="#FFEEEEEE" Foreground="Black" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Background="#FFEEEEEE">Wijzig</Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+                    <!-- Client Request List -->
+                    <TabItem Header="Wensen">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <GroupBox Grid.Row="0" Margin="10" FontSize="14">
+                                <GroupBox.Header>
+                                    <TextBlock FontWeight="Bold">Wensen</TextBlock>
+                                </GroupBox.Header>
+                                <ListView Grid.Row="0" FontWeight="Normal" BorderThickness="0" Margin="10" ItemsSource="{Binding Requests, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding SelectedRequest}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="400" />
+                                                    <ColumnDefinition Width="120" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+
+                                                <Button Command="{Binding DataContext.DeleteRequestCommand, RelativeSource={RelativeSource AncestorType=ListView}}" Grid.Row="0" Grid.Column="1" Content="Verwijderen" Margin="5" Padding="10 5 10 5" Background="#999999" Foreground="#FFFFFFFF"></Button>
+
+                                                <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="0"></TextBox>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="IsSelected" Value="True"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                            </GroupBox>
+
+                            <Button Grid.Row="1" Command="{Binding AddRequestCommand}" Grid.Column="0" Content="Toevoegen" Margin="5" Padding="10 5 10 5" Background="#999999" Foreground="#FFFFFFFF"></Button>
+                        </Grid>
+                    </TabItem>
+                    <!-- Contactperson List -->
+                    <TabItem Header="Contactpersonen">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <GroupBox Grid.Row="0" Margin="10" FontSize="14">
+                                <GroupBox.Header>
+                                    <TextBlock FontWeight="Bold">Contactpersonen</TextBlock>
+                                </GroupBox.Header>
+                                <ListView Grid.Row="0" FontWeight="Normal" BorderThickness="0" Margin="10" ItemsSource="{Binding Contactpersons, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding SelectedContactperson}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="120" />
+                                                    <ColumnDefinition Width="280" />
+                                                    <ColumnDefinition Width="120" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+
+                                                <Button Command="{Binding DataContext.DeleteContactpersonCommand, RelativeSource={RelativeSource AncestorType=ListView}}" Grid.Row="0" Grid.Column="2" Content="Verwijderen" Margin="5" Padding="10 5 10 5" Background="#999999" Foreground="#FFFFFFFF"></Button>
+
+                                                <Label Content="Voornaam" Grid.Row="0" Grid.Column="0"></Label>
+                                                <TextBox Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"></TextBox>
+
+                                                <Label Content="Achternaam" Grid.Row="1" Grid.Column="0"></Label>
+                                                <TextBox Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"></TextBox>
+
+                                                <Label Content="E-mailadres" Grid.Row="2" Grid.Column="0"></Label>
+                                                <TextBox Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"></TextBox>
+
+                                                <Label Content="Telefoonnummer" Grid.Row="3" Grid.Column="0"></Label>
+                                                <TextBox Text="{Binding Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"></TextBox>
+
+                                                <Label Content="Rol" Grid.Row="4" Grid.Column="0"></Label>
+                                                <TextBox Text="{Binding Role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1"></TextBox>
+
+                                                <Label Content="Notities" Grid.Row="5" Grid.Column="0"></Label>
+                                                <TextBox Text="{Binding Notes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1"></TextBox>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="IsSelected" Value="True"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                            </GroupBox>
+
+                            <Button Grid.Row="1" Command="{Binding AddContactpersonCommand}" Grid.Column="0" Content="Toevoegen" Margin="5" Padding="10 5 10 5" Background="#999999" Foreground="#FFFFFFFF"></Button>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+                <Grid Grid.Row="1" HorizontalAlignment="Right">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Command="{Binding SaveCommand}" Grid.Column="0" Content="Opslaan" CommandParameter="0" Margin="5" Padding="10 5 10 5" Background="#FF000000" Foreground="#FFFFFFFF"></Button>
+                    <Button Command="{Binding SaveCommand}" Grid.Column="1" Content="Opslaan en sluiten" CommandParameter="1" Margin="5" Padding="10 5 10 5" Background="#FF000000" Foreground="#FFFFFFFF"></Button>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

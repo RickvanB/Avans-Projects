@@ -1,0 +1,30 @@
+<ion-content>
+    <div class="cv">
+        <h2>Curriculum Vitae</h2>
+        <h5>Overzicht Vrijgaven</h5>
+
+        <div *ngIf="timeslots" class="timeslots-list">
+            <ul class="sm-list">
+                <li *ngFor="let timeslot of timeslots">
+                    <div class="company">
+                        <span *ngIf="timeslot.company">{{timeslot.company.name}}</span>
+                    </div>
+                    <div class="actions">
+                        <ion-button class="action-button" (click)="revertPermision(timeslot)">
+                            Intrekken
+                        </ion-button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="timeslots == null && !error" class="no-results">
+        <span>Bedrijven worden geladen...</span>
+    </div>
+    <div *ngIf="timeslots != null && timeslots.length == 0" class="no-results">
+        <span>Je hebt je CV met geen enkel bedrijf gedeeld.</span>
+    </div>
+    <div *ngIf="error">
+        <p>Er is een fout opgetreden tijdens het ophalen van de bedrijven. Probeer het later opnieuw.</p>
+    </div>
+</ion-content>

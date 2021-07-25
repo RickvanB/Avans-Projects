@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="EfentHandler.Desktop.View.Control.MailChooserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EfentHandler.Desktop.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White"
+			 DataContext="{Binding Mail, Source={StaticResource Locator}}">
+    <Border Grid.Column="2">
+        <StackPanel Margin="10">
+            <Grid>
+                <!-- Set grid definitions-->
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!-- Header -->
+                <Label Content="Voorkeuren" FontSize="28" Grid.Row="0" FontWeight="ExtraBold" Margin="0,0,0,10"/>
+
+                <Grid Grid.Row="1">
+                    <!-- Content Questions -->
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Actual content -->
+                    <Label Content="Klant" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Margin="0,0,0,10"/>
+                    <Label Content="Inspectiedatum" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Margin="0,0,0,10"/>
+
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding CustomerName}" Margin="0,0,0,10"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="{Binding InspectionDate}" Margin="0,0,0,10"></Label>
+
+                    <!-- Unselected email adresses -->
+                    <Label Content="E-mailadressen" FontWeight="Bold" Grid.Row="2" Grid.Column="0" Margin="0,0,0,10"/>
+
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Content="Beschikbaar" FontWeight="Bold" Grid.Row="0"></Label>
+                            <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding CurrentSelectedCP}" ItemsSource="{Binding DeSelectedCP}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Contactpersoon" Binding="{Binding FullName}" Width="*"/>
+                                    <DataGridTextColumn Header="E-mailadres" Binding="{Binding Email}" Width="*"/>
+                                    <DataGridTemplateColumn Width="50">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <!-- Edit button to open the edit view -->
+                                                <Button Command="{Binding DataContext.AddCP, RelativeSource={RelativeSource AncestorType=DataGrid}}" Foreground="Black" Background="#66ff66" BorderThickness="0">+</Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Geselecteerd" FontWeight="Bold" Grid.Row="0"></Label>
+                            <DataGrid Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" SelectedItem="{Binding CurrentSelectedCP}" ItemsSource="{Binding SelectedCP}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Contactpersoon" Binding="{Binding FullName}" Width="*"/>
+                                    <DataGridTextColumn Header="E-mailadres" Binding="{Binding Email}" Width="*"/>
+                                    <DataGridTemplateColumn Width="50">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <!-- Edit button to open the edit view -->
+                                                <Button Command="{Binding DataContext.RemoveCP, RelativeSource={RelativeSource AncestorType=DataGrid}}" Foreground="Black" Background="#ff6600" BorderThickness="0">-</Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <!-- Button to activate mailing -->
+                <Button Content="Verstuur e-mail" Background="#FF000000" Foreground="#FFFFFFFF" HorizontalAlignment="Right" Padding="10 5 10 5" Command="{Binding MailCommand}" Grid.Row="2" Margin="0,10,0,0"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

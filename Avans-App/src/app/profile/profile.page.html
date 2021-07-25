@@ -1,0 +1,53 @@
+<ion-content>
+    <div *ngIf="student != null" class="profile">
+        <h2>{{student.name}} {{student.lastName}}</h2>
+        <h5 class="education" *ngIf="student.major != null">{{student.major.name}}</h5>
+
+        <div class="content-profile">
+            <div class="card profile-card">
+                <div class="about-header">
+                    <h4>Over Mij</h4>
+                    <ion-icon name="settings-outline" class="edit-button" (click)="activateEditAboutMe()"></ion-icon>
+                </div>
+                <p *ngIf="student.aboutMe != null && !editAboutMe">{{student.aboutMe}}</p>
+                <p *ngIf="student.aboutMe == null && !editAboutMe">Schrijf hier een stukje over jezelf zodat een bedrijf wat meer over je te weten komt</p>
+                <ion-textarea *ngIf="editAboutMe" class="edit-about-me" rows=6 [(ngModel)]="student.aboutMe">
+                </ion-textarea>
+                <div class="save-button">
+                    <ion-button *ngIf="editAboutMe" class="action-button" (click)="deActivateEditAboutMe()">
+                        Opslaan
+                    </ion-button>
+                </div>
+            </div>
+            <div class="card profile-card ">
+                <h4>Curriculum Vitae</h4>
+                <p>Upload je CV om deze te delen met bedrijven. Vond je het achteraf toch niet zo goed gaan kun je deze gewoon weer intrekken.</p>
+                <label for="cvupload" class="upload-label">Bestand Kiezen</label>
+                <input name="cvupload" id="cvupload" class="action-button file-upload" type="file" accept="application/pdf" (change)="handleFileUpload($event.target.files)" />
+                <span class="file-chosen"><span>Bestand: </span>{{filename}}</span>
+                <div class="action-buttons ">
+                    <ion-button class="action-button side-button" (click)="uploadCV()" *ngIf="file">
+                        Uploaden
+                    </ion-button>
+                    <a class="action-button" (click)="removeCV() ">
+                        Verwijderen
+                    </a>
+                </div>
+                <h4 class="sec-section ">Overzicht</h4>
+                <p>Om inzicht te krijgen in met wie jij je C.V. hebt gedeeld klik op de onderstaande knop</p>
+                <ion-button class="action-button " [routerLink]="[ '/profile/cv'] ">
+                    Bekijken
+                </ion-button>
+            </div>
+        </div>
+        <a class="action-button sign-out " routerLink="/major-select">
+            Andere major selecteren
+        </a>
+        <a class="action-button sign-out " (click)="signOut() ">
+            Uitloggen
+        </a>
+        <a class="action-button sign-out " (click)="credits()">
+            Credits
+        </a>
+    </div>
+</ion-content>

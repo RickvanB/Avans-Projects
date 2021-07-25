@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Types</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="pokemon != null && !err">
+    <ion-card class="poke-card">
+        <ion-card-header>
+            <ion-card-title class="header-pokemon"><span id="boldType">Types of: </span><span>{{pokemon.name | titlecase}}</span></ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div class="stats">
+                <div *ngFor="let typeToShow of pokemon.types" class="type">
+                    <div class="information">
+                        <span>Slot:</span>
+                        <span>{{typeToShow.slot}}</span>
+                    </div>
+                    <div class="information">
+                        <span>Name:</span>
+                        <span>{{typeToShow.type.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>
+<div *ngIf="pokemon == null && !err" class="loading">
+    <p>Loading Pokemon-data</p>
+</div>
+<div class="info" *ngIf="err">
+    <span class="loading-info">Loading Pokemon has failed</span>
+    <span class="warning">Make sure you've an internet connection</span>
+    <button onclick="location.reload()">Try Again</button>
+</div>

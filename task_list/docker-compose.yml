@@ -1,0 +1,24 @@
+version: '3'
+services:
+    node_app:
+        image: rvb97/node_backend_avans
+        links:
+            - db
+        restart: always
+        ports:
+            - "8080:3000"
+    db:
+        image: rvb97/mysql_db_avans
+        restart: always
+        environment:
+            MYSQL_USER: 'user'
+            # You can use whatever password you like
+            MYSQL_PASSWORD: 'pwd_secret'
+            # Password for root access
+            MYSQL_ROOT_PASSWORD: secret
+        ports:
+        # <Port exposed> : < MySQL Port running inside container>
+        - '3306:3306'
+        expose:
+        # Opens port 3306 on the container
+        - '3306'

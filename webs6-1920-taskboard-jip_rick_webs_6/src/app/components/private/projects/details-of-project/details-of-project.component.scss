@@ -1,0 +1,42 @@
+.details {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    width: 70%;
+    -webkit-box-shadow: 7px 10px 16px -4px rgba(112, 112, 112, 1);
+    -moz-box-shadow: 7px 10px 16px -4px rgba(112, 112, 112, 1);
+    box-shadow: 7px 10px 16px -4px rgba(112, 112, 112, 1);
+}
+
+.details h2 {
+    font-weight: lighter;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.details .prop span:first-child {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.details .prop {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+    background-color: #7A70A1;
+    padding: 5px
+}
+
+.actions button:first-child {
+    margin-right: 5px;
+}

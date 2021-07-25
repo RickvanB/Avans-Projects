@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "846225307569",
+    "firebase_url": "https://pokemon-hunt-60a50.firebaseio.com",
+    "project_id": "pokemon-hunt-60a50",
+    "storage_bucket": "pokemon-hunt-60a50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846225307569:android:e9b252b84a2fecc8b76f90",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "846225307569-hcq7c2h0l0m2054sr15ouk5dbuvu287i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMMML_957o5wAFA9wMtQFLqGnlY9nj318"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "846225307569-hcq7c2h0l0m2054sr15ouk5dbuvu287i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

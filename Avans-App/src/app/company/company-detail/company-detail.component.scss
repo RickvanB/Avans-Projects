@@ -1,0 +1,25 @@
+.company-info {
+    padding: 15px;
+    .company-contacts {
+        h2 {
+            font-weight: bold;
+        }
+        p,
+        a {
+            color: black;
+        }
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.unsub-button {
+    --border-radius: 50px;
+}
+
+.unsubscribe {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

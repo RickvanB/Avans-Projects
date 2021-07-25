@@ -1,0 +1,51 @@
+<div class="container" *ngIf="company">
+  <h1>{{company.name}} - Opleidingen aanpassen</h1>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Opleidingen</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="table-actions">
+        <mat-form-field>
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput (keyup)="applyFilter($event.target.value)"/>
+        </mat-form-field>
+      </div>
+
+      <table  mat-table [dataSource]="educations" class="mat-elevation-z8 full-width" matSort>
+
+        <!-- Major -->
+        <ng-container matColumnDef="Major">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Major </th>
+          <td mat-cell *matCellDef="let education"> {{education.name}} </td>
+        </ng-container>
+
+        <!-- Afkorting -->
+        <ng-container matColumnDef="Afkorting">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Afkorting </th>
+          <td mat-cell *matCellDef="let education"> {{education.shortName}} </td>
+        </ng-container>
+
+
+        <!-- Opleiding -->
+        <ng-container matColumnDef="Opleiding">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Opleiding </th>
+          <td mat-cell *matCellDef="let education"> {{education.educationCode}} </td>
+        </ng-container>
+
+         <!-- actions -->
+         <ng-container matColumnDef="Slider">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let education">
+            <mat-slide-toggle (change)="sliderChange(education)" [checked]="!education.notSelected" color="primary">{{education.notSelected ? 'Uitgeschakeld' : 'Ingeschakeld'}}</mat-slide-toggle>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    </mat-card-content>
+  </mat-card>
+</div>

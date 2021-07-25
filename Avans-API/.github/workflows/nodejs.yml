@@ -1,0 +1,38 @@
+name: Node.js CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [13.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: sudo systemctl start mysql
+      - name: Create database
+        run: echo "CREATE DATABASE speedmeet;" | mysql -u root -proot
+      - name: Copy .env.ci to .env
+        run: cp .env.ci .env
+      - name: Install node dependencies
+        run: npm install
+      - run: npm run build --if-present
+      - name: Migrate & Seed 
+        run: npm run typeorm-migrate migration:run
+      - name: Run tests
+        run: npm test
+        env:
+          CI: true
+      - name: Run ESLint
+        run: npm run lint
+        env:
+          CI: true
+      - name: Revert Migration 
+        run: npm run typeorm-migrate migration:revert

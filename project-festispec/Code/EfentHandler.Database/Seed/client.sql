@@ -1,0 +1,4 @@
+﻿INSERT INTO client ([CompanyName], [KvKNumber], [EstablishmentNumber], [Street], [HouseNumber], [HouseNumberAddition], [City], [ZipCode], [Phone], [Email], [Website], [Lat], [Long])
+VALUES ('Beunhazen B.V.', 65415763, 145856, 'Heibloemsedijk', 7, null, 'Heeswijk', '5473TC', 0413225847, 'info@24uurssolexrace.nl', 'www.24uurssolexrace.nl', 51.69112, 5.28807)
+INSERT INTO client ([CompanyName], [KvKNumber], [EstablishmentNumber], [Street], [HouseNumber], [HouseNumberAddition], [City], [ZipCode], [Phone], [Email], [Website], [Lat], [Long])
+VALUES ('Stichting Paaspop', 36541576, 105856, 'Spoorlaan', 10, null, 'Schijndel', '5482SK', 0412228551, 'info@paaspop.nl', 'www.paaspop.nl', 51.69112, 5.28807)

@@ -1,0 +1,45 @@
+<div class="container" *ngIf="speedmeet">
+  <h1>{{ speedmeet.title }} - Tijdsloten beheren</h1>
+
+  <form [formGroup]="addRound" (ngSubmit)="onSubmit()">
+    <div class="content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Tijdslot toevoegen</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <mat-label>Start tijd</mat-label>
+            <input matInput placeholder="hh:mm" formControlName="timestart"/>
+            <mat-error *ngIf="addRound.get('timestart').hasError('required')">
+              Start tijd is <strong>verplicht</strong>
+            </mat-error>
+
+            <mat-error *ngIf="addRound.get('timestart').hasError('time')">
+              Voer een tijd in volgens het formaat HH:MM (bijv. 09:00)
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <mat-label>Eind tijd</mat-label>
+            <input matInput placeholder="hh:mm" formControlName="timeend"/>
+            <mat-error *ngIf="addRound.get('timeend').hasError('required')">
+              Eind tijd is <strong>verplicht</strong>
+            </mat-error>
+
+            <mat-error *ngIf="addRound.get('timeend').hasError('time')">
+              Voer een tijd in volgens het formaat HH:MM (bijv. 09:00)
+            </mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="submit" mat-raised-button color="primary">Toevoegen</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <div class="sidebar">
+        <app-rounds-widget></app-rounds-widget>
+      </div>
+    </div>
+  </form>
+</div>

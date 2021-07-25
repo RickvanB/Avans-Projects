@@ -1,0 +1,58 @@
+.cv {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+h2,
+h5 {
+    color: #B62531;
+    margin: 0;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+h5 {
+    font-weight: lighter;
+}
+
+.action-button {
+    --border-radius: 45px;
+    padding: 5px;
+    margin: 0px;
+    font-size: 0.8em;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.shared-cv-timeslot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeslots-list {
+    width: 100%;
+}
+
+.company {
+    font-weight: bold;
+}
+
+.no-results {
+    color: grey;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,23 @@
+<div class="projects">
+    <div class="new-project card" *ngIf="!myProjects">
+        <div>
+            <span class="name">Projecten Laden...</span>
+        </div>
+    </div>
+    <div class="new-project card" *ngIf="myProjects && myProjects.length == 0">
+        <div>
+            <span class="name">Geen Projecten Gevonden</span>
+        </div>
+    </div>
+    <div *ngFor="let projectToShow of myProjects" class="existing-project card">
+        <div class="project">
+            <span class="name">{{projectToShow.name}}</span>
+        </div>
+        <div class="information"><button (click)="deArchive(projectToShow)">Herstellen</button></div>
+    </div>
+    <div class="new-project card" routerLink="/projects">
+        <div>
+            <span class="name">Actieve Projecten</span>
+        </div>
+    </div>
+</div>

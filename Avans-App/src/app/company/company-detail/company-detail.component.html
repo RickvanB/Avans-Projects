@@ -1,0 +1,51 @@
+<div *ngIf="company">
+    <div class="company-info">
+        <div class="company-description card">
+            <h4>Beschrijving</h4>
+
+            <p>{{ company.description }}</p>
+        </div>
+
+        <div class="company-interests card" *ngIf="company.majors">
+            <h4>Opzoek naar studenten van</h4>
+
+            <ion-list lines="none">
+                <ion-item *ngFor="let major of company.majors">
+                    {{ major.name }}
+                </ion-item>
+            </ion-list>
+        </div>
+
+        <div class="company-contacts card" *ngIf="company.contacts && company.contacts.length">
+            <h4>Contacten</h4>
+
+            <ion-list lines="none">
+                <ion-item *ngFor="let contact of company.contacts">
+                    <ion-label>
+                        <h2>{{ contact.name }} {{ contact.insertion }} {{ contact.lastname }}</h2>
+                        <p *ngIf="contact.department">{{ contact.department }}</p>
+                        <p *ngIf="contact.emailaddress"><a [href]="'mailto:' + contact.emailaddress">{{ contact.emailaddress }}</a></p>
+                        <p *ngIf="contact.phone"><a [href]="'tel:' + contact.phone">{{ contact.phone }}</a></p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div class="unsubscribe" *ngIf="company && !error && timeslot">
+            <ion-button class="unsub-button" (click)="shareCv()">
+                <span *ngIf="!timeslot.shareCv">CV Vrijgeven</span>
+                <span *ngIf="timeslot.shareCv">CV Intrekken</span>
+            </ion-button>
+        </div>
+        <div class="unsubscribe" *ngIf="company && !error && timeslot">
+            <a class="unsub-button" (click)="removeEnroll()">
+                Uitschrijven
+            </a>
+        </div>
+    </div>
+</div>
+<div *ngIf="!company && !error">
+    <p>Bedrijfsgegevens worden geladen...</p>
+</div>
+<div *ngIf="error">
+    <p>Er is een fout opgetreden tijdens het ophalen van de bedrijfsgegevens. Probeer het later opnieuw.</p>
+</div>

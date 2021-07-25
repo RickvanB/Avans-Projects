@@ -1,0 +1,124 @@
+form {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    min-width: 250px;
+}
+
+form,
+.form-background {
+    background-color: #52527a;
+}
+
+.form-background {
+    padding-top: 2.5%;
+}
+
+.topMargin {
+    padding-top: 4.5%;
+}
+
+.sideImg {
+    margin-left: 1%;
+    margin-right: 15%;
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.selectorWithImg {
+    margin-left: 5%;
+}
+
+
+/* Input field with */
+
+.inputWidth {
+    min-width: 200px;
+}
+
+label,
+form legend {
+    /* color: #f2f2f2; */
+    color: #d2d22d;
+    font-family: Black Ops One;
+    font-size: 20px;
+}
+
+.second-row-margin {
+    margin-top: 10%;
+}
+
+form legend {
+    margin-left: 1%;
+}
+
+form span {
+    color: #d2d22d !important;
+}
+
+form input,
+select {
+    -webkit-box-shadow: 4px 4px 24px -6px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 4px 4px 24px -6px rgba(255, 255, 255, 1);
+    box-shadow: 4px 4px 24px -6px rgba(255, 255, 255, 1);
+    font-family: Black Ops One;
+}
+
+form button,
+#submitButton,
+#saveMonster {
+    font-family: Black Ops One;
+    color: #d2d22d !important;
+    background: #8c8c8c;
+    border: none;
+}
+
+#deletebutton {
+    font-family: Black Ops One;
+    color: #d2d22d !important;
+    background: #ff1a1a;
+    border: none;
+}
+
+#deletebutton:hover {
+    background: #ff4d4d;
+}
+
+form button:hover,
+#submitButton:hover,
+#saveMonster:hover {
+    color: #e6e6e6 !important;
+    background: #808080;
+}
+
+#kindImage {
+    -webkit-box-shadow: 4px 4px 24px -6px rgba(255, 255, 255, 1);
+    -moz-box-shadow: 4px 4px 24px -6px rgba(255, 255, 255, 1);
+    box-shadow: 4px 4px 24px -6px rgba(255, 255, 255, 1);
+    border-radius: 0px 200px 200px 200px;
+    -moz-border-radius: 0px 200px 200px 200px;
+    -webkit-border-radius: 0px 200px 200px 200px;
+    border: 0px ridge #000000;
+    max-height: 200px;
+    margin-top: 3%;
+    margin-left: 2%;
+    min-width: 230px;
+}
+
+.create_1_section {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #52527a;
+    -webkit-box-shadow: 4px 4px 24px 0px rgba(179, 179, 179, 1);
+    -moz-box-shadow: 4px 4px 24px 0px rgba(179, 179, 179, 1);
+    box-shadow: 4px 4px 24px 0px rgba(179, 179, 179, 1);
+}
+
+.createPopUp {
+    position: absolute;
+    top: 45%;
+    left: 39%;
+    width: 800px;
+    height: 500px;
+    margin-left: -200px;
+    margin-top: -200px;
+}

@@ -1,0 +1,33 @@
+<div *ngIf="pokemons != null && !err" class="pokemon-list">
+    <ion-list class="ionic-list">
+        <ion-item *ngFor="let pokemon of pokemons" routerLink="/pokemons/{{pokemon.name}}/general/{{pokemon.name}}">
+            <ion-grid>
+                <ion-row>
+                    <ion-col class="ion-float-left">
+                        <div class="pokemon-name">
+                            {{pokemon.name | titlecase}}
+                        </div>
+                    </ion-col>
+                    <ion-col class="ion-float-right">
+                        <div class="pokemon-icon">
+                            <ion-icon class="nav-icon" name="md-arrow-dropright-circle"></ion-icon>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</div>
+<div class="info" *ngIf="pokemons == null && !err">
+    <div class="loader"></div>
+    <span class="loading-info">Loading Pokemons...</span>
+    <span class="warning">Make sure you've an internet connection</span>
+</div>
+<div class="info" *ngIf="err">
+    <span class="loading-info">Loading Pokemons has failed</span>
+    <span class="warning">Make sure you've an internet connection</span>
+    <button onclick="location.reload()">Try Again</button>
+</div>

@@ -1,0 +1,20 @@
+<div class="column-row">
+    <div class="top-part">
+        <div class="title">
+            <h1>Leden</h1>
+        </div>
+        <div *ngIf="!participants">
+            <div class="loading">
+                <span>Projectleden Laden...</span>
+            </div>
+        </div>
+        <div *ngIf="participants">
+            <div class="cards">
+                <app-user-card *ngFor="let participant of participants" [user]="participant"></app-user-card>
+            </div>
+        </div>
+    </div>
+    <div class="create">
+        <button (click)="navigateToAddParticipants()">Projectleden Beheren</button>
+    </div>
+</div>

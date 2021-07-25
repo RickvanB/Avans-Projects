@@ -1,0 +1,40 @@
+ion-tab-bar {
+  height: 85px;
+  margin-bottom: env(safe-area-inset-bottom);
+}
+
+.tab-button-small {
+  max-width: 45px;
+
+  .navbar-button-small {
+    background: white;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    font-size: 2em;
+    margin: 10px;
+    color: var(--ion-color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+  }
+}
+
+.tab-button-large {
+  max-width: 70px;
+
+  .navbar-button-large {
+    background: white;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    font-size: 3em;
+    margin: 10px;
+    color: var(--ion-color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+  }
+}

@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Weet je het zeker?</h1>
+
+<p>Weet je zeker dat je onderstaand tijdslot op slot wilt zetten?</p>
+
+<p *ngIf="data.round" class="bold">{{ data.round.timestart }} - {{ data.round.timeend }}</p>
+
+<div mat-dialog-actions>
+    <button mat-button (click)="close()">Terug</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="{enabled: false}">Op slot zetten</button>
+</div>

@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="content">
+        <h3>{{ data.name | titlecase }}</h3>
+        <div class="description">
+            <span>Omschrijving:</span>
+            <span>{{ data.description }}</span>
+        </div>
+        <div class="description">
+            <span>Sprint van - tot:</span>
+            <span>{{ data.startDate | date: 'dd-MM-yyyy' }}</span>
+            <span>{{ data.endDate | date: 'dd-MM-yyyy'}}</span>
+        </div>
+        <div class="go-to-and-edit">
+            <button (click)="goToEdit(data)">Bewerk Sprint</button>
+            <button (click)="goToSprintBoard(data)">Sprint Board</button>
+        </div>
+    </div>
+</div>

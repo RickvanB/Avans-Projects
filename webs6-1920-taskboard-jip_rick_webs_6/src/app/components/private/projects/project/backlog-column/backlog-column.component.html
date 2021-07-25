@@ -1,0 +1,14 @@
+<div class="column-row">
+    <div class="top-part">
+        <div class="title">
+            <h1>Backlog</h1>
+        </div>
+        <div class="cards">
+            <app-story-card *ngFor="let story of stories | async" [data]="story" [projectId]="project.id"></app-story-card>
+        </div>
+    </div>
+    <div class="create" *ngIf="project">
+        <button routerLink="/userstory/add/{{project.id}}">Nieuwe Story</button>
+        <label>Gearchiveerde stories</label><input type="checkbox" (change)="toggleArchived($event)" />
+    </div>
+</div>

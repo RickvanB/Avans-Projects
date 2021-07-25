@@ -1,0 +1,82 @@
+.pokemon-list {
+    background-color: #76B4A6;
+}
+
+.pokemon-icon {
+    display: flex;
+    justify-content: flex-end;
+}
+
+ion-item {
+    --background: #76B4A6;
+    --color: white;
+}
+
+.ionic-list {
+    --background: #76B4A6;
+    -padding: 0
+}
+
+.nav-icon {
+    font-size: 24px;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 70px;
+    color: black;
+}
+
+.loading-info {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.warning {
+    margin-top: 5px;
+    font-weight: lighter;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #336863;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+button {
+    background-color: #336863;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+    font-size: 1.2em;
+}
+
+
+/* Safari */
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

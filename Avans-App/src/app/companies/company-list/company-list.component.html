@@ -1,0 +1,31 @@
+<div *ngIf="companies">
+    <ul class="sm-list">
+        <li *ngFor="let company of companies" class="content-company" [routerLink]="['/companies', company.id]">
+            <div class="company-details">
+                <div class="company-name">
+                    {{company.name}}
+                </div>
+
+                <div class="company-city">
+                    {{ company.city }}
+                </div>
+
+                <div class="free-timeslots">
+                    {{ getFreeTimeslots(company) }} plaats{{ getFreeTimeslots(company) == 1 ? '' : 'en' }} beschikbaar
+                </div>
+            </div>
+            <div class="goto-button" [routerLink]="'/companies/' + company.id">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </div>
+        </li>
+    </ul>
+</div>
+<div *ngIf="!companies && !error" class="no-results">
+    <span>Bedrijven worden geladen...</span>
+</div>
+<div *ngIf="companies && companies.length == 0" class="no-results">
+    <span>Er zijn geen bedrijven om weer te geven</span>
+</div>
+<div *ngIf="error" class="no-results">
+    <p>Er is een fout opgetreden tijdens het ophalen van de bedrijven. Probeer het later opnieuw.</p>
+</div>

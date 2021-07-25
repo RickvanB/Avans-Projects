@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="EfentHandler.Desktop.View.Control.InspectorAddControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EfentHandler.Desktop.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding InspectorAdd, Source={StaticResource Locator}}">
+
+    <UserControl.Resources >
+        <local:RadioButtonBooleanConverter x:Key="BooleanConverter"/>
+        <local:DateConverter x:Key="DateConverter"/>
+    </UserControl.Resources>
+
+    <Border Grid.Column="2">
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Margin="10" FontSize="14">
+                    <GroupBox.Header>
+                        <TextBlock FontWeight="Bold">Persoonlijke gegevens</TextBlock>
+                    </GroupBox.Header>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="260" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Voornaam" Grid.Row="0" Grid.Column="0"></Label>
+                        <TextBox Text="{Binding Path=Inspector.FirstName, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox>
+
+                        <Label Content="Achternaam" Grid.Row="1" Grid.Column="0"></Label>
+                        <TextBox Text="{Binding Path=Inspector.LastName, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Margin="10" FontSize="14">
+                    <GroupBox.Header>
+                        <TextBlock FontWeight="Bold">Contactgegevens</TextBlock>
+                    </GroupBox.Header>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="260" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Straatnaam" Grid.Row="0" Grid.Column="0"></Label>
+                        <TextBox Text="{Binding Path=Inspector.Street, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"></TextBox>
+
+                        <Label Content="Huisnummer" Grid.Row="1" Grid.Column="0"></Label>
+                        <TextBox Text="{Binding Path=Inspector.HouseNumber, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"></TextBox>
+
+                        <Label Content="Aanvulling" Grid.Row="1" Grid.Column="2"></Label>
+                        <TextBox Text="{Binding Path=Inspector.HouseNumberAddition, Mode=TwoWay}" Grid.Row="1" Grid.Column="3"></TextBox>
+
+                        <Label Content="Postcode" Grid.Row="2" Grid.Column="0"></Label>
+                        <TextBox Text="{Binding Path=Inspector.ZipCode, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>
+
+                        <Label Content="Plaatsnaam" Grid.Row="3" Grid.Column="0"></Label>
+                        <TextBox Text="{Binding Path=Inspector.City, Mode=TwoWay}" Grid.Row="3" Grid.Column="1"></TextBox>
+
+                        <Label Content="E-mailadres" Grid.Row="4" Grid.Column="0"></Label>
+                        <TextBox Text="{Binding Path=Inspector.Email, Mode=TwoWay}" Grid.Row="4" Grid.Column="1"></TextBox>
+
+                        <Label Content="Wachtwoord" Grid.Row="4" Grid.Column="2"></Label>
+                        <TextBox Text="{Binding Path=Inspector.Password, Mode=TwoWay}" Grid.Row="4" Grid.Column="4"></TextBox>
+
+                        <Label Content="Telefoonnummer" Grid.Row="5" Grid.Column="0"></Label>
+                        <TextBox Text="{Binding Path=Inspector.Phone, Mode=TwoWay}" Grid.Row="5" Grid.Column="1"></TextBox>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Margin="10" FontSize="14">
+                    <GroupBox.Header>
+                        <TextBlock FontWeight="Bold">Overige gegevens</TextBlock>
+                    </GroupBox.Header>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="260" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Dienstdatum" Grid.Row="0" Grid.Column="0"></Label>
+                        <DatePicker Text="{Binding Path=Inspector.ServiceDate, Converter={StaticResource DateConverter}, Mode=TwoWay}" Grid.Row="0" Grid.Column="1">
+                            <DatePicker.Resources>
+                                <Style TargetType="DatePickerTextBox">
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
+
+                        <Label Content="Gecertificeerd?" Grid.Row="1" Grid.Column="0"></Label>
+                        <RadioButton GroupName="Certified" Content="Ja" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" 
+                                    IsChecked="{Binding Path=Inspector.Certified, Mode=TwoWay}"/>
+                        <RadioButton GroupName="Certified" Content="Nee" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    IsChecked="{Binding Path=Inspector.Certified, Mode=TwoWay, Converter={StaticResource BooleanConverter}}"/>
+
+                        <Label Content="Geldig tot" Grid.Row="1" Grid.Column="2"></Label>
+                        <DatePicker Text="{Binding Path=Inspector.CertificationEndDate, Converter={StaticResource DateConverter}, Mode=TwoWay}" Grid.Row="1" Grid.Column="3">
+                            <DatePicker.Resources>
+                                <Style TargetType="DatePickerTextBox">
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
+
+                        <Label Content="IBAN" Grid.Row="2" Grid.Column="0"></Label>
+                        <TextBox Text="{Binding Path=Inspector.IBAN, Mode=TwoWay}" Grid.Row="2" Grid.Column="1"></TextBox>
+                    </Grid>
+                </GroupBox>
+
+                <Grid Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Command="{Binding SaveCommand}" Grid.Column="1" Content="Opslaan" Margin="5" Padding="10 5 10 5" Background="#FF000000" Foreground="#FFFFFFFF"></Button>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,80 @@
+.calendar{
+    margin-top: 6%;
+}
+
+.header-interval{
+    margin-bottom: 3%;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.header-interval h1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons-interval{
+    width: 51%;
+}
+
+.buttons-interval{
+    display: flex;
+    justify-content: center;
+}
+
+.margin-interval{
+    margin-left: 2%;
+}
+
+.content-interval{
+    flex-wrap: wrap;
+}
+
+#amount_interval #interval-payment-dropdown{
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.form-remove{
+    margin-top: 12%;
+    max-width: 80%;
+    margin-left: 20%;
+}
+
+.disabled-if{
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Padding and border for default option */
+#no-interval{
+    border: 2px solid #b3b3ff;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Padding for other choice then default option */
+#interval-border{
+    padding: 10px;
+    margin-bottom: 1%;
+}
+
+/* Hide framework time function */
+.fc-time{
+    display: none;
+}
+
+.fc-content{
+    background-color: #ffb366;
+    border: none;
+}
+.fc-event{
+    border: 1px solid #ffb366 !important;
+    background-color: #ffb366 !important;
+}
+
+.messages{
+    margin-top: 5%;
+}

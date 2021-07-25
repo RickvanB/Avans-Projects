@@ -1,0 +1,377 @@
+﻿@model IEnumerable<EfentHandler.Domain.Model.survey_question>
+
+@{
+    ViewBag.Title = "Vragenlijst beantwoorden";
+}
+
+<form action="/Surveys/Answer/@ViewBag.Survey.SurveyId" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="spacer-6"></div>
+
+    @*TODO: Make float*@
+    <div class="survey-float">
+        <div class="container">
+            <div class="col-xs-10">
+                Bevestigd:
+                <input type="checkbox" name="confirmed" @(ViewBag.Survey.ConfirmedByInspector ? "checked" : " ") /> Bevestigd
+                <input type="hidden" name="SurveyId" value="@ViewBag.Survey.SurveyId" />
+            </div>
+            <div class="col-xs-2" style="text-align:right;">
+                <button type="submit" class="btn btn-success">Opslaan</button>
+            </div>
+        </div>
+    </div>
+
+
+    <h2>@ViewBag.Survey.Name</h2>
+
+
+    @foreach (var item in Model)
+    {
+
+    <div class="row">
+        <div class="col-xs-12">
+
+            <h4>
+                @Html.DisplayFor(modelItem => item.question.Question1)
+            </h4>
+
+            @{
+                switch (item.question.questiontype.QuestionTypeId)
+                {
+                    // Schaal: 1 antwoord - int
+                    case 1:
+                        <input class="form-control" type="hidden" name="scaleid" value="@item.SurveyQuestionId" />
+                        <input class="form-control" name="scale" type="number" value="@Html.DisplayFor(modelItem => item.answer.FirstOrDefault().IntAnswer)" min="0" max="10" />
+                        break;
+
+                    // Open Vraag: 1 antwoord - text
+                    case 2:
+                        <input class="form-control" type="text" name="text" style="width:100%;" value="@Html.DisplayFor(modelItem => item.answer.FirstOrDefault().TextAnswer)" />
+                        <input class="form-control" type="hidden" name="textid" value="@item.SurveyQuestionId" />
+                        break;
+
+                    // Afbeeldingen: meerdere - text (url)
+                    case 3:
+                        <div class="answers">
+                            @foreach (var given in item.answer)
+                            {
+                                <div class="row">
+                                    <div class="col-xs-11">
+                                        <input type="file" name="img" style="display:none;" />
+                                        <img src="@given.TextAnswer" width="150" />
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <a class="btn btn-danger deleteImageAnswer">x</a>
+                                    </div>
+                                    <input class="form-control" type="hidden" name="imgid" value="@item.SurveyQuestionId" />
+                                    <input type="hidden" name="imgAnsId" value="@given.AnswerId" />
+                                    <br /><br />
+                                </div>
+                            }
+                        </div>
+                        <div class="newAnswer">
+                            <div class="row">
+                                <div class="col-xs-11">
+                                    <input type="file" name="img" />
+                                </div>
+                                <input class="form-control" type="hidden" name="imgid" value="@item.SurveyQuestionId" />
+                                <br /><br />
+                            </div>
+                        </div>
+                        <a class="btn btn-success addImage">+</a>
+                        break;
+
+                    // Afstand meten: meerdere - 2x questionchoice en int
+                    case 4:
+                        <div class="answers">
+                            @if (item.answer.Count == 0)
+                            {
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <select class="form-control" name="dist1">
+                                            @foreach (var q in item.question.question_choice)
+                                            {
+                                                <option value="@q.QuestionChoiceId">@q.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <select class="form-control" name="dist2">
+                                            @foreach (var q in item.question.question_choice)
+                                            {
+                                                <option value="@q.QuestionChoiceId">@q.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input class="form-control" name="distans" value="" />
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <a class="btn btn-danger deleteAnswer">x</a>
+                                    </div>
+                                    <input class="form-control" type="hidden" name="distid" value="@item.SurveyQuestionId" />
+                                    <input type="hidden" name="distAnsId" value="0" />
+                                    <br /><br />
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var given in item.answer)
+                                {
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <select name="dist1" class="form-control" required>
+                                                @foreach (var q in item.question.question_choice)
+                                                {
+                                                    <option value="@q.QuestionChoiceId" @(q.QuestionChoiceId == given.question_choice.QuestionChoiceId ? " selected" : "")>@q.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <select name="dist2" class="form-control" required>
+                                                @foreach (var q in item.question.question_choice)
+                                                {
+                                                    <option value="@q.QuestionChoiceId" @(q.QuestionChoiceId == given.question_choice1.QuestionChoiceId ? " selected" : "")>@q.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <input class="form-control" type="number" name="distans" value="@given.IntAnswer" required />
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <a class="btn btn-danger deleteAnswer">x</a>
+                                        </div>
+                                        <input type="hidden" name="distid" value="@item.SurveyQuestionId" />
+                                        <input type="hidden" name="distAnsId" value="@given.AnswerId" />
+                                        <br /><br />
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <a class="btn btn-success addDistance">+</a>
+
+                        break;
+
+                    // Tekenen: 1 antwoord - text (url)
+                    case 5:
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <b>Download onderstaand afbeelding en teken hierop via een app op je telefoon, upload de afbeelding met aantekeningen vervolgens op deze plek</b>
+                                <img src="@item.question.Image" style="width:100%;" />
+                                <br /><br />
+                                <input type="file" name="drawing" />
+                                <br />
+                                <b>Jouw afbeelding</b>
+                                @if (item.answer.Count != 0)
+                                {
+                                    <img src="@item.answer.FirstOrDefault().TextAnswer" style="width:100%;" />
+                                }
+                                <input class="form-control" type="hidden" name="drawingid" value="@item.SurveyQuestionId" />
+                            </div>
+                        </div>
+                        break;
+
+                    // Tellen: 1 antwoord - int
+                    case 6:
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="hidden" name="countid" value="@item.SurveyQuestionId" />
+                                <input class="form-control" name="count" type="number" value="@Html.DisplayFor(modelItem => item.answer.FirstOrDefault().IntAnswer)" />
+                            </div>
+                        </div>
+                        break;
+
+                    // Meerkeuze: meerdere - questionchoice en multiplechoice
+                    case 7:
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p>Keuze:</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <p>Antwoord:</p>
+                            </div>
+                        </div>
+
+                        <div class="answers">
+                            @if (item.answer.Count == 0)
+                            {
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <select class="form-control" name="multiple">
+                                            @foreach (var q in item.question.question_choice)
+                                            {
+                                                <option value="@q.QuestionChoiceId">@q.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <select class="form-control" name="multipleAns">
+                                            @foreach (var a in item.question.multiplechoiceanswer)
+                                            {
+                                                <option value="@a.MultipleChoiceId">@a.Answer</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <a class="btn btn-danger deleteAnswer">x</a>
+                                    </div>
+                                    <input type="hidden" name="multipleid" value="@item.SurveyQuestionId" />
+                                    <input type="hidden" name="multipleAnsId" value="0" />
+                                    <br /><br />
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var given in item.answer)
+                                {
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <select name="multiple" class="form-control" required>
+                                                @foreach (var q in item.question.question_choice)
+                                                {
+                                                    <option value="@q.QuestionChoiceId" @(q.QuestionChoiceId == given.question_choice.QuestionChoiceId ? " selected" : "")>@q.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <select name="multipleAns" class="form-control" required>
+                                                @foreach (var q in item.question.multiplechoiceanswer)
+                                                {
+                                                    <option value="@q.MultipleChoiceId" @(q.MultipleChoiceId == given.multiplechoiceanswer1.MultipleChoiceId ? " selected" : "")>@q.Answer</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <a class="btn btn-danger deleteAnswer">x</a>
+                                        </div>
+                                        <input type="hidden" name="multipleid" value="@item.SurveyQuestionId" />
+                                        <input type="hidden" name="multipleAnsId" value="@given.AnswerId" />
+                                        <br /><br />
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <a class="btn btn-success addMultiple">+</a>
+                        break;
+
+                    // Tijdschatting: meerdere - questionchoice en intanswer
+                    case 8:
+                        <div class="answers">
+                            @if (item.answer.Count == 0)
+                            {
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <select name="est" class="form-control" required>
+                                            @foreach (var q in item.question.question_choice)
+                                            {
+                                                <option value="@q.QuestionChoiceId">@q.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <input type="number" class="form-control" name="estAns" value="" min="1" max="3" />
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <a class="btn btn-danger deleteAnswer">x</a>
+                                    </div>
+                                    <input type="hidden" name="estid" value="@item.SurveyQuestionId" />
+                                    <input type="hidden" name="estAnsId" value="0" />
+                                    <br /><br />
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var given in item.answer)
+                                {
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <select name="est" class="form-control" required>
+                                                @foreach (var q in item.question.question_choice)
+                                                {
+                                                    <option value="@q.QuestionChoiceId" @(q.QuestionChoiceId == given.question_choice.QuestionChoiceId ? " selected" : "")>@q.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <input class="form-control" type="number" name="estAns" value="@given.IntAnswer" min="1" max="3" required />
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <a class="btn btn-danger deleteAnswer">x</a>
+                                        </div>
+                                        <input type="hidden" name="estid" value="@item.SurveyQuestionId" />
+                                        <input type="hidden" name="estAnsId" value="@given.AnswerId" />
+                                        <br /><br />
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <a class="btn btn-success addTimeEstimate">+</a>
+                        break;
+
+                    // 5 minuten: meerdere - questionchoice en int
+                    case 9:
+                        <div class="answers">
+                            @if (item.answer.Count == 0)
+                            {
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                        <select name="five" class="form-control" required>
+                                            @foreach (var q in item.question.question_choice)
+                                            {
+                                                <option value="@q.QuestionChoiceId">@q.Name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <input class="form-control" type="number" name="fiveAns" value="0" required />
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <a class="btn btn-danger deleteAnswer">x</a>
+                                    </div>
+                                    <input type="hidden" name="fiveid" value="@item.SurveyQuestionId" />
+                                    <input type="hidden" name="fiveAnsId" value="0" />
+                                    <br /><br />
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var given in item.answer)
+                                {
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <select name="five" class="form-control" required>
+                                                @foreach (var q in item.question.question_choice)
+                                                {
+                                                    <option value="@q.QuestionChoiceId" @(q.QuestionChoiceId == given.question_choice.QuestionChoiceId ? " selected" : "")>@q.Name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-5">
+                                            <input class="form-control" type="number" name="fiveAns" value="@given.IntAnswer" required />
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <a class="btn btn-danger deleteAnswer">x</a>
+                                        </div>
+                                        <input type="hidden" name="fiveid" value="@item.SurveyQuestionId" />
+                                        <input type="hidden" name="fiveAnsId" value="@given.AnswerId" />
+                                        <br /><br />
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <a class="btn btn-success addFiveMinutes">+</a>
+                        break;
+
+                    // None
+                    default:
+                        <input class="form-control" name="answer" value="@item.SurveyQuestionId" />
+                        break;
+                }
+            }
+            <hr />
+        </div>
+        </div>
+    }
+</form>
